@@ -1,0 +1,70 @@
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: cloudcart-app
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+
+credentials:
+  existingSecret: cloudcart-credentials
+
+config:
+  databaseName: cloudcart
+  databaseUser: cloudcart
+  amqpUser: cloudcart
+  relayIntervalSeconds: "1"
+
+api:
+  replicas: 2
+  service:
+    port: 8080
+  resources:
+    requests: {cpu: 25m, memory: 64Mi}
+    limits: {cpu: 500m, memory: 256Mi}
+
+relay:
+  replicas: 1
+  resources:
+    requests: {cpu: 25m, memory: 64Mi}
+    limits: {cpu: 250m, memory: 192Mi}
+
+worker:
+  replicas: 1
+  resources:
+    requests: {cpu: 25m, memory: 64Mi}
+    limits: {cpu: 250m, memory: 192Mi}
+
+postgresql:
+  image: postgres:17.11-alpine3.24
+  storage:
+    enabled: true
+    className: standard
+    size: 1Gi
+  resources:
+    requests: {cpu: 50m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 384Mi}
+
+rabbitmq:
+  image: rabbitmq:4.2.9-alpine
+  resources:
+    requests: {cpu: 50m, memory: 192Mi}
+    limits: {cpu: 750m, memory: 512Mi}
+
+podDisruptionBudget:
+  enabled: true
+  apiMinAvailable: 1
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 4
+  targetCpuUtilizationPercentage: 60
+
+placement:
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+test:
+  enabled: true

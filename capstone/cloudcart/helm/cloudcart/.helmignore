@@ -1,0 +1,10 @@
+.DS_Store
+.git/
+.github/
+.idea/
+.vscode/
+*.tmp
+*.bak
+*.secret
+*.secrets
+values.local.yaml

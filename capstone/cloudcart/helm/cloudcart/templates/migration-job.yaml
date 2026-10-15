@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "cloudcart.fullname" . }}-migrate-{{ .Release.Revision }}
+  labels:
+    {{- include "cloudcart.labels" . | nindent 4 }}
+    app.kubernetes.io/component: migration
+spec:
+  backoffLimit: 6
+  activeDeadlineSeconds: 300
+  ttlSecondsAfterFinished: 600
+  template:
+    metadata:
+      labels:
+        {{- include "cloudcart.componentSelector" (dict "root" . "component" "migration") | nindent 8 }}
+    spec:
+      restartPolicy: OnFailure
+      automountServiceAccountToken: false
+      initContainers:
+        - name: wait-for-postgres
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - python
+            - -c
+          args:
+            - |
+              import socket
+              import time
+              for attempt in range(60):
+                  try:
+                      with socket.create_connection(("{{ include "cloudcart.fullname" . }}-postgres", 5432), 2):
+                          break
+                  except OSError:
+                      time.sleep(2)
+              else:
+                  raise SystemExit("PostgreSQL did not become reachable")
+          resources:
+            requests: {cpu: 10m, memory: 16Mi}
+            limits: {cpu: 100m, memory: 64Mi}
+          securityContext:
+            {{- include "cloudcart.appSecurityContext" . | nindent 12 }}
+      containers:
+        - name: migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["python", "-m", "cloudcart.migrate"]
+          envFrom:
+            - configMapRef:
+                name: {{ include "cloudcart.fullname" . }}-config
+            - secretRef:
+                name: {{ .Values.credentials.existingSecret }}
+          resources:
+            requests: {cpu: 25m, memory: 64Mi}
+            limits: {cpu: 250m, memory: 192Mi}
+          securityContext:
+            {{- include "cloudcart.appSecurityContext" . | nindent 12 }}

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cloudcart.fullname" . }}-rabbitmq
+  labels:
+    {{- include "cloudcart.labels" . | nindent 4 }}
+    app.kubernetes.io/component: rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "cloudcart.componentSelector" (dict "root" . "component" "rabbitmq") | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "cloudcart.componentSelector" (dict "root" . "component" "rabbitmq") | nindent 8 }}
+        app.kubernetes.io/part-of: cloudcart
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: rabbitmq
+          image: {{ .Values.rabbitmq.image | quote }}
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              value: {{ .Values.config.amqpUser | quote }}
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.credentials.existingSecret }}
+                  key: AMQP_PASSWORD
+          ports:
+            - name: amqp
+              containerPort: 5672
+          startupProbe:
+            exec:
+              command: ["rabbitmq-diagnostics", "-q", "ping"]
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 24
+          readinessProbe:
+            exec:
+              command: ["rabbitmq-diagnostics", "-q", "check_running"]
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
+          livenessProbe:
+            exec:
+              command: ["rabbitmq-diagnostics", "-q", "ping"]
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 6
+          resources:
+            {{- toYaml .Values.rabbitmq.resources | nindent 12 }}
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/rabbitmq
+          securityContext:
+            allowPrivilegeEscalation: false
+      volumes:
+        - name: data
+          emptyDir: {}

@@ -41,7 +41,7 @@ published learning material are linked.
 | 08 | [Configuration and secrets](08-configuration-secrets/README.md) | Verified |
 | 09 | [Scheduling and resources](09-scheduling-resources/README.md) | Verified |
 | 10 | [Security and policy](10-security-policy/README.md) | Verified |
-| 11 | Helm | Planned |
+| 11 | [Helm](11-helm/README.md) | Verified |
 | 12 | Prometheus | Planned |
 | 13 | Grafana and observability | Planned |
 | 14 | CI/CD, supply chain, and GitOps | Planned |

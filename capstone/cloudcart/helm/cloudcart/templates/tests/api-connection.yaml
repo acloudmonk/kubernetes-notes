@@ -1,0 +1,33 @@
+{{- if .Values.test.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "cloudcart.fullname" . }}-test-api
+  labels:
+    {{- include "cloudcart.labels" . | nindent 4 }}
+    app.kubernetes.io/component: test
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  restartPolicy: Never
+  automountServiceAccountToken: false
+  containers:
+    - name: api-connection
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      command:
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          response = urllib.request.urlopen(
+          'http://{{ include "cloudcart.fullname" . }}-api:{{ .Values.api.service.port }}/health/ready',
+          timeout=5);
+          assert response.status == 200
+      resources:
+        requests: {cpu: 10m, memory: 16Mi}
+        limits: {cpu: 100m, memory: 64Mi}
+      securityContext:
+        {{- include "cloudcart.appSecurityContext" . | nindent 8 }}
+{{- end }}
