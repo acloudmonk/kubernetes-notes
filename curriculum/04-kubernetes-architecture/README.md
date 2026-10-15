@@ -6,7 +6,7 @@
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
 > [Microservices and distributed data](../03-microservices-distributed-data/README.md) ·
-> Next: Kubernetes workloads (planned)
+> Next: [Kubernetes workloads](../05-kubernetes-workloads/README.md)
 
 ## Why this matters
 
@@ -74,5 +74,5 @@ local, temporary, non-production, and contains no credentials worth retaining.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 05 will be linked when
-Kubernetes workloads material is available.
+Continue to [05 — Kubernetes Workloads](../05-kubernetes-workloads/README.md),
+or return to the [curriculum index](../README.md).
