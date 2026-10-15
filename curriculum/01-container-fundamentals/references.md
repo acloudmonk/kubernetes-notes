@@ -12,3 +12,17 @@
 - [OCI Runtime Specification](https://specs.opencontainers.org/runtime-spec/) — runtime bundle and lifecycle.
 - [Linux namespaces](https://man7.org/linux/man-pages/man7/namespaces.7.html) — namespace types and behavior.
 - [Linux cgroup v2](https://docs.kernel.org/admin-guide/cgroup-v2.html) — kernel resource-control model.
+
+## Videos
+
+- [Containers From Scratch](https://www.youtube.com/watch?v=8fi7uSYlOdc) — Liz
+  Rice at GOTO, 2018. Builds a container from Linux primitives to make
+  namespaces, root filesystems, and cgroups concrete. The mechanisms remain
+  relevant; verify individual commands against current kernel documentation.
+- [Docker 101: Introduction to Docker and Containers](https://www.youtube.com/watch?v=kwsJIH5TGIg)
+  — Docker, 2018. Provides a visual introduction to containers, images, and
+  virtual-machine differences. Docker Desktop screens and some commands may
+  differ from current releases.
+- [The Container Security Checklist](https://community.cncf.io/e/m848je/)
+  — CNCF webinar with Liz Rice, 2021. Connects shared-kernel isolation,
+  privileges, image risks, and operational security decisions.

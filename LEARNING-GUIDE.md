@@ -47,6 +47,21 @@ Give the direct answer, explain the mechanism, provide an example, discuss
 failure modes and tradeoffs, and describe verification. State assumptions and
 request missing evidence rather than guessing.
 
+## Using video references
+
+Watch a module's selected videos after reading its mental model and before the
+guided lab. Take notes on the mechanism being demonstrated, then verify commands
+against the module's current written references. Videos are valuable for visual
+and live explanations, but older recordings can contain obsolete defaults,
+commands, user interfaces, or security advice.
+
+A useful video note records:
+
+- The component or request flow demonstrated
+- One concept that became clearer
+- One claim verified against current documentation
+- One remaining question to test in the lab
+
 ## Safety
 
 - Use dedicated learning namespaces, clusters, and cloud accounts.

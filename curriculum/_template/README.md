@@ -66,6 +66,10 @@ answers below a separator for self-testing.
 
 Prefer specifications, enhancement proposals, and official upstream docs.
 
+Include a **Videos** subsection with at least two curated resources when good
+material exists. State publisher or speaker, year, learning purpose, and any
+version-age warning. Written primary sources remain authoritative.
+
 ## Completion checklist
 
 - [ ] I can explain the subject without memorized commands.
