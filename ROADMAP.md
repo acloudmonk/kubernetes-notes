@@ -13,14 +13,14 @@ week; progress is based on demonstrated outcomes, not elapsed time.
 |---|---:|---|
 | Prerequisites | 2 weeks | Diagnose Linux, DNS, HTTP, TLS, and Git problems |
 | Containers and Docker | 3 weeks | Build and operate secure, efficient images |
-| Microservices architecture | 3 weeks | Produce a reasoned architecture and failure model |
+| Microservices and distributed data | 3 weeks | Design boundaries, contracts, consistency, and failure handling |
 | Kubernetes core | 5 weeks | Deploy and troubleshoot application workloads |
 | Networking and storage | 3 weeks | Operate routing, policy, TLS, and stateful workloads |
 | Security and resources | 2 weeks | Apply least privilege and workload constraints |
 | Helm | 2 weeks | Package, validate, upgrade, and roll back applications |
 | Observability | 3 weeks | Use metrics, logs, traces, alerts, and SLOs |
-| CI/CD and GitOps | 2 weeks | Automate validation, promotion, and reconciliation |
-| Production operations | 3 weeks | Handle scaling, upgrades, incidents, and recovery |
+| CI/CD, supply chain, and GitOps | 2 weeks | Produce evidence, promote safely, and reconcile delivery |
+| Infrastructure and production operations | 3 weeks | Provision, scale, upgrade, recover, and control cost |
 
 ## Planned modules
 
@@ -32,19 +32,19 @@ plain text identifies planned content that is not ready yet.
 | 00 | [Prerequisites](curriculum/00-prerequisites/README.md) | Draft | Linux, networking, Git, YAML, shell, distributed systems |
 | 01 | [Container fundamentals](curriculum/01-container-fundamentals/README.md) | Draft | Processes, namespaces, cgroups, filesystems, runtimes |
 | 02 | Docker | Planned | Images, Dockerfiles, BuildKit, Compose, registries, security |
-| 03 | Microservices architecture | Planned | Boundaries, data, communication, resilience, decisions |
+| 03 | Microservices and distributed data | Planned | Boundaries, APIs, transactions, messaging, consistency, resilience |
 | 04 | Kubernetes architecture | Planned | API, control plane, nodes, reconciliation, extensibility |
 | 05 | Kubernetes workloads | Planned | Pods, controllers, probes, configuration, rollouts |
 | 06 | Networking and discovery | Planned | CNI, Services, DNS, Gateway API, policy, TLS |
 | 07 | Storage and state | Planned | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
 | 08 | Configuration and secrets | Planned | Configuration, secret delivery, and rotation |
 | 09 | Scheduling and resources | Planned | Requests, QoS, placement, disruption, autoscaling |
-| 10 | Security and policy | Planned | RBAC, workload security, admission, supply chain |
+| 10 | Security and policy | Planned | Identity, RBAC, workload security, admission, multi-tenancy |
 | 11 | Helm | Planned | Templates, values, dependencies, tests, OCI, lifecycle |
 | 12 | Prometheus | Planned | Collection, PromQL, rules, Alertmanager, cardinality |
 | 13 | Grafana and observability | Planned | Dashboards, logs, traces, OpenTelemetry, SLOs |
-| 14 | CI/CD and GitOps | Planned | Builds, validation, promotion, Argo CD or Flux |
-| 15 | Production operations | Planned | HA, upgrades, incidents, backups, cost, capacity |
+| 14 | CI/CD, supply chain, and GitOps | Planned | Tests, SBOMs, signing, policy, promotion, reconciliation |
+| 15 | Infrastructure and production operations | Planned | IaC, managed Kubernetes, HA, upgrades, recovery, cost |
 | 16 | Advanced Kubernetes | Planned | Operators, service mesh, multi-cluster, ecosystem |
 
 ## Capstone milestones
@@ -68,7 +68,54 @@ plain text identifies planned content that is not ready yet.
 - **Phase 4:** networking, storage, resources, security, and policy.
 - **Phase 5:** Helm curriculum and a tested capstone chart.
 - **Phase 6:** observability, SLOs, dashboards, alerts, and runbooks.
-- **Phase 7:** CI/CD, GitOps, resilience, recovery, and advanced subjects.
+- **Phase 7:** CI/CD, supply chain, GitOps, IaC, managed Kubernetes,
+  resilience, recovery, and advanced subjects.
 
 Completion means the learner can design the capstone, justify tradeoffs, deploy
 it reproducibly, operate it under failure, and reason from evidence.
+
+## Competency gates
+
+Module completion is local evidence; these gates are cumulative practical
+assessments. A gate requires the learner to explain, build, and diagnose.
+
+| Gate | After | Required demonstration |
+|---|---|---|
+| Container practitioner | Module 02 | Build, inspect, constrain, secure, and troubleshoot containers |
+| Kubernetes application operator | Module 05 | Deploy, update, observe, debug, and recover an application |
+| Kubernetes platform practitioner | Module 11 | Operate networking, storage, policy, scheduling, and Helm releases |
+| Observability practitioner | Module 13 | Diagnose a multi-component failure with metrics, logs, and traces |
+| Production readiness | Module 16 | Deliver, scale, secure, upgrade, back up, and restore the platform |
+
+See [`curriculum/ASSESSMENT-GATES.md`](curriculum/ASSESSMENT-GATES.md) for
+evidence and scoring.
+
+## Cross-cutting depth tracks
+
+- **Troubleshooting:** configuration → API → reconciliation → scheduling →
+  image → process → readiness → discovery → network → dependency → response.
+- **Testing:** unit → integration → contract → container → manifest → Helm →
+  end-to-end → load → failure → restore.
+- **Security:** identity → least privilege → secrets → image supply chain →
+  admission → runtime → audit and response.
+- **Reliability:** timeouts → retries → idempotency → SLOs → capacity →
+  disruption → recovery.
+- **Delivery:** source → build → evidence → registry → promotion → GitOps →
+  rollback.
+
+## Depth additions
+
+- **Module 03:** contracts, migrations, transaction boundaries, delivery
+  semantics, ordering, idempotency, outbox, Saga, dead letters, replay,
+  reconciliation, caching, and contract tests.
+- **Module 06:** packet and request paths, CoreDNS, CNI, Gateway API, network
+  policy, TLS, and evidence-driven diagnosis.
+- **Module 10:** workload identity, RBAC, Pod Security, policy, tenant
+  boundaries, secret delivery, and runtime controls.
+- **Module 14:** locking, SBOMs, scanning, provenance, signing, registry policy,
+  admission verification, CI/CD, and GitOps.
+- **Module 15:** Terraform or OpenTofu, state, cloud networking and IAM, managed
+  Kubernetes, node pools, upgrades, deprecations, restore tests, incidents,
+  capacity, multi-tenancy, and cost.
+- **Module 16:** operators, CRDs, service mesh, eBPF, and multi-cluster only
+  after production-readiness foundations.

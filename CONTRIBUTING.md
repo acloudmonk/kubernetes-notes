@@ -13,6 +13,11 @@ When publishing or changing a module's status, update its row in both
 usable learning material exists. Also update the module's previous/next
 navigation so learners never reach a dead end or an unpublished path.
 
+Each module defines evidence for **Explain**, **Build**, and **Diagnose**. Every
+third module adds a cumulative exercise using at least two earlier modules.
+Modules ending a competency stage link to and satisfy the corresponding gate in
+`curriculum/ASSESSMENT-GATES.md`.
+
 ## Standards
 
 - Explain why before presenting a long command sequence.

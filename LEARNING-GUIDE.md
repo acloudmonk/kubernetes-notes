@@ -20,6 +20,15 @@ explanation in your own words, observable state, the failure signal and root
 cause, the corrective action, recovery verification, and an alternative with
 its tradeoffs. Never commit secrets or diagnostic bundles with credentials.
 
+Use three evidence categories in every module:
+
+- **Explain:** mechanism, guarantees, limitations, and tradeoffs
+- **Build:** reproducible implementation and verification
+- **Diagnose:** failure evidence, root cause, correction, and prevention
+
+Every third module includes a cumulative exercise that reuses earlier concepts.
+Spaced review is part of the learning path, not optional revision material.
+
 ## Lab contract
 
 Every lab documents purpose, prerequisites, versions, estimated time, possible
@@ -70,3 +79,16 @@ A useful video note records:
 - Use short-lived credentials and ignored local secret files.
 - Configure cloud budgets before creating billable resources.
 - Stop when lab assumptions do not match the environment.
+
+## Environment progression
+
+Use additional complexity only when it serves the learning objective:
+
+1. Local process and Python exercises
+2. Local Docker and Compose
+3. Local Kubernetes
+4. One managed Kubernetes platform
+5. Advanced or multi-cluster comparison after production readiness
+
+Learn one implementation deeply, then compare alternatives through ADRs. Do not
+implement every cloud, service mesh, broker, or GitOps controller in parallel.
