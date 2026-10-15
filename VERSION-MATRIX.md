@@ -14,17 +14,21 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 1 has no executable lab, so runtime versions are not yet pinned.
+Phase 2A prerequisite labs are verified against the local baseline below.
 
 | Component | Baseline | Local discovery | Planned phase |
 |---|---|---|---|
-| Git | To be recorded | Available | All phases |
-| Docker | To be tested | Available | Phase 2 |
-| Docker Compose | To be tested | Not verified | Phase 2 |
-| `kubectl` | To be tested | Available | Phase 3 |
+| Git | 2.46.0.windows.1 | Verified for Phase 2A | All phases |
+| Python | 3.12.0 | Verified for Phase 2A | Phase 2A onward |
+| Docker | 29.7.2 | Discovered; labs not yet tested | Phase 2B |
+| Docker Compose | 5.4.0 | Discovered; labs not yet tested | Phase 2B |
+| `kubectl` | 1.36.1 | Discovered; cluster not tested | Phase 3 |
 | Local Kubernetes | To be selected by ADR | Not selected | Phase 3 |
 | Helm | To be tested | Not installed | Phase 5 |
 | Prometheus stack | To be selected | Not selected | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
 
 Executable modules list only the versions they require.
+
+The WSL status command was inaccessible from the validation process, so no WSL
+distribution or version is claimed as tested in Phase 2A.
