@@ -5,7 +5,8 @@
 **Prerequisites:** [00 — Prerequisites](../00-prerequisites/README.md)
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
-> [Prerequisites](../00-prerequisites/README.md) · Next: Docker (planned)
+> [Prerequisites](../00-prerequisites/README.md) · Next:
+> [Docker](../02-docker/README.md)
 
 ## Why this matters
 
@@ -57,5 +58,5 @@ not a working container environment.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 02 — Docker will be linked
-there when its material is available.
+Continue to [Module 02 — Docker](../02-docker/README.md), or return to the
+[curriculum index](../README.md).

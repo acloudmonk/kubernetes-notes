@@ -20,8 +20,8 @@ Phase 2A prerequisite labs are verified against the local baseline below.
 |---|---|---|---|
 | Git | 2.46.0.windows.1 | Verified for Phase 2A | All phases |
 | Python | 3.12.0 | Verified for Phase 2A | Phase 2A onward |
-| Docker CLI | 29.7.2 | Available; Module 01 lab not runtime-verified | Phase 2B |
-| Docker Compose | 5.4.0 | Discovered; labs not yet tested | Phase 2B |
+| Docker CLI | 29.7.2 | Available; engine validation pending | Phase 2B |
+| Docker Compose | 5.4.0 | Available; runtime validation pending | Phase 2B |
 | `kubectl` | 1.36.1 | Discovered; cluster not tested | Phase 3 |
 | Local Kubernetes | To be selected by ADR | Not selected | Phase 3 |
 | Helm | To be tested | Not installed | Phase 5 |

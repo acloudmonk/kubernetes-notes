@@ -1,0 +1,8 @@
+.git
+.env
+.venv
+__pycache__/
+*.py[cod]
+*.log
+backup*.sql
+README.md

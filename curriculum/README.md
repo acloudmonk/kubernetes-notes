@@ -32,7 +32,7 @@ published learning material are linked.
 |---:|---|---|
 | 00 | [Prerequisites](00-prerequisites/README.md) | Draft |
 | 01 | [Container fundamentals](01-container-fundamentals/README.md) | Draft |
-| 02 | Docker | Planned |
+| 02 | [Docker](02-docker/README.md) | Draft |
 | 03 | Microservices and distributed data | Planned |
 | 04 | Kubernetes architecture | Planned |
 | 05 | Kubernetes workloads | Planned |
