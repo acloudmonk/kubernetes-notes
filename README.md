@@ -15,8 +15,10 @@ Prometheus, Grafana, OpenTelemetry, GitOps, security controls, and runbooks.
 
 ## Start here
 
-- [Roadmap](ROADMAP.md) — sequence and milestones
-- [Learning guide](LEARNING-GUIDE.md) — study and verification workflow
+- **New learner:** read the [learning guide](LEARNING-GUIDE.md), then begin with
+  [Module 00 — Prerequisites](curriculum/00-prerequisites/README.md).
+- **See the full order:** use the [roadmap](ROADMAP.md) to move through modules
+  sequentially. Available modules are linked directly from its learning path.
 - [Curriculum](curriculum/README.md) — module catalog and content contract
 - [Labs](labs/README.md) — exercise conventions
 - [Interview preparation](interview/README.md) — questions and scenarios
@@ -55,3 +57,9 @@ The repository currently contains the curriculum framework and initial capstone
 design. Executable modules will be added in reviewed phases. Examples should
 work on Linux and, where practical, Windows through WSL2 and Docker Desktop.
 Cloud exercises must identify billable resources explicitly.
+
+## Continue learning
+
+Every available module ends with navigation back to the curriculum index and
+to the next available module. Planned modules are shown in the roadmap without
+links until their learning material exists and has been reviewed.

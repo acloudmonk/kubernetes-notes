@@ -4,6 +4,9 @@
 **Estimated time:** To be determined  
 **Prerequisites:** List prerequisite modules
 
+> **Learning path:** [Curriculum index](../README.md) · Previous: link or None ·
+> Next: link to the next available module or mark it Planned
+
 ## Why this matters
 
 Explain the practical problem this module helps solve.
@@ -70,3 +73,8 @@ Prefer specifications, enhancement proposals, and official upstream docs.
 - [ ] I completed the challenge.
 - [ ] I diagnosed the documented failure.
 - [ ] I can explain an alternative and its tradeoffs.
+
+## Continue
+
+Return to the [curriculum index](../README.md), or continue to the next linked
+module in the ordered learning path.

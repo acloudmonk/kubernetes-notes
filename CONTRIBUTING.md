@@ -8,6 +8,11 @@
 4. Record version-sensitive behavior.
 5. Prefer specifications and official project documentation.
 
+When publishing or changing a module's status, update its row in both
+`ROADMAP.md` and `curriculum/README.md`. Link the module's `README.md` only when
+usable learning material exists. Also update the module's previous/next
+navigation so learners never reach a dead end or an unpublished path.
+
 ## Standards
 
 - Explain why before presenting a long command sequence.
