@@ -1,0 +1,20 @@
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+kubeconfig
+kubeconfig.*
+
+# Editor and operating-system metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated output
+dist/
+build/
+coverage/
+*.log

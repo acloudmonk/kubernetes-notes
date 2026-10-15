@@ -1,0 +1,10 @@
+# Architecture Decision Records
+
+Use an ADR for choices that materially affect architecture, operations,
+security, or the learning path.
+
+Name files `NNNN-short-title.md`, beginning at `0001`. Never reuse a number.
+Keep superseded decisions and link to their replacement. Valid statuses are
+Proposed, Accepted, Superseded, Rejected, and Deprecated.
+
+Copy [`0000-template.md`](0000-template.md) to start a decision.

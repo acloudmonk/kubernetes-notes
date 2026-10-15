@@ -1,0 +1,50 @@
+# Contributing
+
+## Before writing
+
+1. Identify the learner outcome.
+2. Check sequence and prerequisites in `ROADMAP.md`.
+3. Start modules from `curriculum/_template/README.md`.
+4. Record version-sensitive behavior.
+5. Prefer specifications and official project documentation.
+
+## Standards
+
+- Explain why before presenting a long command sequence.
+- Distinguish specification, common implementation, and opinion.
+- Identify defaults that vary by platform or version.
+- Pair happy paths with relevant failure behavior.
+- Use fictional credentials and domains.
+- Include verification and cleanup in every lab.
+- Mark destructive or billable steps explicitly.
+- State the intended shell for shell-specific commands.
+- Use stable Kubernetes APIs unless teaching migration.
+- Run containers as non-root where the exercise permits it.
+- Avoid floating image tags in reproducible examples.
+
+## Review checklist
+
+- [ ] Objectives and prerequisites are explicit.
+- [ ] Concepts agree with implementation.
+- [ ] The lab starts from a documented state.
+- [ ] Verification and cleanup are present.
+- [ ] At least one relevant failure is covered.
+- [ ] Questions test reasoning, not only recall.
+- [ ] References are authoritative.
+- [ ] Version-sensitive claims identify a baseline.
+- [ ] No credentials or generated binaries are included.
+
+## Branch and pull-request workflow
+
+All work after the initial Phase 1 scaffold must use a feature branch. Branches
+should be short-lived and named for the focused change, preferably with the
+`codex/` prefix when created by Codex.
+
+Changes must be pushed to the feature branch and submitted as a pull request
+against `main`. Merging into `origin/main` is a manual repository-owner action;
+automation and contributors must not merge the pull request themselves.
+
+## Licensing
+
+No license was selected during the initial scaffold. The repository owner
+should choose one before accepting external contributions.
