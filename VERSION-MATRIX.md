@@ -15,7 +15,8 @@ compatibility with every older or future release.
 ## Current baseline
 
 Phase 2A prerequisite labs and the Module 01–02 container labs are verified
-against the local baseline below.
+against the local baseline below. Module 03 application verification is tracked
+against the same Docker environment.
 
 | Component | Baseline | Local discovery | Planned phase |
 |---|---|---|---|
@@ -25,6 +26,12 @@ against the local baseline below.
 | Docker Engine | 29.7.2, Linux/amd64 | Verified for Modules 01–02 | Phase 2B |
 | Docker CLI | 29.7.2 | Verified for Modules 01–02 | Phase 2B |
 | Docker Compose | 5.4.0 | Verified for Module 02 | Phase 2B |
+| FastAPI | 0.143.1 | Pinned for CloudCart Module 03 | Phase 3 |
+| Uvicorn | 0.53.0 | Pinned for CloudCart Module 03 | Phase 3 |
+| Psycopg | 3.3.6 | Pinned for CloudCart Module 03 | Phase 3 |
+| Pika | 1.4.4 | Pinned for CloudCart Module 03 | Phase 3 |
+| PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
+| RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
 | `kubectl` | 1.36.1 | Discovered; cluster not tested | Phase 3 |
 | Local Kubernetes | To be selected by ADR | Not selected | Phase 3 |
 | Helm | To be tested | Not installed | Phase 5 |
@@ -47,3 +54,8 @@ service DNS, controlled dependency failures and recovery, PostgreSQL
 initialization and backup restoration, non-root execution, read-only root
 filesystem, writable `tmpfs`, graceful shutdown, dropped capabilities,
 resource limits, and scoped cleanup.
+
+Module 03 uses Python 3.12, a PostgreSQL-backed FastAPI API, a transactional
+outbox relay, RabbitMQ, and an idempotent notification worker. Its status remains
+Draft until unit, integration, container, broker-failure, duplicate-delivery,
+dead-letter, and cleanup checks have all been executed on this baseline.

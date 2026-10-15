@@ -60,6 +60,7 @@ override.tf.json
 __pycache__/
 *.py[cod]
 .venv/
+.venv-*/
 venv/
 .pytest_cache/
 .mypy_cache/
