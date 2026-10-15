@@ -76,6 +76,27 @@ Changes must be pushed to the feature branch and submitted as a pull request
 against `main`. Merging into `origin/main` is a manual repository-owner action;
 automation and contributors must not merge the pull request themselves.
 
+## Repository hygiene and secrets
+
+- Commit placeholders in files such as `.env.example`; keep real values only in
+  ignored local files, an approved secret manager, or short-lived CI secrets.
+- Never commit private keys, kubeconfigs, cloud credential directories,
+  Terraform state, access tokens, generated diagnostic bundles, or production
+  data. Kubernetes Secret manifests are not safe merely because values are
+  base64-encoded.
+- Before committing, inspect `git status`, `git diff --cached`, and the exact
+  files selected for staging. `.gitignore` reduces accidents but does not stop
+  `git add --force` or protect an already tracked file.
+- Run `./scripts/Test-RepositoryHygiene.ps1 -IncludeHistory` before opening a
+  pull request that adds configuration, automation, or deployment assets. The
+  scan reports categories and paths without printing matched values.
+- Pull requests and pushes to `main` run a pinned Gitleaks history scan. Treat a
+  clean CI result as an additional control, not a substitute for reviewing the
+  staged diff.
+- If a real credential is committed, revoke or rotate it first. Removing it
+  from the latest commit or rewriting history does not make the old credential
+  safe.
+
 ## Licensing
 
 No license was selected during the initial scaffold. The repository owner
