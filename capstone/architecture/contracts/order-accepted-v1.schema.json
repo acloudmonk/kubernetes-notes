@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cloudcart.example/schemas/order-accepted-v1.schema.json",
+  "title": "order.accepted.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "order_id", "total_cents"],
+  "properties": {
+    "event_id": { "type": "string", "format": "uuid" },
+    "order_id": { "type": "string", "format": "uuid" },
+    "total_cents": { "type": "integer", "minimum": 0 }
+  }
+}

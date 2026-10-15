@@ -21,9 +21,11 @@ capabilities may begin in one process.
 - [Requirements](requirements.md)
 - [Architecture decisions](decisions/README.md)
 - [Threat model](threat-model.md)
+- [Ownership and failure model](ownership.md)
+- [Event contracts](contracts/)
 
-Future phases add API contracts, event schemas, deployment diagrams, data
-ownership, dependency maps, SLOs, and recovery models.
+The first event schema and ownership/failure model are now versioned. Future
+phases add deployment diagrams, SLOs, telemetry contracts, and recovery models.
 
 ## Constraints
 

@@ -6,7 +6,7 @@
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
 > [Container fundamentals](../01-container-fundamentals/README.md) · Next:
-> Microservices and distributed data (planned)
+> [Microservices and distributed data](../03-microservices-distributed-data/README.md)
 
 ## Why this matters
 
@@ -65,5 +65,6 @@ The exact executed baseline is recorded in the
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 03 will be linked when its
-material is available.
+Continue to
+[Module 03 — Microservices and Distributed Data](../03-microservices-distributed-data/README.md),
+or return to the [curriculum index](../README.md).

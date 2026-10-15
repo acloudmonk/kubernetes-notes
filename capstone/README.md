@@ -49,6 +49,7 @@ Tests are added with the capability they protect:
 Each test states what risk it detects and what failure it cannot detect.
 
 See [`architecture/README.md`](architecture/README.md) for the current design.
+The runnable Module 03 increment is in [`cloudcart`](cloudcart/README.md).
 
 ## Boundaries
 
