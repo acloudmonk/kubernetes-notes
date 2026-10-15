@@ -14,9 +14,9 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs and the Module 01–02 container labs are verified
-against the local baseline below. Module 03 application verification is tracked
-against the same Docker environment.
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04
+Kubernetes architecture labs are verified against the local baseline below.
+Module 03 application verification is tracked against the same Docker environment.
 
 | Component | Baseline | Local discovery | Planned phase |
 |---|---|---|---|
@@ -32,8 +32,10 @@ against the same Docker environment.
 | Pika | 1.4.4 | Pinned for CloudCart Module 03 | Phase 3 |
 | PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
 | RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
-| `kubectl` | 1.36.1 | Discovered; cluster not tested | Phase 3 |
-| Local Kubernetes | To be selected by ADR | Not selected | Phase 3 |
+| `kubectl` | 1.36.1 | Verified against Kubernetes 1.36.4 | Phase 3 |
+| kind | 0.33.0 | Verified for Module 04 | Phase 3 |
+| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Module 04 | Phase 3 |
+| Node container runtime | containerd 2.3.4 | Observed on both kind nodes | Phase 3 |
 | Helm | To be tested | Not installed | Phase 5 |
 | Prometheus stack | To be selected | Not selected | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
@@ -59,3 +61,10 @@ Module 03 uses Python 3.12, a PostgreSQL-backed FastAPI API, a transactional
 outbox relay, RabbitMQ, and an idempotent notification worker. Its status remains
 Draft until unit, integration, container, broker-failure, duplicate-delivery,
 dead-letter, and cleanup checks have all been executed on this baseline.
+
+Module 04 was runtime-verified with a two-node kind cluster. Verification
+covered API discovery, client/server compatibility, Ready nodes, system Pods,
+static control-plane manifests, Deployment → ReplicaSet → Pod ownership,
+server-side field ownership, worker scheduling, containerd state, replica
+reconciliation, control-plane interruption, stale worker heartbeat/Lease
+behavior, recovery, and precise cleanup.
