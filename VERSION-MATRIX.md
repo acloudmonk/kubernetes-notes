@@ -14,8 +14,8 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04
-Kubernetes architecture labs are verified against the local baseline below.
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–05
+Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
 | Component | Baseline | Local discovery | Planned phase |
@@ -68,3 +68,12 @@ static control-plane manifests, Deployment → ReplicaSet → Pod ownership,
 server-side field ownership, worker scheduling, containerd state, replica
 reconciliation, control-plane interruption, stale worker heartbeat/Lease
 behavior, recovery, and precise cleanup.
+
+Module 05 was runtime-verified with the locally built `cloudcart-app:0.1.0`
+image on the same two-node baseline. Verification covered five Deployments,
+two ready API endpoints, a completed migration Job, probes, resources,
+non-root/read-only application containers, disabled service-account token
+mounts, Service discovery, order/outbox/worker completion, dependency-readiness
+failure without liveness restarts, migration recovery after disposable data
+loss, a failed image rollout with old replicas preserved, rollback, server-side
+validation, generated in-cluster credentials, and precise cleanup.

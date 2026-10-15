@@ -41,6 +41,7 @@ sending email or handling personal data.
 - `migrations/001_initial.sql` — schemas, constraints, indexes, and seed data
 - `tests` — pure-domain, API-contract, and opt-in PostgreSQL tests
 - `compose.yaml` — isolated API, migration, relay, worker, database, and broker
+- `k8s` — plain manifests for the Module 05 disposable Kubernetes deployment
 
 `requirements.txt` records the fully resolved Python 3.12 runtime set rather
 than only direct dependencies. Review and update that set atomically, rebuild
@@ -101,3 +102,12 @@ Remove-Item .env
 
 Volume deletion is intentional only because this environment contains synthetic
 lab data.
+
+## Kubernetes environment
+
+The [Module 05 workload labs](../../curriculum/05-kubernetes-workloads/README.md)
+build this same image, load it into kind, generate random credentials directly
+in the cluster, run the migration as a Job, and operate API, relay, and worker
+Deployments. The dependency `emptyDir` volumes are deliberately non-durable;
+follow the exact lab cleanup and do not use these manifests as a production
+database or broker design.

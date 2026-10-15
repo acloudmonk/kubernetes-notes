@@ -65,8 +65,9 @@ business contracts but do not need to share a Pod.
 
 ## Deferred decisions
 
-Module 05 will implement minimal Deployments, Services, Jobs, probes,
-configuration, rollouts, and resource requests. Modules 06–10 will decide
+Module 05 implements minimal Deployments, Services, Jobs, probes,
+configuration, rollouts, and resource requests under
+[`capstone/cloudcart/k8s`](../cloudcart/k8s/README.md). Modules 06–10 will decide
 network entry/policy, persistent storage and recovery, secret delivery,
 scheduling policy, and security controls. Helm and observability remain later
 packaging and operational layers, not prerequisites for plain-manifest learning.
