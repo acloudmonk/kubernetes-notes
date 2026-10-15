@@ -39,7 +39,7 @@ published learning material are linked.
 | 06 | [Networking and discovery](06-networking-discovery/README.md) | Verified |
 | 07 | [Storage and state](07-storage-state/README.md) | Verified |
 | 08 | [Configuration and secrets](08-configuration-secrets/README.md) | Verified |
-| 09 | Scheduling and resources | Planned |
+| 09 | [Scheduling and resources](09-scheduling-resources/README.md) | Verified |
 | 10 | Security and policy | Planned |
 | 11 | Helm | Planned |
 | 12 | Prometheus | Planned |

@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-guaranteed
+  namespace: cloudcart
+  labels: {learning.cloudcart.io/fixture: scheduling}
+spec:
+  restartPolicy: Never
+  containers:
+    - name: sleeper
+      image: cloudcart-app:0.1.0
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+      resources:
+        requests: {cpu: 10m, memory: 16Mi}
+        limits: {cpu: 10m, memory: 16Mi}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-burstable
+  namespace: cloudcart
+  labels: {learning.cloudcart.io/fixture: scheduling}
+spec:
+  restartPolicy: Never
+  containers:
+    - name: sleeper
+      image: cloudcart-app:0.1.0
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+      resources:
+        requests: {cpu: 10m, memory: 16Mi}
+        limits: {cpu: 50m, memory: 32Mi}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-besteffort
+  namespace: cloudcart
+  labels: {learning.cloudcart.io/fixture: scheduling}
+spec:
+  restartPolicy: Never
+  containers:
+    - name: sleeper
+      image: cloudcart-app:0.1.0
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
