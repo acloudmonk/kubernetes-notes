@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–06
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–07
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -33,10 +33,11 @@ Module 03 application verification is tracked against the same Docker environmen
 | PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
 | RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
 | `kubectl` | 1.36.1 | Verified against Kubernetes 1.36.4 | Phase 3 |
-| kind | 0.33.0 | Verified for Modules 04–06 | Phase 3 |
-| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–06 | Phase 3 |
+| kind | 0.33.0 | Verified for Modules 04–07 | Phase 3–4 |
+| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–07 | Phase 3–4 |
 | Node container runtime | containerd 2.3.4 | Observed on both kind nodes | Phase 3 |
 | Envoy Gateway | 1.8.5 | Verified for Module 06 | Phase 3 |
+| kind local-path provisioner | `rancher.io/local-path` | Verified for Module 07 | Phase 4 |
 | Helm | To be tested | Not installed | Phase 5 |
 | Prometheus stack | To be selected | Not selected | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
@@ -85,3 +86,11 @@ allowed and denied NetworkPolicy paths, Gateway and HTTPRoute conditions,
 Gateway-to-backend routing, selector failure and recovery, policy-induced
 readiness failure without liveness restarts, the complete order event path,
 idempotent deployment, server-side manifest validation, and precise cleanup.
+
+Module 07 was runtime-verified with the kind `standard` StorageClass using the
+`rancher.io/local-path` provisioner, `WaitForFirstConsumer`, and `Delete` reclaim
+policy. Verification covered dynamic PVC/PV binding, StatefulSet identity,
+retained PVC reuse after Pod and StatefulSet replacement, persisted CloudCart
+orders, an intentional nonexistent-class Pending claim, isolated PostgreSQL
+logical backup/restore, idempotent deployment, server-side validation, and
+precise cleanup. The baseline does not advertise volume expansion or snapshots.

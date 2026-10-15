@@ -36,7 +36,7 @@ plain text identifies planned content that is not ready yet.
 | 04 | [Kubernetes architecture](curriculum/04-kubernetes-architecture/README.md) | Verified | API, control plane, nodes, reconciliation, extensibility |
 | 05 | [Kubernetes workloads](curriculum/05-kubernetes-workloads/README.md) | Verified | Pods, controllers, probes, configuration, rollouts |
 | 06 | [Networking and discovery](curriculum/06-networking-discovery/README.md) | Verified | CNI, Services, DNS, Gateway API, policy, TLS |
-| 07 | Storage and state | Planned | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
+| 07 | [Storage and state](curriculum/07-storage-state/README.md) | Verified | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
 | 08 | Configuration and secrets | Planned | Configuration, secret delivery, and rotation |
 | 09 | Scheduling and resources | Planned | Requests, QoS, placement, disruption, autoscaling |
 | 10 | Security and policy | Planned | Identity, RBAC, workload security, admission, multi-tenancy |

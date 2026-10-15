@@ -15,3 +15,4 @@ Copy [`0000-template.md`](0000-template.md) to start a decision.
 - [ADR 0002: Use RabbitMQ with a transactional outbox](0002-rabbitmq-outbox.md) — Accepted
 - [ADR 0003: Use kind for the local Kubernetes baseline](0003-kind-local-kubernetes.md) — Accepted
 - [ADR 0004: Use Gateway API with Envoy Gateway for local ingress](0004-gateway-api-envoy.md) — Accepted
+- [ADR 0005: Use a StatefulSet for learning and managed PostgreSQL for production](0005-managed-database-production.md) — Accepted
