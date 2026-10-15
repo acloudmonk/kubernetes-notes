@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: compliant-workload
+  namespace: security-lab
+  labels:
+    app.kubernetes.io/name: compliant-workload
+    learning.cloudcart.io/fixture: security
+spec:
+  serviceAccountName: default
+  automountServiceAccountToken: false
+  restartPolicy: Never
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile: {type: RuntimeDefault}
+  containers:
+    - name: sleeper
+      image: cloudcart-app:0.1.0
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+      resources:
+        requests: {cpu: 10m, memory: 16Mi}
+        limits: {cpu: 50m, memory: 32Mi}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+        readOnlyRootFilesystem: true
+        runAsUser: 10001

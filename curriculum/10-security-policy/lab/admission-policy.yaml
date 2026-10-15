@@ -1,0 +1,30 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: security-lab-no-latest
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: >-
+        object.spec.containers.all(container,
+        !container.image.endsWith(':latest'))
+      message: "Explicit :latest image tags are not allowed in security-lab."
+      reason: Invalid
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: security-lab-no-latest
+spec:
+  policyName: security-lab-no-latest
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        learning.cloudcart.io/admission: enforce
