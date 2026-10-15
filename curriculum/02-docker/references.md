@@ -1,5 +1,9 @@
 # References
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Knowledge check](quiz.md) · Next:
+> [Gate 1 assessment](../ASSESSMENT-GATES.md#gate-1--container-practitioner)
+
 - [Docker overview](https://docs.docker.com/get-started/docker-overview/) — engine and object model.
 - [Dockerfile reference](https://docs.docker.com/reference/dockerfile/) — instruction semantics.
 - [Build cache optimization](https://docs.docker.com/build/cache/optimize/) — ordering and cache mounts.
@@ -25,3 +29,8 @@
   Jake Wright, 2016. A concise mental model for multi-container applications;
   translate the legacy file syntax and commands to the current Compose
   Specification and `docker compose` CLI.
+
+---
+
+[Previous: Knowledge check](quiz.md) · [Docker module home](README.md) ·
+[Next: Gate 1 assessment](../ASSESSMENT-GATES.md#gate-1--container-practitioner)

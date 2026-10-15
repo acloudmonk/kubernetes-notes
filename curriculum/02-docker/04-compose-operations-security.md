@@ -1,5 +1,9 @@
 # Compose, Operations, and Security
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Networking and storage](03-networking-and-storage.md) · Next:
+> [Quick exercises](quick-exercises.md)
+
 ## Compose model
 
 Compose declares services, networks, volumes, configuration, health checks, and
@@ -44,3 +48,8 @@ Treat logs, health, resource usage, image identity, and events as evidence.
 Define ownership for upgrades, backups, restoration, credential rotation, and
 cleanup. Compose is excellent for local and single-host workflows; it does not
 provide Kubernetes scheduling, reconciliation, or multi-node availability.
+
+---
+
+[Previous: Networking and storage](03-networking-and-storage.md) ·
+[Docker module home](README.md) · [Next: Quick exercises](quick-exercises.md)

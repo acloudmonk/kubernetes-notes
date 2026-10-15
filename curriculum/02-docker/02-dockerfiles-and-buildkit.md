@@ -1,5 +1,9 @@
 # Dockerfiles and BuildKit
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Engine and lifecycle](01-engine-and-lifecycle.md) · Next:
+> [Networking and storage](03-networking-and-storage.md)
+
 ## Build context
 
 The final argument to `docker build` selects the build context. Files in that
@@ -50,3 +54,9 @@ but does not automatically make dependencies trusted or images reproducible.
 - Generate an SBOM and scan the final image.
 - Rebuild regularly; an old “clean” scan does not remain current.
 - Never bake credentials into `ARG`, `ENV`, copied files, or history.
+
+---
+
+[Previous: Engine and lifecycle](01-engine-and-lifecycle.md) ·
+[Docker module home](README.md) ·
+[Next: Networking and storage](03-networking-and-storage.md)

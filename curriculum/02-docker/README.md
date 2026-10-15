@@ -27,6 +27,9 @@ You can:
 
 ## Contents
 
+Follow these pages in order. Every page includes navigation back to this module
+home and direct links to the previous and next learning step where applicable.
+
 1. [Engine and lifecycle](01-engine-and-lifecycle.md)
 2. [Dockerfiles and BuildKit](02-dockerfiles-and-buildkit.md)
 3. [Networking and storage](03-networking-and-storage.md)
@@ -42,7 +45,8 @@ You can:
 
 ## Tested baseline
 
-The exact executed baseline is recorded in `VERSION-MATRIX.md`. Required:
+The exact executed baseline is recorded in the
+[version matrix](../../VERSION-MATRIX.md). Required:
 
 - Docker Engine with Linux containers
 - Docker Compose plugin

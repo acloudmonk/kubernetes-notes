@@ -1,5 +1,9 @@
 # Docker Networking and Storage
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Dockerfiles and BuildKit](02-dockerfiles-and-buildkit.md) · Next:
+> [Compose, operations, and security](04-compose-operations-security.md)
+
 ## Networking
 
 A user-defined bridge gives containers isolated interfaces and DNS names based
@@ -50,3 +54,9 @@ live database directory is not automatically a valid database backup.
 Container numeric UID/GID and host filesystem ownership must agree. Avoid
 solving bind-mount failures with world-writable permissions or root execution.
 Inspect identity and ownership on both sides.
+
+---
+
+[Previous: Dockerfiles and BuildKit](02-dockerfiles-and-buildkit.md) ·
+[Docker module home](README.md) ·
+[Next: Compose, operations, and security](04-compose-operations-security.md)

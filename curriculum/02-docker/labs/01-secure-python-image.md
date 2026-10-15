@@ -1,5 +1,9 @@
 # Lab 1 — Build and Run a Secure Python Image
 
+> **Module navigation:** [Docker module home](../README.md) · Previous:
+> [Quick exercises](../quick-exercises.md) · Next:
+> [Lab 2 — Compose environment](02-compose-environment.md)
+
 **Time:** 60–90 minutes  
 **Cost:** None  
 **Run from:** `curriculum/02-docker/lab`
@@ -69,3 +73,9 @@ Confirm Gunicorn performs a graceful shutdown before the timeout.
 ```powershell
 docker rm --force docker-module-api
 ```
+
+---
+
+[Previous: Quick exercises](../quick-exercises.md) ·
+[Docker module home](../README.md) ·
+[Next: Lab 2 — Compose environment](02-compose-environment.md)

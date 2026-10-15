@@ -1,5 +1,9 @@
 # Docker Troubleshooting Scenarios
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Lab 2 — Compose environment](labs/02-compose-environment.md) · Next:
+> [Interview questions](interview-questions.md)
+
 Use this order: effective configuration → image/build → process → health →
 network → dependency → storage → resources.
 
@@ -39,3 +43,9 @@ reconfigure the application; do not make the whole root writable blindly.
 
 Inspect restart count, exit state, OOM flag, command, and logs. A restart policy
 is availability behavior, not root-cause remediation.
+
+---
+
+[Previous: Lab 2 — Compose environment](labs/02-compose-environment.md) ·
+[Docker module home](README.md) ·
+[Next: Interview questions](interview-questions.md)

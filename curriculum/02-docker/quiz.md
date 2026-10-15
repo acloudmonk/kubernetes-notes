@@ -1,5 +1,9 @@
 # Knowledge Check
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Interview questions](interview-questions.md) · Next:
+> [References and videos](references.md)
+
 1. What does the final argument to `docker build` select?
 2. Why copy dependency metadata before application source?
 3. When should exec-form process configuration be preferred?
@@ -25,3 +29,9 @@
 8. Startup waits for reported health, not future availability.
 9. It can leak through inspection, process state, logs, and tooling.
 10. State, exit code, OOM flag, health log, timestamps, and application logs.
+
+---
+
+[Previous: Interview questions](interview-questions.md) ·
+[Docker module home](README.md) ·
+[Next: References and videos](references.md)

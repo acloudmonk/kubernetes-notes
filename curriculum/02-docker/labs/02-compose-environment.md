@@ -1,5 +1,9 @@
 # Lab 2 — Operate a Compose Environment
 
+> **Module navigation:** [Docker module home](../README.md) · Previous:
+> [Lab 1 — Secure Python image](01-secure-python-image.md) · Next:
+> [Troubleshooting](../troubleshooting.md)
+
 **Time:** 75–120 minutes  
 **Cost:** None  
 **Run from:** `curriculum/02-docker/lab`
@@ -69,3 +73,9 @@ docker compose ps --all
 
 The final command should show no project containers. Confirm the project network
 and database volume were removed.
+
+---
+
+[Previous: Lab 1 — Secure Python image](01-secure-python-image.md) ·
+[Docker module home](../README.md) ·
+[Next: Troubleshooting](../troubleshooting.md)

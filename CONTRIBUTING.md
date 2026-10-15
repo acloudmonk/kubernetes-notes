@@ -13,6 +13,12 @@ When publishing or changing a module's status, update its row in both
 usable learning material exists. Also update the module's previous/next
 navigation so learners never reach a dead end or an unpublished path.
 
+Every standalone module content page must link back to its module `README.md`.
+Ordered pages should also link to the previous and next learning step at both
+the top and bottom, so learners can enter directly from search and continue
+without returning manually to the table of contents. Validate all relative
+links before opening a pull request.
+
 Each module defines evidence for **Explain**, **Build**, and **Diagnose**. Every
 third module adds a cumulative exercise using at least two earlier modules.
 Modules ending a competency stage link to and satisfy the corresponding gate in
@@ -57,6 +63,7 @@ Modules ending a competency stage link to and satisfy the corresponding gate in
 - [ ] Questions test reasoning, not only recall.
 - [ ] References are authoritative.
 - [ ] Version-sensitive claims identify a baseline.
+- [ ] Every content page has working module-home and sequence navigation.
 - [ ] No credentials or generated binaries are included.
 
 ## Branch and pull-request workflow

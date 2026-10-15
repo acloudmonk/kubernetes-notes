@@ -1,5 +1,8 @@
 # Interview Questions
 
+> **Module navigation:** [Docker module home](README.md) · Previous:
+> [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
+
 ## 1. `CMD` versus `ENTRYPOINT`?
 
 **Tags:** `fundamental`, `implementation`  
@@ -58,3 +61,8 @@ providing host-level control.
 **Tags:** `registry`, `production`  
 Tags are mutable names; digests identify content. Digest pinning still requires
 an explicit discovery, test, and update process.
+
+---
+
+[Previous: Troubleshooting](troubleshooting.md) ·
+[Docker module home](README.md) · [Next: Knowledge check](quiz.md)

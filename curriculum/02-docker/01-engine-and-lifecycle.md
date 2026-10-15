@@ -1,5 +1,8 @@
 # Docker Engine and Lifecycle
 
+> **Module navigation:** [Docker module home](README.md) · Previous: Module home ·
+> Next: [Dockerfiles and BuildKit](02-dockerfiles-and-buildkit.md)
+
 ## Architecture
 
 The Docker CLI is a client of the Docker API. The daemon manages images,
@@ -52,3 +55,8 @@ A health check reports application evidence separately from process state. A
 container can be running but unhealthy. Health checks must be bounded, cheap,
 specific, and available in the image. Health status alone does not restart a
 plain Docker container; orchestration or external policy decides the response.
+
+---
+
+[Docker module home](README.md) · Next:
+[Dockerfiles and BuildKit](02-dockerfiles-and-buildkit.md)
