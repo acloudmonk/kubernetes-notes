@@ -30,7 +30,7 @@ plain text identifies planned content that is not ready yet.
 | Order | Module | Status | Scope |
 |---:|---|---|---|
 | 00 | [Prerequisites](curriculum/00-prerequisites/README.md) | Draft | Linux, networking, Git, YAML, shell, distributed systems |
-| 01 | Container fundamentals | Planned | Processes, namespaces, cgroups, filesystems, runtimes |
+| 01 | [Container fundamentals](curriculum/01-container-fundamentals/README.md) | Draft | Processes, namespaces, cgroups, filesystems, runtimes |
 | 02 | Docker | Planned | Images, Dockerfiles, BuildKit, Compose, registries, security |
 | 03 | Microservices architecture | Planned | Boundaries, data, communication, resilience, decisions |
 | 04 | Kubernetes architecture | Planned | API, control plane, nodes, reconciliation, extensibility |

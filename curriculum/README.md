@@ -31,7 +31,7 @@ published learning material are linked.
 | Order | Module | Status |
 |---:|---|---|
 | 00 | [Prerequisites](00-prerequisites/README.md) | Draft |
-| 01 | Container fundamentals | Planned |
+| 01 | [Container fundamentals](01-container-fundamentals/README.md) | Draft |
 | 02 | Docker | Planned |
 | 03 | Microservices architecture | Planned |
 | 04 | Kubernetes architecture | Planned |
