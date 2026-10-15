@@ -40,7 +40,7 @@ published learning material are linked.
 | 07 | [Storage and state](07-storage-state/README.md) | Verified |
 | 08 | [Configuration and secrets](08-configuration-secrets/README.md) | Verified |
 | 09 | [Scheduling and resources](09-scheduling-resources/README.md) | Verified |
-| 10 | Security and policy | Planned |
+| 10 | [Security and policy](10-security-policy/README.md) | Verified |
 | 11 | Helm | Planned |
 | 12 | Prometheus | Planned |
 | 13 | Grafana and observability | Planned |

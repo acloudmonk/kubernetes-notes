@@ -4,7 +4,7 @@
 **Estimated time:** 24–30 hours<br>
 **Prerequisites:** [08 — Kubernetes Configuration and Secrets](../08-configuration-secrets/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Configuration and secrets](../08-configuration-secrets/README.md) · Next: Security and policy (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Configuration and secrets](../08-configuration-secrets/README.md) · Next: [Security and policy](../10-security-policy/README.md)
 
 ## Why this matters
 
@@ -56,5 +56,5 @@ server-side validation and scoped cleanup.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 10 will be linked when
-security and policy material is available.
+Continue to [10 — Kubernetes Security and Policy](../10-security-policy/README.md),
+or return to the [curriculum index](../README.md).

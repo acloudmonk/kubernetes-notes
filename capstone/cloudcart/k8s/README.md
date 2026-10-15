@@ -19,6 +19,8 @@ Do not commit rendered Secrets, kubeconfigs, or exported cluster diagnostics.
   dynamically provisioned PVC for Module 07.
 - `scheduling/` adds versioned placement patches, non-preempting application
   priority, disruption budgets, and API horizontal autoscaling for Module 09.
+- `security/` assigns distinct tokenless ServiceAccounts to CloudCart-owned
+  application components for Module 10; it intentionally grants no API roles.
 
 The API has startup, readiness, and liveness probes. The relay and worker do
 not expose a truthful health endpoint yet; process liveness alone would not
@@ -50,3 +52,10 @@ application tier on two labeled workers, spreads API replicas across hostnames,
 and demonstrates PDB/HPA behavior. Its lab values are evidence-producing local
 defaults, not production sizing; production policy follows
 [ADR 0007](../../architecture/decisions/0007-workload-placement-capacity.md).
+
+[Module 10](../../../curriculum/10-security-policy/README.md) verifies that the
+API, relay, and worker retain their end-to-end behavior without mounted
+Kubernetes API tokens. Restricted Pod Security and CEL admission demonstrations
+run in an isolated namespace so third-party dependency hardening is not claimed
+without compatibility testing. Policy direction follows
+[ADR 0008](../../architecture/decisions/0008-native-security-policy-baseline.md).

@@ -39,7 +39,7 @@ plain text identifies planned content that is not ready yet.
 | 07 | [Storage and state](curriculum/07-storage-state/README.md) | Verified | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
 | 08 | [Configuration and secrets](curriculum/08-configuration-secrets/README.md) | Verified | Configuration, secret delivery, and rotation |
 | 09 | [Scheduling and resources](curriculum/09-scheduling-resources/README.md) | Verified | Requests, QoS, placement, disruption, autoscaling |
-| 10 | Security and policy | Planned | Identity, RBAC, workload security, admission, multi-tenancy |
+| 10 | [Security and policy](curriculum/10-security-policy/README.md) | Verified | Identity, RBAC, workload security, admission, multi-tenancy |
 | 11 | Helm | Planned | Templates, values, dependencies, tests, OCI, lifecycle |
 | 12 | Prometheus | Planned | Collection, PromQL, rules, Alertmanager, cardinality |
 | 13 | Grafana and observability | Planned | Dashboards, logs, traces, OpenTelemetry, SLOs |
