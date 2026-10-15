@@ -1,0 +1,157 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: cloudcart
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-egress
+  namespace: cloudcart
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - {protocol: UDP, port: 53}
+        - {protocol: TCP, port: 53}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-paths
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: cloudcart-api}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: envoy-gateway-system
+        - podSelector:
+            matchLabels: {learning.cloudcart.io/role: network-client}
+      ports:
+        - {protocol: TCP, port: 8080}
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: postgres}
+      ports:
+        - {protocol: TCP, port: 5432}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: relay-paths
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: cloudcart-relay}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: postgres}
+      ports: [{protocol: TCP, port: 5432}]
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: rabbitmq}
+      ports: [{protocol: TCP, port: 5672}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: worker-paths
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: cloudcart-worker}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: postgres}
+      ports: [{protocol: TCP, port: 5432}]
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: rabbitmq}
+      ports: [{protocol: TCP, port: 5672}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: migration-paths
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: cloudcart-migrate}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: postgres}
+      ports: [{protocol: TCP, port: 5432}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: postgres-ingress
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: postgres}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values: [cloudcart-api, cloudcart-relay, cloudcart-worker, cloudcart-migrate]
+      ports: [{protocol: TCP, port: 5432}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rabbitmq-ingress
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: rabbitmq}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values: [cloudcart-relay, cloudcart-worker]
+      ports: [{protocol: TCP, port: 5672}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allowed-client-egress
+  namespace: cloudcart
+spec:
+  podSelector:
+    matchLabels: {learning.cloudcart.io/role: network-client}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/name: cloudcart-api}
+      ports: [{protocol: TCP, port: 8080}]

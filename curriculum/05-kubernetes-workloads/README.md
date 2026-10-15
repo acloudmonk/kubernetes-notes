@@ -6,7 +6,7 @@
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
 > [Kubernetes architecture](../04-kubernetes-architecture/README.md) ·
-> Next: Networking and discovery (planned)
+> Next: [Networking and discovery](../06-networking-discovery/README.md)
 
 ## Why this matters
 
@@ -55,5 +55,5 @@ and 6 GB disk. Generated lab credentials exist only inside the temporary cluster
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 06 will be linked when
-networking and discovery material is available.
+Continue to [06 — Kubernetes Networking and Discovery](../06-networking-discovery/README.md),
+or return to the [curriculum index](../README.md).

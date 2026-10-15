@@ -14,6 +14,7 @@ Do not commit rendered Secrets, kubeconfigs, or exported cluster diagnostics.
 - `base/` creates the namespace, non-sensitive configuration, Services, and dependencies.
 - `migration-job.yaml` performs the finite, idempotent schema migration.
 - `applications.yaml` runs the API, outbox relay, and notification worker.
+- `networking/` adds Gateway API routing and default-deny NetworkPolicies for Module 06.
 
 The API has startup, readiness, and liveness probes. The relay and worker do
 not expose a truthful health endpoint yet; process liveness alone would not
@@ -24,3 +25,7 @@ UID. The upstream PostgreSQL and RabbitMQ images perform entrypoint ownership
 and user transitions, so this learning baseline does not blindly apply the same
 capability set to them. Harden third-party images only after testing their
 documented startup requirements or selecting a compatible non-root image.
+
+The networking layer allows only documented DNS, API, database, broker,
+migration, test-client, and Gateway paths. Policy effectiveness still depends
+on the cluster's network implementation.
