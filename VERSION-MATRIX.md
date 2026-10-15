@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–05
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–06
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -33,9 +33,10 @@ Module 03 application verification is tracked against the same Docker environmen
 | PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
 | RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
 | `kubectl` | 1.36.1 | Verified against Kubernetes 1.36.4 | Phase 3 |
-| kind | 0.33.0 | Verified for Module 04 | Phase 3 |
-| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Module 04 | Phase 3 |
+| kind | 0.33.0 | Verified for Modules 04–06 | Phase 3 |
+| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–06 | Phase 3 |
 | Node container runtime | containerd 2.3.4 | Observed on both kind nodes | Phase 3 |
+| Envoy Gateway | 1.8.5 | Verified for Module 06 | Phase 3 |
 | Helm | To be tested | Not installed | Phase 5 |
 | Prometheus stack | To be selected | Not selected | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
@@ -77,3 +78,10 @@ mounts, Service discovery, order/outbox/worker completion, dependency-readiness
 failure without liveness restarts, migration recovery after disposable data
 loss, a failed image rollout with old replicas preserved, rollback, server-side
 validation, generated in-cluster credentials, and precise cleanup.
+
+Module 06 was runtime-verified on the same two-node kind baseline with Envoy
+Gateway 1.8.5. Verification covered Service DNS, EndpointSlice readiness,
+allowed and denied NetworkPolicy paths, Gateway and HTTPRoute conditions,
+Gateway-to-backend routing, selector failure and recovery, policy-induced
+readiness failure without liveness restarts, the complete order event path,
+idempotent deployment, server-side manifest validation, and precise cleanup.

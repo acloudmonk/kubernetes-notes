@@ -1,0 +1,29 @@
+# Gateway API, Ingress, and TLS
+
+> **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Services, EndpointSlices, and DNS](02-services-endpoints-dns.md) · Next: [NetworkPolicy and diagnosis](04-network-policy-diagnosis.md)
+
+Ingress is a stable, widely implemented HTTP routing API but depends heavily on
+controller annotations. Gateway API separates infrastructure and application
+ownership through GatewayClass, Gateway listeners, and route resources such as
+HTTPRoute. Installing CRDs alone creates no data plane; a conforming controller
+must reconcile them.
+
+CloudCart uses an Envoy-managed Gateway, hostname listener, and same-namespace
+HTTPRoute to the API Service. Read `Accepted`, `Programmed`, and `ResolvedRefs`
+conditions before testing traffic. In kind the listener/proxy can work while
+top-level `Programmed=False` reports `AddressNotAssigned`, because no
+LoadBalancer address provider exists. A route can exist yet be unattached because
+of listener hostname, namespace policy, parent reference, backend kind/port, or
+missing ReferenceGrant for cross-namespace references.
+
+For TLS termination, a listener references a certificate Secret and the proxy
+decrypts traffic; backend traffic is separate and may be plain HTTP, TLS, or
+mTLS. Record certificate ownership, SAN/hostname, trust roots, renewal, private-
+key access, client-to-Gateway encryption, and Gateway-to-backend encryption.
+TLS success does not authorize the caller.
+
+On local kind without LoadBalancer address management, test the managed proxy
+Service in-cluster or use a scoped port-forward. Production exposure depends on
+cloud/bare-metal load-balancer and source-IP behavior.
+
+> **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Services, EndpointSlices, and DNS](02-services-endpoints-dns.md) · Next: [NetworkPolicy and diagnosis](04-network-policy-diagnosis.md)

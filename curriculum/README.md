@@ -36,7 +36,7 @@ published learning material are linked.
 | 03 | [Microservices and distributed data](03-microservices-distributed-data/README.md) | Draft |
 | 04 | [Kubernetes architecture](04-kubernetes-architecture/README.md) | Verified |
 | 05 | [Kubernetes workloads](05-kubernetes-workloads/README.md) | Verified |
-| 06 | Networking and discovery | Planned |
+| 06 | [Networking and discovery](06-networking-discovery/README.md) | Verified |
 | 07 | Storage and state | Planned |
 | 08 | Configuration and secrets | Planned |
 | 09 | Scheduling and resources | Planned |

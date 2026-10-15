@@ -14,3 +14,4 @@ Copy [`0000-template.md`](0000-template.md) to start a decision.
 - [ADR 0001: Use Python and FastAPI for the capstone](0001-python-fastapi.md) — Accepted
 - [ADR 0002: Use RabbitMQ with a transactional outbox](0002-rabbitmq-outbox.md) — Accepted
 - [ADR 0003: Use kind for the local Kubernetes baseline](0003-kind-local-kubernetes.md) — Accepted
+- [ADR 0004: Use Gateway API with Envoy Gateway for local ingress](0004-gateway-api-envoy.md) — Accepted
