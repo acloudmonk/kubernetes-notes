@@ -1,7 +1,7 @@
 # 02 — Docker
 
-**Status:** Draft  
-**Estimated time:** 14–18 hours  
+**Status:** Verified<br>
+**Estimated time:** 16–20 hours<br>
 **Prerequisites:** [01 — Container Fundamentals](../01-container-fundamentals/README.md)
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
@@ -37,11 +37,12 @@ home and direct links to the previous and next learning step where applicable.
 5. [Quick exercises](quick-exercises.md)
 6. [Lab 1 — Secure Python image](labs/01-secure-python-image.md)
 7. [Lab 2 — Compose environment](labs/02-compose-environment.md)
-8. [Troubleshooting](troubleshooting.md)
-9. [Interview questions](interview-questions.md)
-10. [Knowledge check](quiz.md)
-11. [References and videos](references.md)
-12. [Gate 1 assessment](../ASSESSMENT-GATES.md#gate-1--container-practitioner)
+8. [Cumulative independent challenge](independent-challenge.md)
+9. [Troubleshooting](troubleshooting.md)
+10. [Interview questions](interview-questions.md)
+11. [Knowledge check](quiz.md)
+12. [References and videos](references.md)
+13. [Gate 1 assessment](../ASSESSMENT-GATES.md#gate-1--container-practitioner)
 
 ## Tested baseline
 
@@ -58,6 +59,7 @@ The exact executed baseline is recorded in the
 - [ ] **Explain:** image, build, network, storage, Compose, and lifecycle behavior.
 - [ ] **Build:** complete both labs and verify every acceptance criterion.
 - [ ] **Diagnose:** resolve the failure scenarios from evidence.
+- [ ] Complete the cumulative independent challenge without a copied solution.
 - [ ] Complete the [Container practitioner gate](../ASSESSMENT-GATES.md#gate-1--container-practitioner).
 - [ ] Remove lab containers, networks, and volumes using scoped cleanup.
 

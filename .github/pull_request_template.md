@@ -18,3 +18,4 @@ What should a learner be able to explain, implement, or diagnose afterward?
 - [ ] Examples contain no real credentials or personal data.
 - [ ] References prefer primary or official sources.
 - [ ] Documentation links were checked.
+- [ ] Module content pages include module-home and sequence navigation.

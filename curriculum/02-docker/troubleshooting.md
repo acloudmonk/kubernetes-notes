@@ -1,7 +1,7 @@
 # Docker Troubleshooting Scenarios
 
 > **Module navigation:** [Docker module home](README.md) · Previous:
-> [Lab 2 — Compose environment](labs/02-compose-environment.md) · Next:
+> [Cumulative independent challenge](independent-challenge.md) · Next:
 > [Interview questions](interview-questions.md)
 
 Use this order: effective configuration → image/build → process → health →
@@ -46,6 +46,6 @@ is availability behavior, not root-cause remediation.
 
 ---
 
-[Previous: Lab 2 — Compose environment](labs/02-compose-environment.md) ·
+[Previous: Cumulative independent challenge](independent-challenge.md) ·
 [Docker module home](README.md) ·
 [Next: Interview questions](interview-questions.md)

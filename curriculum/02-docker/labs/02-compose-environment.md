@@ -2,7 +2,7 @@
 
 > **Module navigation:** [Docker module home](../README.md) · Previous:
 > [Lab 1 — Secure Python image](01-secure-python-image.md) · Next:
-> [Troubleshooting](../troubleshooting.md)
+> [Cumulative independent challenge](../independent-challenge.md)
 
 **Time:** 75–120 minutes  
 **Cost:** None  
@@ -53,11 +53,30 @@ alone is not a backup.
 
 ## Controlled failures
 
-1. Set `DATABASE_HOST` to `missing-db`, recreate only the API, and classify the
-   `/dependency` failure as name resolution.
-2. Restore `DATABASE_HOST: db`, recreate, and verify recovery.
-3. Stop `db` after startup and observe that startup ordering does not provide
-   permanent dependency availability.
+Inject one failure at a time. A failed `curl.exe --fail` is expected while the
+dependency is unavailable.
+
+```powershell
+$env:DATABASE_HOST = 'missing-db'
+docker compose up --detach --force-recreate --no-deps api
+curl.exe --fail http://127.0.0.1:8080/dependency
+
+Remove-Item Env:DATABASE_HOST
+docker compose up --detach --force-recreate --no-deps api
+curl.exe --fail http://127.0.0.1:8080/dependency
+
+docker compose stop db
+curl.exe --fail http://127.0.0.1:8080/dependency
+docker compose start db
+docker compose up --detach --wait
+curl.exe --fail http://127.0.0.1:8080/dependency
+```
+
+Classify the first failure as configuration-driven name resolution. For the
+stopped service, record the actual evidence: depending on runtime lifecycle and
+network timing, the caller may observe a missing DNS record, connection refusal,
+or timeout. Explain why startup ordering does not provide permanent dependency
+availability.
 
 Use `docker compose config`, `ps`, `logs`, `exec`, `inspect`, and network
 inspection before editing unrelated settings.
@@ -78,4 +97,4 @@ and database volume were removed.
 
 [Previous: Lab 1 — Secure Python image](01-secure-python-image.md) ·
 [Docker module home](../README.md) ·
-[Next: Troubleshooting](../troubleshooting.md)
+[Next: Cumulative independent challenge](../independent-challenge.md)

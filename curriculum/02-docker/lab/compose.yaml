@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: docker-module-api:1.0
     environment:
-      DATABASE_HOST: db
+      DATABASE_HOST: ${DATABASE_HOST:-db}
       DATABASE_PORT: "5432"
     ports:
       - "127.0.0.1:8080:8080"

@@ -27,7 +27,7 @@ operations because troubleshooting depends on the boundary:
 ```powershell
 docker create --name demo alpine:3.22.2 sleep 300
 docker start demo
-docker stop --time 10 demo
+docker stop --timeout 10 demo
 docker start demo
 docker rm --force demo
 ```

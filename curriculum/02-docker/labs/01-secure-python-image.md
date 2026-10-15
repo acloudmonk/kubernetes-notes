@@ -61,7 +61,7 @@ Acceptance criteria:
 ## Signal exercise
 
 ```powershell
-docker stop --time 15 docker-module-api
+docker stop --timeout 15 docker-module-api
 docker inspect --format '{{.State.Status}} exit={{.State.ExitCode}}' docker-module-api
 docker logs docker-module-api
 ```

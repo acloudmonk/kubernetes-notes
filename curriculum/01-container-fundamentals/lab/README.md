@@ -69,7 +69,7 @@ layer. It will not survive removal and recreation.
 ## 5. Observe termination
 
 ```powershell
-docker stop --time 5 container-fundamentals-lab
+docker stop --timeout 5 container-fundamentals-lab
 docker logs container-fundamentals-lab
 docker inspect --format '{{.State.Status}} exit={{.State.ExitCode}}' container-fundamentals-lab
 ```

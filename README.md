@@ -54,10 +54,11 @@ flowchart LR
 
 ## Status
 
-The repository currently contains the curriculum framework and initial capstone
-design. Executable modules will be added in reviewed phases. Examples should
-work on Linux and, where practical, Windows through WSL2 and Docker Desktop.
-Cloud exercises must identify billable resources explicitly.
+The repository contains the curriculum framework, initial capstone design, and
+the first executable learning modules. Additional modules are added in reviewed
+phases. Examples should work on Linux and, where practical, Windows through
+WSL2 and Docker Desktop. Cloud exercises must identify billable resources
+explicitly.
 
 ## Continue learning
 
