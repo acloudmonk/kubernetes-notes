@@ -4,6 +4,9 @@
 **Estimated time:** 8–12 hours  
 **Prerequisites:** None
 
+> **Learning path:** [Curriculum index](../README.md) · Previous: None · Next:
+> Container fundamentals (planned)
+
 ## Why this matters
 
 Kubernetes failures often surface as ordinary process, port, DNS, HTTP, TLS,
@@ -57,3 +60,8 @@ These scripts inspect only; they install and modify nothing.
 - [ ] Explain five interview answers aloud.
 - [ ] Score at least 80% on the knowledge check.
 - [ ] Clean up every process and temporary resource created by the labs.
+
+## Continue
+
+Return to the [curriculum index](../README.md). Module 01 — Container
+fundamentals will be linked there when its learning material is available.

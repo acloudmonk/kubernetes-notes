@@ -24,25 +24,28 @@ week; progress is based on demonstrated outcomes, not elapsed time.
 
 ## Planned modules
 
-| ID | Module | Scope |
-|---:|---|---|
-| 00 | Prerequisites | Linux, networking, Git, YAML, shell, distributed systems |
-| 01 | Container fundamentals | Processes, namespaces, cgroups, filesystems, runtimes |
-| 02 | Docker | Images, Dockerfiles, BuildKit, Compose, registries, security |
-| 03 | Microservices architecture | Boundaries, data, communication, resilience, decisions |
-| 04 | Kubernetes architecture | API, control plane, nodes, reconciliation, extensibility |
-| 05 | Kubernetes workloads | Pods, controllers, probes, configuration, rollouts |
-| 06 | Networking and discovery | CNI, Services, DNS, Gateway API, policy, TLS |
-| 07 | Storage and state | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
-| 08 | Configuration and secrets | Configuration, secret delivery, and rotation |
-| 09 | Scheduling and resources | Requests, QoS, placement, disruption, autoscaling |
-| 10 | Security and policy | RBAC, workload security, admission, supply chain |
-| 11 | Helm | Templates, values, dependencies, tests, OCI, lifecycle |
-| 12 | Prometheus | Collection, PromQL, rules, Alertmanager, cardinality |
-| 13 | Grafana and observability | Dashboards, logs, traces, OpenTelemetry, SLOs |
-| 14 | CI/CD and GitOps | Builds, validation, promotion, Argo CD or Flux |
-| 15 | Production operations | HA, upgrades, incidents, backups, cost, capacity |
-| 16 | Advanced Kubernetes | Operators, service mesh, multi-cluster, ecosystem |
+Follow this table from top to bottom. A linked module is available to study;
+plain text identifies planned content that is not ready yet.
+
+| Order | Module | Status | Scope |
+|---:|---|---|---|
+| 00 | [Prerequisites](curriculum/00-prerequisites/README.md) | Draft | Linux, networking, Git, YAML, shell, distributed systems |
+| 01 | Container fundamentals | Planned | Processes, namespaces, cgroups, filesystems, runtimes |
+| 02 | Docker | Planned | Images, Dockerfiles, BuildKit, Compose, registries, security |
+| 03 | Microservices architecture | Planned | Boundaries, data, communication, resilience, decisions |
+| 04 | Kubernetes architecture | Planned | API, control plane, nodes, reconciliation, extensibility |
+| 05 | Kubernetes workloads | Planned | Pods, controllers, probes, configuration, rollouts |
+| 06 | Networking and discovery | Planned | CNI, Services, DNS, Gateway API, policy, TLS |
+| 07 | Storage and state | Planned | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |
+| 08 | Configuration and secrets | Planned | Configuration, secret delivery, and rotation |
+| 09 | Scheduling and resources | Planned | Requests, QoS, placement, disruption, autoscaling |
+| 10 | Security and policy | Planned | RBAC, workload security, admission, supply chain |
+| 11 | Helm | Planned | Templates, values, dependencies, tests, OCI, lifecycle |
+| 12 | Prometheus | Planned | Collection, PromQL, rules, Alertmanager, cardinality |
+| 13 | Grafana and observability | Planned | Dashboards, logs, traces, OpenTelemetry, SLOs |
+| 14 | CI/CD and GitOps | Planned | Builds, validation, promotion, Argo CD or Flux |
+| 15 | Production operations | Planned | HA, upgrades, incidents, backups, cost, capacity |
+| 16 | Advanced Kubernetes | Planned | Operators, service mesh, multi-cluster, ecosystem |
 
 ## Capstone milestones
 
