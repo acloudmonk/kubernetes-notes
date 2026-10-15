@@ -1,5 +1,9 @@
 # Distributed-System Foundations
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Git, YAML, and shell](03-git-yaml-shell.md) · Next:
+> [Quick exercises](quick-exercises.md)
+
 A distributed request crosses process or network boundaries where components
 can fail independently. The caller often cannot immediately distinguish a slow
 success, a lost request, a lost response, and a failed dependency.
@@ -37,3 +41,8 @@ compensation, duplicate handling, ordering expectations, and reconciliation.
 
 The key question is not “can this component fail?” but “what will callers
 observe when it fails, and how does the system return to a known state?”
+
+---
+
+[Previous: Git, YAML, and shell](03-git-yaml-shell.md) ·
+[Prerequisites module home](README.md) · [Next: Quick exercises](quick-exercises.md)

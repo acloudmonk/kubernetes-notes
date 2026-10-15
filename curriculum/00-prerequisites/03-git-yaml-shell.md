@@ -1,5 +1,9 @@
 # Git, YAML, and Shell Fundamentals
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Networking, DNS, HTTP, and TLS](02-networking-dns-http-tls.md) · Next:
+> [Distributed-system foundations](04-distributed-systems.md)
+
 ## Git state
 
 The working tree contains checked-out files, the index contains the proposed
@@ -51,3 +55,9 @@ program sees them. Documentation must label the intended shell.
 
 Environment variables are inherited by child processes and are visible to the
 process environment. They are configuration transport, not a secret store.
+
+---
+
+[Previous: Networking, DNS, HTTP, and TLS](02-networking-dns-http-tls.md) ·
+[Prerequisites module home](README.md) ·
+[Next: Distributed-system foundations](04-distributed-systems.md)

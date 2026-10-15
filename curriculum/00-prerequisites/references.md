@@ -1,5 +1,9 @@
 # References
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Knowledge check](quiz.md) · Next:
+> [Module 01 — Container fundamentals](../01-container-fundamentals/README.md)
+
 - [Linux man-pages](https://www.kernel.org/doc/man-pages/) — processes, signals,
   sockets, and system-call reference.
 - [Microsoft WSL documentation](https://learn.microsoft.com/windows/wsl/) —
@@ -27,3 +31,8 @@
 - [The Missing Semester: Debugging and Profiling](https://missing.csail.mit.edu/2020/debugging-profiling/)
   — MIT, 2020. Reinforces evidence-first diagnosis. Tool versions may have
   changed, but the debugging method remains applicable.
+
+---
+
+[Previous: Knowledge check](quiz.md) · [Prerequisites module home](README.md) ·
+[Next: Module 01 — Container fundamentals](../01-container-fundamentals/README.md)

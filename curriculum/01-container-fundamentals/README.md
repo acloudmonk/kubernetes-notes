@@ -28,6 +28,9 @@ You can:
 
 ## Contents
 
+Follow these pages in order. Every page includes navigation back to this module
+home and direct links to the previous and next learning step where applicable.
+
 1. [Container and runtime model](01-container-runtime-model.md)
 2. [Isolation and resource control](02-isolation-and-resources.md)
 3. [Images and filesystems](03-images-and-filesystems.md)

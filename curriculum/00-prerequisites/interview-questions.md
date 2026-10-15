@@ -1,5 +1,9 @@
 # Interview Questions
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Troubleshooting scenario](troubleshooting.md) · Next:
+> [Knowledge check](quiz.md)
+
 ## 1. What happens when Kubernetes terminates a container?
 
 **Tags:** `fundamental`, `production`  
@@ -56,3 +60,8 @@ the permanent fix.
 Repeating it produces no additional business effect. An idempotency key must be
 associated atomically with the operation result so retries can return the prior
 outcome instead of repeating the effect.
+
+---
+
+[Previous: Troubleshooting scenario](troubleshooting.md) ·
+[Prerequisites module home](README.md) · [Next: Knowledge check](quiz.md)

@@ -1,5 +1,9 @@
 # Interview Questions
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Troubleshooting scenario](troubleshooting.md) · Next:
+> [Knowledge check](quiz.md)
+
 ## 1. Is a container a lightweight VM?
 
 **Tags:** `fundamental`, `internals`  
@@ -66,3 +70,8 @@ replacement kernel.
 No. Kubelet uses the Container Runtime Interface with a compatible runtime.
 Docker images follow interoperable formats, but Docker Engine is not a required
 node runtime.
+
+---
+
+[Previous: Troubleshooting scenario](troubleshooting.md) ·
+[Container fundamentals home](README.md) · [Next: Knowledge check](quiz.md)

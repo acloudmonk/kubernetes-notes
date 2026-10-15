@@ -1,5 +1,8 @@
 # Knowledge Check
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Interview questions](interview-questions.md) · Next: [References](references.md)
+
 1. Why is `SIGTERM` preferable to `SIGKILL` for normal shutdown?
 2. What does binding a server to `127.0.0.1` imply?
 3. Which layer has failed when DNS resolves but TCP is refused?
@@ -21,3 +24,8 @@
 6. YAML parsers assign scalar types and special syntax has structural meaning.
 7. They add load and resource consumption to an already failing dependency.
 8. A stable key stored atomically with the original operation result.
+
+---
+
+[Previous: Interview questions](interview-questions.md) ·
+[Prerequisites module home](README.md) · [Next: References](references.md)

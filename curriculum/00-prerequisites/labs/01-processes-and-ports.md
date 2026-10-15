@@ -1,5 +1,8 @@
 # Lab 1 — Processes and Ports
 
+> **Module navigation:** [Prerequisites module home](../README.md) · Previous:
+> [Core labs](README.md) · Next: [Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md)
+
 **Time:** 30–45 minutes  
 **Cost:** None  
 **Requires:** Python and either PowerShell or Linux/WSL tools
@@ -38,3 +41,8 @@ process, and verify both listeners.
 
 Stop only the two Python servers you started. Verify that neither port remains
 in the listening state.
+
+---
+
+[Previous: Core labs](README.md) · [Prerequisites module home](../README.md) ·
+[Next: Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md)

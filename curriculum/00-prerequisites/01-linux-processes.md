@@ -1,5 +1,8 @@
 # Linux, Processes, and Files
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous: Module home ·
+> Next: [Networking, DNS, HTTP, and TLS](02-networking-dns-http-tls.md)
+
 ## Process model
 
 A process is a running program with a PID, parent PID, credentials, environment,
@@ -62,3 +65,8 @@ ulimit -a
 When a program fails, ask: did it start, which identity runs it, what is it
 waiting on, which files and sockets are open, which signal did it receive, and
 which resource limit was reached?
+
+---
+
+[Prerequisites module home](README.md) · Next:
+[Networking, DNS, HTTP, and TLS](02-networking-dns-http-tls.md)

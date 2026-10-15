@@ -1,5 +1,9 @@
 # Quick Exercises
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Distributed-system foundations](04-distributed-systems.md) · Next:
+> [Core labs](labs/README.md)
+
 Spend 5–15 minutes on each exercise.
 
 1. Start `python -m http.server 8080 --bind 127.0.0.1`. Identify its PID and
@@ -15,3 +19,8 @@ Spend 5–15 minutes on each exercise.
    idempotent.
 
 Record commands, observations, and explanations. Clean up the HTTP server.
+
+---
+
+[Previous: Distributed-system foundations](04-distributed-systems.md) ·
+[Prerequisites module home](README.md) · [Next: Core labs](labs/README.md)

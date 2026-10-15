@@ -26,6 +26,9 @@ After completing this module, you can:
 
 ## Contents
 
+Follow these pages in order. Every page includes navigation back to this module
+home and direct links to the previous and next learning step where applicable.
+
 1. [Linux and processes](01-linux-processes.md)
 2. [Networking, DNS, HTTP, and TLS](02-networking-dns-http-tls.md)
 3. [Git, YAML, and shell](03-git-yaml-shell.md)
