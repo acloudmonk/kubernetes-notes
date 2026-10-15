@@ -20,6 +20,15 @@ explanation in your own words, observable state, the failure signal and root
 cause, the corrective action, recovery verification, and an alternative with
 its tradeoffs. Never commit secrets or diagnostic bundles with credentials.
 
+Use three evidence categories in every module:
+
+- **Explain:** mechanism, guarantees, limitations, and tradeoffs
+- **Build:** reproducible implementation and verification
+- **Diagnose:** failure evidence, root cause, correction, and prevention
+
+Every third module includes a cumulative exercise that reuses earlier concepts.
+Spaced review is part of the learning path, not optional revision material.
+
 ## Lab contract
 
 Every lab documents purpose, prerequisites, versions, estimated time, possible
@@ -47,6 +56,21 @@ Give the direct answer, explain the mechanism, provide an example, discuss
 failure modes and tradeoffs, and describe verification. State assumptions and
 request missing evidence rather than guessing.
 
+## Using video references
+
+Watch a module's selected videos after reading its mental model and before the
+guided lab. Take notes on the mechanism being demonstrated, then verify commands
+against the module's current written references. Videos are valuable for visual
+and live explanations, but older recordings can contain obsolete defaults,
+commands, user interfaces, or security advice.
+
+A useful video note records:
+
+- The component or request flow demonstrated
+- One concept that became clearer
+- One claim verified against current documentation
+- One remaining question to test in the lab
+
 ## Safety
 
 - Use dedicated learning namespaces, clusters, and cloud accounts.
@@ -55,3 +79,16 @@ request missing evidence rather than guessing.
 - Use short-lived credentials and ignored local secret files.
 - Configure cloud budgets before creating billable resources.
 - Stop when lab assumptions do not match the environment.
+
+## Environment progression
+
+Use additional complexity only when it serves the learning objective:
+
+1. Local process and Python exercises
+2. Local Docker and Compose
+3. Local Kubernetes
+4. One managed Kubernetes platform
+5. Advanced or multi-cluster comparison after production readiness
+
+Learn one implementation deeply, then compare alternatives through ADRs. Do not
+implement every cloud, service mesh, broker, or GitOps controller in parallel.

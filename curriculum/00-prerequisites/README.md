@@ -5,7 +5,7 @@
 **Prerequisites:** None
 
 > **Learning path:** [Curriculum index](../README.md) · Previous: None · Next:
-> Container fundamentals (planned)
+> [Container fundamentals](../01-container-fundamentals/README.md)
 
 ## Why this matters
 
@@ -63,5 +63,5 @@ These scripts inspect only; they install and modify nothing.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 01 — Container
-fundamentals will be linked there when its learning material is available.
+Continue to [Module 01 — Container fundamentals](../01-container-fundamentals/README.md),
+or return to the [curriculum index](../README.md).

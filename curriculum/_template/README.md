@@ -66,13 +66,22 @@ answers below a separator for self-testing.
 
 Prefer specifications, enhancement proposals, and official upstream docs.
 
+Include a **Videos** subsection with at least two curated resources when good
+material exists. State publisher or speaker, year, learning purpose, and any
+version-age warning. Written primary sources remain authoritative.
+
 ## Completion checklist
 
-- [ ] I can explain the subject without memorized commands.
-- [ ] I completed, verified, and cleaned up the lab.
+- [ ] **Explain:** I can describe the mechanism, limits, and tradeoffs.
+- [ ] **Build:** I completed, verified, and cleaned up the implementation.
+- [ ] **Diagnose:** I corrected the documented failure using evidence.
 - [ ] I completed the challenge.
-- [ ] I diagnosed the documented failure.
 - [ ] I can explain an alternative and its tradeoffs.
+
+## Cumulative review
+
+For every third module, add an exercise using concepts from at least two earlier
+modules. Link prerequisite explanations instead of repeating them.
 
 ## Continue
 

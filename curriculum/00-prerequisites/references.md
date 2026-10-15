@@ -15,3 +15,15 @@
 - [TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446) — TLS protocol specification.
 - [Google SRE book](https://sre.google/sre-book/table-of-contents/) — reliability
   and distributed-system operational principles.
+
+## Videos
+
+- [The Missing Semester: Course Overview and the Shell](https://missing.csail.mit.edu/2020/course-shell/)
+  — MIT, 2020. Builds the shell and process mental model used throughout the
+  labs; the page includes the recorded lecture.
+- [The Missing Semester: Version Control with Git](https://missing.csail.mit.edu/2020/version-control/)
+  — MIT, 2020. Explains Git's snapshot graph and practical workflow; the page
+  includes the recorded lecture.
+- [The Missing Semester: Debugging and Profiling](https://missing.csail.mit.edu/2020/debugging-profiling/)
+  — MIT, 2020. Reinforces evidence-first diagnosis. Tool versions may have
+  changed, but the debugging method remains applicable.

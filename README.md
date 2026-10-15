@@ -20,6 +20,7 @@ Prometheus, Grafana, OpenTelemetry, GitOps, security controls, and runbooks.
 - **See the full order:** use the [roadmap](ROADMAP.md) to move through modules
   sequentially. Available modules are linked directly from its learning path.
 - [Curriculum](curriculum/README.md) — module catalog and content contract
+- [Competency gates](curriculum/ASSESSMENT-GATES.md) — cumulative practical assessments
 - [Labs](labs/README.md) — exercise conventions
 - [Interview preparation](interview/README.md) — questions and scenarios
 - [CloudCart capstone](capstone/README.md) — the evolving system

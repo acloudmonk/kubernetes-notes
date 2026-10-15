@@ -13,6 +13,11 @@ When publishing or changing a module's status, update its row in both
 usable learning material exists. Also update the module's previous/next
 navigation so learners never reach a dead end or an unpublished path.
 
+Each module defines evidence for **Explain**, **Build**, and **Diagnose**. Every
+third module adds a cumulative exercise using at least two earlier modules.
+Modules ending a competency stage link to and satisfy the corresponding gate in
+`curriculum/ASSESSMENT-GATES.md`.
+
 ## Standards
 
 - Explain why before presenting a long command sequence.
@@ -26,6 +31,21 @@ navigation so learners never reach a dead end or an unpublished path.
 - Use stable Kubernetes APIs unless teaching migration.
 - Run containers as non-root where the exercise permits it.
 - Avoid floating image tags in reproducible examples.
+
+## Reference and video policy
+
+- Every module should include primary written references and at least two
+  curated video resources when suitable material exists.
+- Prefer official project channels, recognized conference talks, and university
+  courses with clear technical authorship.
+- Describe what each video teaches; do not publish an unexplained link list.
+- Record the speaker or publisher and year so learners can judge freshness.
+- Mark older videos whose concepts remain useful but whose commands or UI may
+  have changed.
+- Treat videos as explanatory supplements. Current specifications and official
+  documentation remain authoritative for version-sensitive behavior.
+- Prefer videos with captions and avoid recommendations dominated by product
+  promotion or exam dumps.
 
 ## Review checklist
 

@@ -33,6 +33,21 @@ boundaries and failure behavior are understood.
 9. CI/CD and GitOps
 10. Resilience, backup, recovery, and operational review
 
+## Progressive test strategy
+
+Tests are added with the capability they protect:
+
+1. Unit and configuration tests
+2. Database integration and migration tests
+3. API and event contract tests
+4. Container startup, health, shutdown, and security smoke tests
+5. Kubernetes schema and policy validation
+6. Helm render, install, upgrade, rollback, and chart tests
+7. End-to-end and GitOps reconciliation tests
+8. Load, disruption, chaos, backup, and restoration tests
+
+Each test states what risk it detects and what failure it cannot detect.
+
 See [`architecture/README.md`](architecture/README.md) for the current design.
 
 ## Boundaries

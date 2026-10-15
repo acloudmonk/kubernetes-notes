@@ -31,9 +31,9 @@ published learning material are linked.
 | Order | Module | Status |
 |---:|---|---|
 | 00 | [Prerequisites](00-prerequisites/README.md) | Draft |
-| 01 | Container fundamentals | Planned |
+| 01 | [Container fundamentals](01-container-fundamentals/README.md) | Draft |
 | 02 | Docker | Planned |
-| 03 | Microservices architecture | Planned |
+| 03 | Microservices and distributed data | Planned |
 | 04 | Kubernetes architecture | Planned |
 | 05 | Kubernetes workloads | Planned |
 | 06 | Networking and discovery | Planned |
@@ -44,10 +44,22 @@ published learning material are linked.
 | 11 | Helm | Planned |
 | 12 | Prometheus | Planned |
 | 13 | Grafana and observability | Planned |
-| 14 | CI/CD and GitOps | Planned |
-| 15 | Production operations | Planned |
+| 14 | CI/CD, supply chain, and GitOps | Planned |
+| 15 | Infrastructure and production operations | Planned |
 | 16 | Advanced Kubernetes | Planned |
 
 When a module is published, its change must link the module README from this
 table and from the matching `ROADMAP.md` row. The module must also include the
 navigation block defined by the template.
+
+## Assessment model
+
+Every module collects three types of evidence:
+
+- **Explain:** mechanisms, guarantees, limitations, and tradeoffs.
+- **Build:** reproducible implementation without copying a solution.
+- **Diagnose:** recovery of a deliberately broken system using evidence.
+
+The cumulative [competency gates](ASSESSMENT-GATES.md) occur after Modules 02,
+05, 11, 13, and 16. Every third module also revisits earlier concepts through a
+cumulative troubleshooting or design exercise.
