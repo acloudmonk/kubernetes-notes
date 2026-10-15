@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: impossible-request
+  namespace: cloudcart
+  labels: {learning.cloudcart.io/fixture: scheduling}
+spec:
+  restartPolicy: Never
+  containers:
+    - name: sleeper
+      image: cloudcart-app:0.1.0
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+      resources:
+        requests: {cpu: "100", memory: 16Mi}
+        limits: {cpu: "100", memory: 16Mi}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: ["ALL"]}
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}

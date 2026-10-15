@@ -4,7 +4,7 @@
 **Estimated time:** 22–28 hours<br>
 **Prerequisites:** [07 — Kubernetes Storage and State](../07-storage-state/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Storage and state](../07-storage-state/README.md) · Next: Scheduling and resources (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Storage and state](../07-storage-state/README.md) · Next: [Scheduling and resources](../09-scheduling-resources/README.md)
 
 ## Why this matters
 
@@ -54,4 +54,4 @@ those platform patterns are analyzed from upstream interfaces and evidence.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 09 will be linked when scheduling and resources material is available.
+Continue to [09 — Kubernetes Scheduling and Resources](../09-scheduling-resources/README.md), or return to the [curriculum index](../README.md).

@@ -17,6 +17,8 @@ Do not commit rendered Secrets, kubeconfigs, or exported cluster diagnostics.
 - `networking/` adds Gateway API routing and default-deny NetworkPolicies for Module 06.
 - `storage/` adds a single-replica PostgreSQL StatefulSet with a retained,
   dynamically provisioned PVC for Module 07.
+- `scheduling/` adds versioned placement patches, non-preempting application
+  priority, disruption budgets, and API horizontal autoscaling for Module 09.
 
 The API has startup, readiness, and liveness probes. The relay and worker do
 not expose a truthful health endpoint yet; process liveness alone would not
@@ -42,3 +44,9 @@ values out of versioned manifests, demonstrates explicit ConfigMap rollout
 semantics, and rotates the generated PostgreSQL credential by coordinating the
 backend, Secret, workload restart, and business verification. Production secret
 delivery follows [ADR 0006](../../architecture/decisions/0006-external-secret-source.md).
+
+[Module 09](../../../curriculum/09-scheduling-resources/README.md) places the
+application tier on two labeled workers, spreads API replicas across hostnames,
+and demonstrates PDB/HPA behavior. Its lab values are evidence-producing local
+defaults, not production sizing; production policy follows
+[ADR 0007](../../architecture/decisions/0007-workload-placement-capacity.md).
