@@ -1,5 +1,9 @@
 # Lab 3 — Configuration and Dependency Failure
 
+> **Module navigation:** [Prerequisites module home](../README.md) · Previous:
+> [Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md) · Next:
+> [Troubleshooting scenario](../troubleshooting.md)
+
 **Time:** 45–60 minutes  
 **Cost:** None  
 **Requires:** Python
@@ -42,3 +46,9 @@ Stop the HTTP server and remove the session variable:
 ```powershell
 Remove-Item Env:DEPENDENCY_URL
 ```
+
+---
+
+[Previous: Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md) ·
+[Prerequisites module home](../README.md) ·
+[Next: Troubleshooting scenario](../troubleshooting.md)

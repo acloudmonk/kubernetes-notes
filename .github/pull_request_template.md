@@ -16,5 +16,7 @@ What should a learner be able to explain, implement, or diagnose afterward?
 - [ ] Labs include verification and cleanup.
 - [ ] Destructive or billable steps are marked.
 - [ ] Examples contain no real credentials or personal data.
+- [ ] Repository hygiene and secret scan passed for configuration changes.
 - [ ] References prefer primary or official sources.
 - [ ] Documentation links were checked.
+- [ ] Module content pages include module-home and sequence navigation.

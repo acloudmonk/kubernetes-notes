@@ -13,6 +13,12 @@ When publishing or changing a module's status, update its row in both
 usable learning material exists. Also update the module's previous/next
 navigation so learners never reach a dead end or an unpublished path.
 
+Every standalone module content page must link back to its module `README.md`.
+Ordered pages should also link to the previous and next learning step at both
+the top and bottom, so learners can enter directly from search and continue
+without returning manually to the table of contents. Validate all relative
+links before opening a pull request.
+
 Each module defines evidence for **Explain**, **Build**, and **Diagnose**. Every
 third module adds a cumulative exercise using at least two earlier modules.
 Modules ending a competency stage link to and satisfy the corresponding gate in
@@ -57,6 +63,7 @@ Modules ending a competency stage link to and satisfy the corresponding gate in
 - [ ] Questions test reasoning, not only recall.
 - [ ] References are authoritative.
 - [ ] Version-sensitive claims identify a baseline.
+- [ ] Every content page has working module-home and sequence navigation.
 - [ ] No credentials or generated binaries are included.
 
 ## Branch and pull-request workflow
@@ -68,6 +75,27 @@ should be short-lived and named for the focused change, preferably with the
 Changes must be pushed to the feature branch and submitted as a pull request
 against `main`. Merging into `origin/main` is a manual repository-owner action;
 automation and contributors must not merge the pull request themselves.
+
+## Repository hygiene and secrets
+
+- Commit placeholders in files such as `.env.example`; keep real values only in
+  ignored local files, an approved secret manager, or short-lived CI secrets.
+- Never commit private keys, kubeconfigs, cloud credential directories,
+  Terraform state, access tokens, generated diagnostic bundles, or production
+  data. Kubernetes Secret manifests are not safe merely because values are
+  base64-encoded.
+- Before committing, inspect `git status`, `git diff --cached`, and the exact
+  files selected for staging. `.gitignore` reduces accidents but does not stop
+  `git add --force` or protect an already tracked file.
+- Run `./scripts/Test-RepositoryHygiene.ps1 -IncludeHistory` before opening a
+  pull request that adds configuration, automation, or deployment assets. The
+  scan reports categories and paths without printing matched values.
+- Pull requests and pushes to `main` run a pinned Gitleaks history scan. Treat a
+  clean CI result as an additional control, not a substitute for reviewing the
+  staged diff.
+- If a real credential is committed, revoke or rotate it first. Removing it
+  from the latest commit or rewriting history does not make the old credential
+  safe.
 
 ## Licensing
 

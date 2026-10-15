@@ -1,5 +1,9 @@
 # Lifecycle, PID 1, and Security
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Images and filesystems](03-images-and-filesystems.md) · Next:
+> [Quick exercises](quick-exercises.md)
+
 ## Foreground process
 
 A container is considered running while its configured main process runs. If
@@ -37,3 +41,8 @@ possible, and avoid mounting the container-engine socket.
 - Which CPU, memory, and process constraints apply?
 - Which state must survive removal?
 - Which image digest actually ran?
+
+---
+
+[Previous: Images and filesystems](03-images-and-filesystems.md) ·
+[Container fundamentals home](README.md) · [Next: Quick exercises](quick-exercises.md)

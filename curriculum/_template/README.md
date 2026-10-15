@@ -7,6 +7,10 @@
 > **Learning path:** [Curriculum index](../README.md) · Previous: link or None ·
 > Next: link to the next available module or mark it Planned
 
+When content is split into standalone pages, follow the content-page navigation
+contract in [`CONTRIBUTING.md`](../../CONTRIBUTING.md): module home plus previous
+and next learning steps at the top and bottom.
+
 ## Why this matters
 
 Explain the practical problem this module helps solve.

@@ -1,5 +1,8 @@
 # References
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Knowledge check](quiz.md) · Next: [Module 02 — Docker](../02-docker/README.md)
+
 - [Docker overview](https://docs.docker.com/get-started/docker-overview/) — engine,
   image, container, and lifecycle concepts.
 - [Docker: What is a container?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) — container mental model.
@@ -26,3 +29,8 @@
 - [The Container Security Checklist](https://community.cncf.io/e/m848je/)
   — CNCF webinar with Liz Rice, 2021. Connects shared-kernel isolation,
   privileges, image risks, and operational security decisions.
+
+---
+
+[Previous: Knowledge check](quiz.md) · [Container fundamentals home](README.md) ·
+[Next: Module 02 — Docker](../02-docker/README.md)

@@ -1,5 +1,9 @@
 # Quick Exercises
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Lifecycle, PID 1, and security](04-lifecycle-pid1-security.md) · Next:
+> [Guided lab](lab/README.md)
+
 Use a disposable container and spend 5–15 minutes on each.
 
 1. Compare `docker image inspect` with `docker inspect` and identify which
@@ -14,3 +18,8 @@ Use a disposable container and spend 5–15 minutes on each.
 7. Identify three options that weaken isolation and the risk introduced.
 
 Record commands, evidence, and cleanup rather than only screenshots.
+
+---
+
+[Previous: Lifecycle, PID 1, and security](04-lifecycle-pid1-security.md) ·
+[Container fundamentals home](README.md) · [Next: Guided lab](lab/README.md)

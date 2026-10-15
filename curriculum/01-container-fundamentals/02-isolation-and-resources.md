@@ -1,5 +1,9 @@
 # Isolation and Resource Control
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Container and runtime model](01-container-runtime-model.md) · Next:
+> [Images and filesystems](03-images-and-filesystems.md)
+
 ## Namespaces
 
 Linux namespaces limit what a process can see:
@@ -54,3 +58,9 @@ docker exec <container> cat /proc/1/cgroup
 
 Inspect effective configuration rather than assuming command-line intent was
 applied.
+
+---
+
+[Previous: Container and runtime model](01-container-runtime-model.md) ·
+[Container fundamentals home](README.md) ·
+[Next: Images and filesystems](03-images-and-filesystems.md)

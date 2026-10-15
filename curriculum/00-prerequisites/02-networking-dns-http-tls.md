@@ -1,5 +1,9 @@
 # Networking, DNS, HTTP, and TLS
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Linux, processes, and files](01-linux-processes.md) · Next:
+> [Git, YAML, and shell](03-git-yaml-shell.md)
+
 ## Address and port
 
 An IP address identifies an interface; a port identifies a socket endpoint.
@@ -52,3 +56,9 @@ openssl s_client -connect example.com:443 -servername example.com
 
 Configuration → name resolution → route → TCP connection → TLS negotiation →
 HTTP response → application dependency. Test one boundary at a time.
+
+---
+
+[Previous: Linux, processes, and files](01-linux-processes.md) ·
+[Prerequisites module home](README.md) ·
+[Next: Git, YAML, and shell](03-git-yaml-shell.md)

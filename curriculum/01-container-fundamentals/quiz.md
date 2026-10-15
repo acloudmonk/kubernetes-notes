@@ -1,5 +1,8 @@
 # Knowledge Check
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Interview questions](interview-questions.md) · Next: [References](references.md)
+
 1. Which part of a Linux container supplies the kernel?
 2. Name four namespace types and the views they isolate.
 3. What is the difference between CPU throttling and CPU reservation?
@@ -28,3 +31,8 @@
 9. The shell can remain PID 1 and fail to forward signals to its child.
 10. Examples: privileged mode, host namespaces, broad capabilities, sensitive
     host mounts, or mounting the engine socket.
+
+---
+
+[Previous: Interview questions](interview-questions.md) ·
+[Container fundamentals home](README.md) · [Next: References](references.md)

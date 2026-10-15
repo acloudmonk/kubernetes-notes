@@ -1,5 +1,9 @@
 # Guided Lab — Inspect a Container as a Process
 
+> **Module navigation:** [Container fundamentals home](../README.md) · Previous:
+> [Quick exercises](../quick-exercises.md) · Next:
+> [Troubleshooting scenario](../troubleshooting.md)
+
 **Time:** 45–75 minutes  
 **Cost:** None  
 **Requires:** Running Linux container engine and internet for the first pull
@@ -65,7 +69,7 @@ layer. It will not survive removal and recreation.
 ## 5. Observe termination
 
 ```powershell
-docker stop --time 5 container-fundamentals-lab
+docker stop --timeout 5 container-fundamentals-lab
 docker logs container-fundamentals-lab
 docker inspect --format '{{.State.Status}} exit={{.State.ExitCode}}' container-fundamentals-lab
 ```
@@ -100,3 +104,9 @@ docker ps --all --filter name=container-fundamentals
 
 The final command must show no lab containers. Keeping the versioned Alpine
 image is harmless; optionally remove it with `docker image rm alpine:3.22.2`.
+
+---
+
+[Previous: Quick exercises](../quick-exercises.md) ·
+[Container fundamentals home](../README.md) ·
+[Next: Troubleshooting scenario](../troubleshooting.md)

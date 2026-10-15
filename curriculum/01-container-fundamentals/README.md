@@ -5,7 +5,8 @@
 **Prerequisites:** [00 — Prerequisites](../00-prerequisites/README.md)
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
-> [Prerequisites](../00-prerequisites/README.md) · Next: Docker (planned)
+> [Prerequisites](../00-prerequisites/README.md) · Next:
+> [Docker](../02-docker/README.md)
 
 ## Why this matters
 
@@ -26,6 +27,9 @@ You can:
 - Inspect a container using evidence rather than treating it as a VM.
 
 ## Contents
+
+Follow these pages in order. Every page includes navigation back to this module
+home and direct links to the previous and next learning step where applicable.
 
 1. [Container and runtime model](01-container-runtime-model.md)
 2. [Isolation and resource control](02-isolation-and-resources.md)
@@ -57,5 +61,5 @@ not a working container environment.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 02 — Docker will be linked
-there when its material is available.
+Continue to [Module 02 — Docker](../02-docker/README.md), or return to the
+[curriculum index](../README.md).

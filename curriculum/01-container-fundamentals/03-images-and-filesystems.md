@@ -1,5 +1,9 @@
 # Images and Filesystems
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Isolation and resource control](02-isolation-and-resources.md) · Next:
+> [Lifecycle, PID 1, and security](04-lifecycle-pid1-security.md)
+
 ## Image content
 
 An image packages configuration and immutable filesystem layers. Layers store
@@ -40,3 +44,9 @@ An image is executable supply-chain content. Prefer maintained sources, pin
 dependencies, minimize unnecessary packages, scan contents, retain provenance,
 and rebuild when the base image changes. “Small” and “secure” are related but
 not equivalent.
+
+---
+
+[Previous: Isolation and resource control](02-isolation-and-resources.md) ·
+[Container fundamentals home](README.md) ·
+[Next: Lifecycle, PID 1, and security](04-lifecycle-pid1-security.md)

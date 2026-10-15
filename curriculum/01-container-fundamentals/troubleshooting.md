@@ -1,5 +1,8 @@
 # Troubleshooting Scenario — Container Exits Immediately
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> [Guided lab](lab/README.md) · Next: [Interview questions](interview-questions.md)
+
 A service container appears briefly and then disappears from `docker ps`.
 Repeated `docker start` attempts produce the same result.
 
@@ -33,3 +36,8 @@ Stop and diagnose before reading further.
 
 Keeping a container alive with an unrelated infinite command hides rather than
 fixes a service whose main process cannot remain healthy.
+
+---
+
+[Previous: Guided lab](lab/README.md) · [Container fundamentals home](README.md) ·
+[Next: Interview questions](interview-questions.md)

@@ -1,5 +1,9 @@
 # Troubleshooting Scenario
 
+> **Module navigation:** [Prerequisites module home](README.md) · Previous:
+> [Lab 3 — Configuration failure](labs/03-configuration-failure.md) · Next:
+> [Interview questions](interview-questions.md)
+
 An application reports: `dependency unavailable`. Its configuration uses
 `http://catalog:8080`, and repeated retries produce the same message.
 
@@ -25,3 +29,9 @@ failure is configuration/name scope, not an application retry problem.
 Correct the endpoint for the caller's actual network context or run the caller
 inside the intended network. Verify DNS, TCP, then HTTP. Prevent recurrence by
 documenting environment-specific endpoints and testing effective configuration.
+
+---
+
+[Previous: Lab 3 — Configuration failure](labs/03-configuration-failure.md) ·
+[Prerequisites module home](README.md) ·
+[Next: Interview questions](interview-questions.md)

@@ -1,5 +1,9 @@
 # Lab 2 — DNS, HTTP, and TLS
 
+> **Module navigation:** [Prerequisites module home](../README.md) · Previous:
+> [Lab 1 — Processes and ports](01-processes-and-ports.md) · Next:
+> [Lab 3 — Configuration failure](03-configuration-failure.md)
+
 **Time:** 45–60 minutes  
 **Cost:** None  
 **Requires:** Internet access for the TLS section
@@ -37,3 +41,9 @@ tests, which is itself evidence to record.
 ## Cleanup
 
 No persistent resource is created.
+
+---
+
+[Previous: Lab 1 — Processes and ports](01-processes-and-ports.md) ·
+[Prerequisites module home](../README.md) ·
+[Next: Lab 3 — Configuration failure](03-configuration-failure.md)

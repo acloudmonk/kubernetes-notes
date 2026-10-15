@@ -1,5 +1,8 @@
 # Container and Runtime Model
 
+> **Module navigation:** [Container fundamentals home](README.md) · Previous:
+> Module home · Next: [Isolation and resource control](02-isolation-and-resources.md)
+
 ## Container versus virtual machine
 
 A virtual machine presents virtual hardware and runs its own kernel. A Linux
@@ -48,3 +51,8 @@ Creating a container records configuration and prepares a writable layer.
 Starting it creates the configured process. Stopping it terminates the process
 but retains container metadata and writable state. Removing it deletes that
 container state. An image remains independently reusable.
+
+---
+
+[Container fundamentals home](README.md) · Next:
+[Isolation and resource control](02-isolation-and-resources.md)
