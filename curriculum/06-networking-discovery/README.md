@@ -4,7 +4,7 @@
 **Estimated time:** 24–30 hours<br>
 **Prerequisites:** [05 — Kubernetes Workloads](../05-kubernetes-workloads/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Kubernetes workloads](../05-kubernetes-workloads/README.md) · Next: Storage and state (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Kubernetes workloads](../05-kubernetes-workloads/README.md) · Next: [Storage and state](../07-storage-state/README.md)
 
 ## Why this matters
 
@@ -50,4 +50,5 @@ CoreDNS, kube-proxy, and a NetworkPolicy-capable kind network. Allow 6 GB memory
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 07 will be linked when storage and state material is available.
+Continue to [07 — Kubernetes Storage and State](../07-storage-state/README.md),
+or return to the [curriculum index](../README.md).

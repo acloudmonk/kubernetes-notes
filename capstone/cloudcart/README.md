@@ -111,3 +111,8 @@ in the cluster, run the migration as a Job, and operate API, relay, and worker
 Deployments. The dependency `emptyDir` volumes are deliberately non-durable;
 follow the exact lab cleanup and do not use these manifests as a production
 database or broker design.
+
+The [Module 07 storage labs](../../curriculum/07-storage-state/README.md) replace
+PostgreSQL with a single-replica StatefulSet and retained PVC, test Pod
+replacement, and perform an isolated logical restore. This demonstrates storage
+lifecycle and recovery mechanics; it does not claim database high availability.

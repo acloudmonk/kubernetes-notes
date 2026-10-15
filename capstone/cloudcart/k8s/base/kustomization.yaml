@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - configuration.yaml
-  - dependencies.yaml
+  - postgres-ephemeral.yaml
+  - rabbitmq-ephemeral.yaml
