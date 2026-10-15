@@ -1,0 +1,75 @@
+{{- $components := list
+    (dict "name" "api" "command" (list) "port" true)
+    (dict "name" "relay" "command" (list "python" "-m" "cloudcart.relay") "port" false)
+    (dict "name" "worker" "command" (list "python" "-m" "cloudcart.worker") "port" false)
+-}}
+{{- range $component := $components }}
+{{- $settings := index $.Values $component.name }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cloudcart.fullname" $ }}-{{ $component.name }}
+  labels:
+    {{- include "cloudcart.labels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $component.name }}
+spec:
+  {{- if or (ne $component.name "api") (not $.Values.autoscaling.enabled) }}
+  replicas: {{ $settings.replicas }}
+  {{- end }}
+  {{- if eq $component.name "api" }}
+  strategy:
+    rollingUpdate: {maxUnavailable: 0, maxSurge: 1}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "cloudcart.componentSelector" (dict "root" $ "component" $component.name) | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "cloudcart.componentSelector" (dict "root" $ "component" $component.name) | nindent 8 }}
+        app.kubernetes.io/part-of: cloudcart
+      annotations:
+        checksum/config: {{ include "cloudcart.configData" $ | sha256sum }}
+    spec:
+      serviceAccountName: {{ include "cloudcart.fullname" $ }}-{{ $component.name }}
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      {{- include "cloudcart.placement" $ | nindent 6 }}
+      containers:
+        - name: {{ $component.name }}
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          {{- with $component.command }}
+          command:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if $component.port }}
+          ports:
+            - name: http
+              containerPort: 8080
+          startupProbe:
+            httpGet: {path: /health/live, port: http}
+            periodSeconds: 2
+            failureThreshold: 30
+          readinessProbe:
+            httpGet: {path: /health/ready, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet: {path: /health/live, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "cloudcart.fullname" $ }}-config
+            - secretRef:
+                name: {{ $.Values.credentials.existingSecret }}
+          resources:
+            {{- toYaml $settings.resources | nindent 12 }}
+          securityContext:
+            {{- include "cloudcart.appSecurityContext" $ | nindent 12 }}
+{{- end }}

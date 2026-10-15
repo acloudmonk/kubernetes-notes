@@ -1,0 +1,11 @@
+CloudCart {{ .Chart.AppVersion }} is installed as release {{ .Release.Name }}.
+
+Check the release:
+  helm status {{ .Release.Name }} --namespace {{ .Release.Namespace }}
+  kubectl get pods --namespace {{ .Release.Namespace }}
+
+Run the chart test:
+  helm test {{ .Release.Name }} --namespace {{ .Release.Namespace }}
+
+Credentials are read from the existing Secret {{ .Values.credentials.existingSecret }}.
+The chart does not create or own credential values.

@@ -4,7 +4,7 @@
 **Estimated time:** 24–30 hours<br>
 **Prerequisites:** [09 — Kubernetes Scheduling and Resources](../09-scheduling-resources/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Scheduling and resources](../09-scheduling-resources/README.md) · Next: Helm (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Scheduling and resources](../09-scheduling-resources/README.md) · Next: [Helm](../11-helm/README.md)
 
 ## Why this matters
 
@@ -56,5 +56,5 @@ server-side validation.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 11 will be linked when
-the Helm material is available.
+Continue to [Module 11 — Helm](../11-helm/README.md), or return to the
+[curriculum index](../README.md).

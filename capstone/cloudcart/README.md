@@ -42,6 +42,7 @@ sending email or handling personal data.
 - `tests` — pure-domain, API-contract, and opt-in PostgreSQL tests
 - `compose.yaml` — isolated API, migration, relay, worker, database, and broker
 - `k8s` — plain manifests for the Module 05 disposable Kubernetes deployment
+- `helm/cloudcart` — schema-validated first-party chart for the Module 11 release labs
 
 `requirements.txt` records the fully resolved Python 3.12 runtime set rather
 than only direct dependencies. Review and update that set atomically, rebuild
@@ -121,3 +122,12 @@ The [Module 08 configuration labs](../../curriculum/08-configuration-secrets/REA
 show process-start configuration semantics and rotate generated database
 credentials without committing or printing values. The local Secret object is a
 learning mechanism, not the production source of truth.
+
+## Helm release
+
+The [Module 11 Helm labs](../../curriculum/11-helm/README.md) package the local
+topology as one tested release, while keeping generated credentials outside the
+chart and Helm release state. They cover schema validation, server dry run,
+install, chart test, configuration rollout, failed upgrade, rollback, packaging,
+and the complete event path. The bundled database and broker remain learning
+dependencies rather than a production HA design.
