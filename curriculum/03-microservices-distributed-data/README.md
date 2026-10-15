@@ -5,7 +5,8 @@
 **Prerequisites:** [02 — Docker](../02-docker/README.md)
 
 > **Learning path:** [Curriculum index](../README.md) · Previous:
-> [Docker](../02-docker/README.md) · Next: Kubernetes architecture (planned)
+> [Docker](../02-docker/README.md) · Next:
+> [Kubernetes architecture](../04-kubernetes-architecture/README.md)
 
 ## Why this matters
 
@@ -70,5 +71,5 @@ Its exact executed baseline is recorded in the
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 04 will be linked when
-Kubernetes architecture material is available.
+Continue to [04 — Kubernetes Architecture](../04-kubernetes-architecture/README.md),
+or return to the [curriculum index](../README.md).

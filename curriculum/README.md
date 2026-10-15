@@ -34,7 +34,7 @@ published learning material are linked.
 | 01 | [Container fundamentals](01-container-fundamentals/README.md) | Draft |
 | 02 | [Docker](02-docker/README.md) | Verified |
 | 03 | [Microservices and distributed data](03-microservices-distributed-data/README.md) | Draft |
-| 04 | Kubernetes architecture | Planned |
+| 04 | [Kubernetes architecture](04-kubernetes-architecture/README.md) | Verified |
 | 05 | Kubernetes workloads | Planned |
 | 06 | Networking and discovery | Planned |
 | 07 | Storage and state | Planned |

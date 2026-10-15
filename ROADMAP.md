@@ -33,7 +33,7 @@ plain text identifies planned content that is not ready yet.
 | 01 | [Container fundamentals](curriculum/01-container-fundamentals/README.md) | Draft | Processes, namespaces, cgroups, filesystems, runtimes |
 | 02 | [Docker](curriculum/02-docker/README.md) | Verified | Images, Dockerfiles, BuildKit, Compose, registries, security |
 | 03 | [Microservices and distributed data](curriculum/03-microservices-distributed-data/README.md) | Draft | Boundaries, APIs, transactions, messaging, consistency, resilience |
-| 04 | Kubernetes architecture | Planned | API, control plane, nodes, reconciliation, extensibility |
+| 04 | [Kubernetes architecture](curriculum/04-kubernetes-architecture/README.md) | Verified | API, control plane, nodes, reconciliation, extensibility |
 | 05 | Kubernetes workloads | Planned | Pods, controllers, probes, configuration, rollouts |
 | 06 | Networking and discovery | Planned | CNI, Services, DNS, Gateway API, policy, TLS |
 | 07 | Storage and state | Planned | PVs, PVCs, StorageClasses, CSI, StatefulSets, recovery |

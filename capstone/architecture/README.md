@@ -22,10 +22,12 @@ capabilities may begin in one process.
 - [Architecture decisions](decisions/README.md)
 - [Threat model](threat-model.md)
 - [Ownership and failure model](ownership.md)
+- [Kubernetes deployment plan](kubernetes-deployment.md)
 - [Event contracts](contracts/)
 
-The first event schema and ownership/failure model are now versioned. Future
-phases add deployment diagrams, SLOs, telemetry contracts, and recovery models.
+The first event schema, ownership/failure model, and Kubernetes deployment plan
+are now versioned. Future phases add executable manifests, SLOs, telemetry
+contracts, and recovery models.
 
 ## Constraints
 
