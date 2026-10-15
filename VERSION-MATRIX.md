@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–07
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–08
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -33,8 +33,8 @@ Module 03 application verification is tracked against the same Docker environmen
 | PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
 | RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
 | `kubectl` | 1.36.1 | Verified against Kubernetes 1.36.4 | Phase 3 |
-| kind | 0.33.0 | Verified for Modules 04–07 | Phase 3–4 |
-| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–07 | Phase 3–4 |
+| kind | 0.33.0 | Verified for Modules 04–08 | Phase 3–4 |
+| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–08 | Phase 3–4 |
 | Node container runtime | containerd 2.3.4 | Observed on both kind nodes | Phase 3 |
 | Envoy Gateway | 1.8.5 | Verified for Module 06 | Phase 3 |
 | kind local-path provisioner | `rancher.io/local-path` | Verified for Module 07 | Phase 4 |
@@ -94,3 +94,12 @@ retained PVC reuse after Pod and StatefulSet replacement, persisted CloudCart
 orders, an intentional nonexistent-class Pending claim, isolated PostgreSQL
 logical backup/restore, idempotent deployment, server-side validation, and
 precise cleanup. The baseline does not advertise volume expansion or snapshots.
+
+Module 08 was runtime-verified on the Module 07 CloudCart baseline. Verification
+covered ConfigMap resource updates, unchanged existing process environments,
+controlled replacement and baseline restoration, required missing-Secret
+`CreateContainerConfigError` evidence, generated PostgreSQL credential rotation,
+stdin-only Secret replacement, consumer rollouts, post-rotation order
+persistence, failure-path credential restoration, repeat execution, server-side
+validation, and precise cleanup. No external secret controller or etcd
+encryption configuration is claimed as locally tested.

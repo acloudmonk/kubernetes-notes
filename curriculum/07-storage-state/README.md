@@ -4,7 +4,7 @@
 **Estimated time:** 24–30 hours<br>
 **Prerequisites:** [06 — Kubernetes Networking and Discovery](../06-networking-discovery/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Networking and discovery](../06-networking-discovery/README.md) · Next: Configuration and secrets (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Networking and discovery](../06-networking-discovery/README.md) · Next: [Configuration and secrets](../08-configuration-secrets/README.md)
 
 ## Why this matters
 
@@ -55,4 +55,5 @@ because the baseline driver does not provide a snapshot service.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 08 will be linked when configuration and secrets material is available.
+Continue to [08 — Kubernetes Configuration and Secrets](../08-configuration-secrets/README.md),
+or return to the [curriculum index](../README.md).

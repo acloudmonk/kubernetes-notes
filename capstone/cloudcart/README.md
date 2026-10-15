@@ -116,3 +116,8 @@ The [Module 07 storage labs](../../curriculum/07-storage-state/README.md) replac
 PostgreSQL with a single-replica StatefulSet and retained PVC, test Pod
 replacement, and perform an isolated logical restore. This demonstrates storage
 lifecycle and recovery mechanics; it does not claim database high availability.
+
+The [Module 08 configuration labs](../../curriculum/08-configuration-secrets/README.md)
+show process-start configuration semantics and rotate generated database
+credentials without committing or printing values. The local Secret object is a
+learning mechanism, not the production source of truth.

@@ -38,7 +38,7 @@ published learning material are linked.
 | 05 | [Kubernetes workloads](05-kubernetes-workloads/README.md) | Verified |
 | 06 | [Networking and discovery](06-networking-discovery/README.md) | Verified |
 | 07 | [Storage and state](07-storage-state/README.md) | Verified |
-| 08 | Configuration and secrets | Planned |
+| 08 | [Configuration and secrets](08-configuration-secrets/README.md) | Verified |
 | 09 | Scheduling and resources | Planned |
 | 10 | Security and policy | Planned |
 | 11 | Helm | Planned |

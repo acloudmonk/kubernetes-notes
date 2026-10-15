@@ -36,3 +36,9 @@ The storage lab proves persistence across Pod replacement and logical restore,
 not high availability. Its kind local-path volume is tied to a node and is
 destroyed with the disposable cluster. Production PostgreSQL should follow
 [ADR 0005](../../architecture/decisions/0005-managed-database-production.md).
+
+[Module 08](../../../curriculum/08-configuration-secrets/README.md) keeps Secret
+values out of versioned manifests, demonstrates explicit ConfigMap rollout
+semantics, and rotates the generated PostgreSQL credential by coordinating the
+backend, Secret, workload restart, and business verification. Production secret
+delivery follows [ADR 0006](../../architecture/decisions/0006-external-secret-source.md).
