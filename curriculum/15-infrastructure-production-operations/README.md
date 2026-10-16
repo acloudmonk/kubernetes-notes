@@ -4,7 +4,7 @@
 **Estimated time:** 30–40 hours<br>
 **Prerequisites:** [14 — CI/CD, supply chain, and GitOps](../14-cicd-supply-chain-gitops/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [CI/CD, supply chain, and GitOps](../14-cicd-supply-chain-gitops/README.md) · Next: Advanced Kubernetes (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [CI/CD, supply chain, and GitOps](../14-cicd-supply-chain-gitops/README.md) · Next: [Advanced Kubernetes](../16-advanced-kubernetes/README.md)
 
 ## Why this matters
 
@@ -63,5 +63,5 @@ the drained node and API deployment to service.
 
 ## Continue
 
-After completion, return to the [curriculum index](../README.md). Module 16 will
-cover advanced Kubernetes and complete the production-readiness gate.
+Continue to [16 — Advanced Kubernetes](../16-advanced-kubernetes/README.md),
+or return to the [curriculum index](../README.md).

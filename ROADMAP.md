@@ -21,6 +21,7 @@ week; progress is based on demonstrated outcomes, not elapsed time.
 | Observability | 3 weeks | Use metrics, logs, traces, alerts, and SLOs |
 | CI/CD, supply chain, and GitOps | 2 weeks | Produce evidence, promote safely, and reconcile delivery |
 | Infrastructure and production operations | 3 weeks | Provision, scale, upgrade, recover, and control cost |
+| Advanced Kubernetes and graduation | 2 weeks | Extend deliberately and defend production readiness |
 
 ## Planned modules
 
@@ -45,7 +46,7 @@ plain text identifies planned content that is not ready yet.
 | 13 | [Grafana and observability](curriculum/13-grafana-observability/README.md) | Verified | Dashboards, logs, traces, OpenTelemetry, SLOs |
 | 14 | [CI/CD, supply chain, and GitOps](curriculum/14-cicd-supply-chain-gitops/README.md) | Verified | Tests, SBOMs, signing, policy, promotion, reconciliation |
 | 15 | [Infrastructure and production operations](curriculum/15-infrastructure-production-operations/README.md) | Verified | IaC, managed Kubernetes, HA, upgrades, recovery, cost |
-| 16 | Advanced Kubernetes | Planned | Operators, service mesh, multi-cluster, ecosystem |
+| 16 | [Advanced Kubernetes](curriculum/16-advanced-kubernetes/README.md) | Verified | Operators, service mesh, multi-cluster, ecosystem |
 
 ## Capstone milestones
 

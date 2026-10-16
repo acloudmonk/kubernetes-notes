@@ -32,6 +32,7 @@ boundaries and failure behavior are understood.
 8. Metrics, logs, traces, dashboards, alerts, and SLOs
 9. CI/CD and GitOps
 10. Resilience, backup, recovery, and operational review
+11. Advanced-extension evaluation and production-readiness graduation
 
 ## Progressive test strategy
 
@@ -50,6 +51,7 @@ Each test states what risk it detects and what failure it cannot detect.
 
 See [`architecture/README.md`](architecture/README.md) for the current design.
 The runnable Module 03 increment is in [`cloudcart`](cloudcart/README.md).
+The final evidence contract is in [`GRADUATION.md`](GRADUATION.md).
 
 ## Boundaries
 

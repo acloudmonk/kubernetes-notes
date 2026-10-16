@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–15
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–16
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -53,6 +53,7 @@ Module 03 application verification is tracked against the same Docker environmen
 | Syft | 1.54.1 | Verified for Module 14 | Phase 7 |
 | Grype | 0.120.1 | Verified for Module 14 | Phase 7 |
 | Terraform | 1.14.8 | Verified for Module 15 | Phase 8 |
+| Istio | 1.31.2 | Verified security-patched baseline for Module 16 | Phase 8 |
 
 Executable modules list only the versions they require.
 
@@ -179,3 +180,12 @@ credential reuse, API topology spread, PDB-aware drains on each worker, one
 available API during each drain, two distinct end-to-end order/event paths, and
 two isolated PostgreSQL restores with matching business-record counts. Restore
 artifacts, the disposable cluster, and ignored downloaded tools were removed.
+
+Module 16 was runtime-verified with Python 3.12.15, checksum-verified Istio
+1.31.2 ambient mode, kind 0.33.0, Kubernetes 1.36.4, kubectl 1.36.1, Docker
+Engine 29.7.2, and CloudCart 0.1.0. Verification covered a Python unit test,
+server-side API validation, two controller deployments and full reconcile tests,
+least-privilege RBAC, current-generation status, ownership, drift correction,
+controller outage/recovery, and finalizer cleanup. Two consecutive mesh tests
+verified HBONE enrollment, allowed ServiceAccount traffic, and denial of a
+second identity. The disposable cluster and ignored tools were removed.

@@ -167,3 +167,11 @@ add a tested provider-free topology model, namespace capacity controls, API
 topology spread, bounded voluntary disruption, a live business transaction, and
 an isolated logical restore. The local proof does not replace provider-specific
 IAM/network/quota validation, multi-zone stateful design, or regional recovery.
+
+## Advanced Kubernetes and graduation
+
+The [Module 16 advanced Kubernetes labs](../../curriculum/16-advanced-kubernetes/README.md)
+exercise custom API/controller mechanics and identity-aware ambient mesh policy,
+then require a fleet-failover tabletop and final production-readiness evidence.
+These demonstrations follow [ADR 0014](../architecture/decisions/0014-requirement-led-kubernetes-extensions.md)
+and do not imply automatic production adoption of an operator, mesh, or fleet.
