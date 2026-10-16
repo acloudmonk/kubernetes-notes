@@ -72,10 +72,13 @@ kubectl create secret generic cloudcart-credentials -n cloudcart `
     --dry-run=client -o yaml | kubectl apply -f - | Out-Null
 $password = $null
 
-flux reconcile source git kubernetes-notes --with-source --timeout=3m
+flux reconcile source git kubernetes-notes --timeout=3m
+if ($LASTEXITCODE -ne 0) { throw 'Git source reconciliation failed.' }
 flux reconcile kustomization cloudcart --with-source --timeout=6m
 if ($LASTEXITCODE -ne 0) { throw 'Flux reconciliation failed.' }
-flux wait kustomization cloudcart --for=condition=ready --timeout=6m
+kubectl wait kustomization/cloudcart -n flux-system --for=condition=Ready --timeout=6m
+if ($LASTEXITCODE -ne 0) { throw 'Flux Kustomization did not become Ready.' }
 kubectl wait helmrelease/cloudcart -n cloudcart --for=condition=Ready --timeout=6m
+if ($LASTEXITCODE -ne 0) { throw 'CloudCart HelmRelease did not become Ready.' }
 
 Write-Output "GitOps deployment=PASS context=$expectedContext branch=$GitBranch flux=2.9.6"
