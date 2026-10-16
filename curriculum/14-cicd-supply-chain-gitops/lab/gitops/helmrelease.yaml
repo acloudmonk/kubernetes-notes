@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cloudcart
+  namespace: cloudcart
+spec:
+  interval: 2m
+  timeout: 5m
+  chart:
+    spec:
+      chart: ./capstone/cloudcart/helm/cloudcart
+      sourceRef:
+        kind: GitRepository
+        name: kubernetes-notes
+        namespace: flux-system
+      interval: 2m
+  install:
+    remediation:
+      retries: 2
+  upgrade:
+    remediation:
+      retries: 2
+      strategy: rollback
+  driftDetection:
+    mode: enabled
+  values:
+    image:
+      repository: cloudcart-app
+      tag: 0.1.0
+      pullPolicy: IfNotPresent
+    credentials:
+      existingSecret: cloudcart-credentials

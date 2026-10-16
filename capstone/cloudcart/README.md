@@ -151,3 +151,11 @@ an OpenTelemetry Collector, provisioned Grafana data sources/dashboard, and SLO
 recording rules. Export is disabled unless `OTEL_EXPORTER_OTLP_ENDPOINT` is set,
 so local tests and earlier modules do not require a telemetry backend. The lab's
 anonymous access and ephemeral storage are not production defaults.
+
+## Delivery and GitOps
+
+The [Module 14 CI/CD, supply-chain, and GitOps labs](../../curriculum/14-cicd-supply-chain-gitops/README.md)
+build CloudCart evidence, package the Helm chart, and reconcile the application
+through Flux. The lab uses disposable signing material and generated in-cluster
+credentials; production key custody, workload identity, admission policy,
+registry controls, and promotion environments remain explicit design work.

@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–13
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–14
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -48,7 +48,10 @@ Module 03 application verification is tracked against the same Docker environmen
 | Tempo | 3.1.0, image digest pinned | Verified for Module 13 | Phase 6 |
 | OpenTelemetry Collector Contrib | 0.160.0, image digest pinned | Verified for Module 13 | Phase 6 |
 | OpenTelemetry Python | 1.45.1 | Verified for CloudCart Module 13 | Phase 6 |
-| GitOps controller | To be selected by ADR | Not selected | Phase 7 |
+| Flux | 2.9.6 | Verified for Module 14; selected by ADR 0012 | Phase 7 |
+| Cosign | 3.0.5 | Verified for Module 14 | Phase 7 |
+| Syft | 1.54.1 | Verified for Module 14 | Phase 7 |
+| Grype | 0.120.1 | Verified for Module 14 | Phase 7 |
 
 Executable modules list only the versions they require.
 
@@ -154,3 +157,15 @@ availability and burn-rate recording rules, an idempotent traffic fixture, two
 consecutive cross-signal test passes, and precise temporary-Pod cleanup. The
 single-replica `emptyDir`, anonymous Viewer, and unauthenticated in-cluster
 endpoints remain documented local-lab limitations.
+
+Module 14 was runtime-verified with checksum-verified Flux 2.9.6, Cosign 3.0.5,
+Syft 1.54.1, and Grype 0.120.1 alongside Helm 4.3.1, kind 0.33.0, and Kubernetes
+1.36.4. Verification covered CycloneDX SBOM and vulnerability-report generation,
+strict Helm lint/package, artifact checksums, disposable-key signing and
+verification, and a provenance summary. Flux fetched the exact branch revision;
+its source, Kustomization, and HelmRelease became Ready; Helm reconciliation
+corrected ConfigMap drift; repeated deployments converged; and two consecutive
+tests created new orders whose events increased the processed-event count.
+Credentials were generated only in the cluster, and the disposable cluster,
+keys, reports, packages, scanner data, and downloaded tools were removed after
+verification.

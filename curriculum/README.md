@@ -44,7 +44,7 @@ published learning material are linked.
 | 11 | [Helm](11-helm/README.md) | Verified |
 | 12 | [Prometheus](12-prometheus/README.md) | Verified |
 | 13 | [Grafana and observability](13-grafana-observability/README.md) | Verified |
-| 14 | CI/CD, supply chain, and GitOps | Planned |
+| 14 | [CI/CD, supply chain, and GitOps](14-cicd-supply-chain-gitops/README.md) | Verified |
 | 15 | Infrastructure and production operations | Planned |
 | 16 | Advanced Kubernetes | Planned |
 
