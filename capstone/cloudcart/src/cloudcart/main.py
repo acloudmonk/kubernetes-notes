@@ -1,3 +1,4 @@
+import logging
 from typing import Protocol
 from uuid import UUID
 
@@ -9,6 +10,10 @@ from cloudcart.domain import OrderLine
 from cloudcart.logging import configure_logging
 from cloudcart.metrics import ORDER_REQUESTS, metrics_response, observe_http
 from cloudcart.service import CloudCartService, ConflictError, NotFoundError
+from cloudcart.telemetry import configure_tracing
+
+
+LOGGER = logging.getLogger("cloudcart.api")
 
 
 class OrderLineRequest(BaseModel):
@@ -32,6 +37,7 @@ def create_app(service: Service | None = None) -> FastAPI:
     selected = service or CloudCartService(Settings.from_environment().database_dsn)
     application = FastAPI(title="CloudCart API", version="0.1.0")
     application.middleware("http")(observe_http)
+    configure_tracing(application)
 
     @application.get("/metrics", include_in_schema=False)
     def metrics() -> Response:
@@ -62,12 +68,18 @@ def create_app(service: Service | None = None) -> FastAPI:
                 [OrderLine(line.product_id, line.quantity) for line in request.lines],
             )
             ORDER_REQUESTS.labels(result="accepted").inc()
+            LOGGER.info(
+                "order request accepted",
+                extra={"order_id": order["id"]},
+            )
             return order
         except ConflictError as error:
             ORDER_REQUESTS.labels(result="conflict").inc()
+            LOGGER.warning("order request conflicted")
             raise HTTPException(status_code=409, detail=str(error)) from error
         except (NotFoundError, ValueError) as error:
             ORDER_REQUESTS.labels(result="invalid").inc()
+            LOGGER.warning("order request rejected")
             raise HTTPException(status_code=422, detail=str(error)) from error
 
     @application.get("/api/orders/{order_id}")

@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–12
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–13
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -43,6 +43,11 @@ Module 03 application verification is tracked against the same Docker environmen
 | Helm | 4.3.1 | Verified for Module 11 | Phase 5 |
 | Prometheus | 3.15.0, image digest pinned | Verified for Module 12 | Phase 6 |
 | Alertmanager | 0.34.1, image digest pinned | Verified for Module 12 | Phase 6 |
+| Grafana | 13.1.6, image digest pinned | Verified for Module 13 | Phase 6 |
+| Loki | 3.7.7, image digest pinned | Verified for Module 13 | Phase 6 |
+| Tempo | 3.1.0, image digest pinned | Verified for Module 13 | Phase 6 |
+| OpenTelemetry Collector Contrib | 0.160.0, image digest pinned | Verified for Module 13 | Phase 6 |
+| OpenTelemetry Python | 1.45.1 | Verified for CloudCart Module 13 | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
 
 Executable modules list only the versions they require.
@@ -138,3 +143,14 @@ API targets, `promtool` configuration/rule checks, recording rules, measured
 TSDB head cardinality, a controlled missing-target alert, Prometheus-to-
 Alertmanager delivery, restored targets, alert resolution, server-side manifest
 validation, idempotent deployment, and precise cleanup.
+
+Module 13 was runtime-verified with Grafana 13.1.6, Loki 3.7.7, Tempo 3.1.0,
+OpenTelemetry Collector Contrib 0.160.0, and OpenTelemetry Python 1.45.1 on the
+same two-node kind and Kubernetes baseline. Verification covered digest-pinned
+images, valid Prometheus and Collector configuration, provisioned Prometheus,
+Loki, and Tempo data sources, a dashboard-as-code, OTLP trace export, node-local
+container log collection, trace-correlated JSON logs, OpenMetrics exemplars,
+availability and burn-rate recording rules, an idempotent traffic fixture, two
+consecutive cross-signal test passes, and precise temporary-Pod cleanup. The
+single-replica `emptyDir`, anonymous Viewer, and unauthenticated in-cluster
+endpoints remain documented local-lab limitations.

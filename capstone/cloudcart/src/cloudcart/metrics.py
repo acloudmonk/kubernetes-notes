@@ -2,13 +2,14 @@ from time import perf_counter
 from typing import Awaitable, Callable
 
 from fastapi import Request, Response
+from opentelemetry import trace
 from prometheus_client import (
-    CONTENT_TYPE_LATEST,
     Counter,
     Gauge,
     Histogram,
-    generate_latest,
+    REGISTRY,
 )
+from prometheus_client.openmetrics.exposition import CONTENT_TYPE_LATEST, generate_latest
 
 
 HTTP_REQUESTS = Counter(
@@ -58,10 +59,18 @@ async def observe_http(
             route=route_template,
             status_code=str(status_code),
         ).inc()
+        span_context = trace.get_current_span().get_span_context()
+        exemplar = None
+        if span_context.is_valid and span_context.trace_flags.sampled:
+            exemplar = {"trace_id": trace.format_trace_id(span_context.trace_id)}
         HTTP_DURATION.labels(method=method, route=route_template).observe(
-            perf_counter() - started
+            perf_counter() - started,
+            exemplar=exemplar,
         )
 
 
 def metrics_response() -> Response:
-    return Response(content=generate_latest(), headers={"Content-Type": CONTENT_TYPE_LATEST})
+    return Response(
+        content=generate_latest(REGISTRY),
+        headers={"Content-Type": CONTENT_TYPE_LATEST},
+    )

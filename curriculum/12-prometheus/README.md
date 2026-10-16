@@ -4,7 +4,7 @@
 **Estimated time:** 26–32 hours<br>
 **Prerequisites:** [11 — Helm](../11-helm/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Helm](../11-helm/README.md) · Next: Grafana and observability (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Helm](../11-helm/README.md) · Next: [Grafana and observability](../13-grafana-observability/README.md)
 
 ## Why this matters
 
@@ -60,5 +60,5 @@ receiver. It is intentionally not a production monitoring platform.
 
 ## Continue
 
-Return to the [curriculum index](../README.md). Module 13 will be linked when
-Grafana, logs, traces, OpenTelemetry, dashboards, and SLO material is available.
+Continue to [Module 13 — Grafana and observability](../13-grafana-observability/README.md)
+for logs, traces, OpenTelemetry, dashboards, correlation, and SLOs.
