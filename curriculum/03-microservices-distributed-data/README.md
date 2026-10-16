@@ -1,6 +1,6 @@
 # 03 — Microservices and Distributed Data
 
-**Status:** Draft<br>
+**Status:** Verified<br>
 **Estimated time:** 22–28 hours<br>
 **Prerequisites:** [02 — Docker](../02-docker/README.md)
 
@@ -60,6 +60,21 @@ Its exact executed baseline is recorded in the
 - Docker Engine and Docker Compose
 - Approximately 2 GB free memory and 2 GB free disk space
 - PowerShell or a POSIX-compatible shell for the HTTP exercises
+
+## Recorded verification
+
+From the repository root in PowerShell, run the complete disposable path:
+
+```powershell
+./curriculum/03-microservices-distributed-data/scripts/Test-CloudCart.ps1
+```
+
+The script generates short-lived credentials in memory, builds a separate test
+image, executes all 14 Python tests including PostgreSQL integration, starts
+CloudCart, and verifies command idempotency, broker-outage durability, outbox
+recovery, poison-message dead lettering, duplicate-event handling, and exact
+Compose cleanup. It refuses pre-existing resources with its project or test
+image names and does not create an `.env` file.
 
 ## Completion
 

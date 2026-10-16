@@ -8,6 +8,23 @@ COPY requirements.txt /tmp/requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip \
     /opt/venv/bin/pip install --requirement /tmp/requirements.txt
 
+FROM builder AS test
+
+ENV PATH="/opt/venv/bin:${PATH}" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app/src
+
+WORKDIR /app
+COPY requirements-dev.txt /tmp/requirements-dev.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    /opt/venv/bin/pip install --requirement /tmp/requirements-dev.txt
+COPY src /app/src
+COPY tests /app/tests
+
+ENTRYPOINT ["python", "-m", "pytest"]
+CMD ["-q"]
+
 FROM python:3.12.15-slim-trixie AS runtime
 
 ENV PATH="/opt/venv/bin:${PATH}" \

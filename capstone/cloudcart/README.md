@@ -66,6 +66,12 @@ The database tests skip unless `TEST_DATABASE_URL` is set. To exercise them
 against the lab database, run the migration first and use a local test database;
 never point destructive learning tests at shared or production data.
 
+The Dockerfile also provides a non-production `test` target containing the
+pinned development dependencies and tests. Module 03's
+[verification script](../../curriculum/03-microservices-distributed-data/scripts/Test-CloudCart.ps1)
+builds that target, supplies a disposable database, runs all 14 tests, and
+removes the test image and Compose resources.
+
 ## Compose environment
 
 Copy `.env.example` to ignored `.env`, replace both example passwords with

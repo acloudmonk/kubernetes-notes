@@ -2,7 +2,7 @@
 
 > **Module navigation:** [Prerequisites module home](../README.md) · Previous:
 > [Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md) · Next:
-> [Troubleshooting scenario](../troubleshooting.md)
+> [Independent challenge](../independent-challenge.md)
 
 **Time:** 45–60 minutes  
 **Cost:** None  
@@ -51,4 +51,4 @@ Remove-Item Env:DEPENDENCY_URL
 
 [Previous: Lab 2 — DNS, HTTP, and TLS](02-dns-http-tls.md) ·
 [Prerequisites module home](../README.md) ·
-[Next: Troubleshooting scenario](../troubleshooting.md)
+[Next: Independent challenge](../independent-challenge.md)

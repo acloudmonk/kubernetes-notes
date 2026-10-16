@@ -11,6 +11,14 @@ uses only synthetic data. Do not reuse real credentials; create
 `capstone/cloudcart/.env` from `.env.example` with local-only values. The file
 is ignored by Git.
 
+For an automated, isolated verification that generates credentials only in the
+current process and also runs the full database test suite, use this from the
+repository root:
+
+```powershell
+./curriculum/03-microservices-distributed-data/scripts/Test-CloudCart.ps1
+```
+
 From `capstone/cloudcart`:
 
 ```powershell

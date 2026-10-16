@@ -30,10 +30,10 @@ published learning material are linked.
 
 | Order | Module | Status |
 |---:|---|---|
-| 00 | [Prerequisites](00-prerequisites/README.md) | Draft |
-| 01 | [Container fundamentals](01-container-fundamentals/README.md) | Draft |
+| 00 | [Prerequisites](00-prerequisites/README.md) | Verified |
+| 01 | [Container fundamentals](01-container-fundamentals/README.md) | Verified |
 | 02 | [Docker](02-docker/README.md) | Verified |
-| 03 | [Microservices and distributed data](03-microservices-distributed-data/README.md) | Draft |
+| 03 | [Microservices and distributed data](03-microservices-distributed-data/README.md) | Verified |
 | 04 | [Kubernetes architecture](04-kubernetes-architecture/README.md) | Verified |
 | 05 | [Kubernetes workloads](05-kubernetes-workloads/README.md) | Verified |
 | 06 | [Networking and discovery](06-networking-discovery/README.md) | Verified |
