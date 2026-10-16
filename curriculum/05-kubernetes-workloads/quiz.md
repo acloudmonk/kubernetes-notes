@@ -2,6 +2,8 @@
 
 > **Module:** [05 — Kubernetes Workloads](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Which change creates a Deployment revision: scaling replicas or changing its Pod template?
 2. Does readiness failure restart a container?
 3. What survives a container restart but not Pod replacement?

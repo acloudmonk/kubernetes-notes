@@ -2,6 +2,8 @@
 
 > **Module:** [10 — Kubernetes Security and Policy](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Does Kubernetes RBAC contain deny rules?
 2. Does a RoleBinding to a ClusterRole grant that role in every namespace?
 3. Can permission to create Pods expose permissions the caller lacks directly?

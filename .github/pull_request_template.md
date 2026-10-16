@@ -19,4 +19,5 @@ What should a learner be able to explain, implement, or diagnose afterward?
 - [ ] Repository hygiene and secret scan passed for configuration changes.
 - [ ] References prefer primary or official sources.
 - [ ] Documentation links were checked.
+- [ ] Assessment question and answer counts were checked.
 - [ ] Module content pages include module-home and sequence navigation.

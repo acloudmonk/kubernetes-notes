@@ -30,6 +30,12 @@ Modules ending a competency stage link to and satisfy the corresponding gate in
 - Distinguish specification, common implementation, and opinion.
 - Identify defaults that vary by platform or version.
 - Pair happy paths with relevant failure behavior.
+- Number every interview question and place an explicit `**Answer:**` directly
+  below it. Explain the mechanism and relevant evidence, tradeoffs, failure
+  modes, or common mistakes—not only a definition.
+- Put every knowledge-check answer in a visible `## Answers` section below a
+  separator. Keep question and answer numbering identical; do not collapse or
+  omit the answer key.
 - Use fictional credentials and domains.
 - Include verification and cleanup in every lab.
 - Mark destructive or billable steps explicitly.
@@ -61,6 +67,8 @@ Modules ending a competency stage link to and satisfy the corresponding gate in
 - [ ] Verification and cleanup are present.
 - [ ] At least one relevant failure is covered.
 - [ ] Questions test reasoning, not only recall.
+- [ ] Every interview and knowledge-check question has an explicit answer, and
+      `./scripts/Test-AssessmentCompleteness.ps1` passes.
 - [ ] References are authoritative.
 - [ ] Version-sensitive claims identify a baseline.
 - [ ] Every content page has working module-home and sequence navigation.

@@ -59,12 +59,14 @@ prompts from diagnosis, correction, verification, and prevention.
 Tag questions as fundamental, implementation, internals, architecture,
 security, troubleshooting, production, or senior. Answers include a direct
 response, mechanism, example, tradeoffs, verification, common mistake, and
-follow-ups.
+follow-ups. Number every question as a level-three heading and put an explicit
+`**Answer:**` directly below it.
 
 ## Knowledge check
 
 Include mechanism, prediction, implementation, and diagnosis questions. Keep
-answers below a separator for self-testing.
+answers in a visible `## Answers` section below a separator for self-testing.
+Keep question and answer numbering identical and answer every prompt.
 
 ## References
 

@@ -2,6 +2,8 @@
 
 > **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Does creating a NetworkPolicy prove enforcement?
 2. What does a normal Service DNS A record usually return?
 3. What does headless Service DNS return?
