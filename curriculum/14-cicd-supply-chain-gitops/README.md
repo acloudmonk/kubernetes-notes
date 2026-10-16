@@ -1,6 +1,6 @@
 # 14 — CI/CD, Supply Chain, and GitOps
 
-**Status:** Draft (content complete; runtime verification pending)<br>
+**Status:** Verified<br>
 **Estimated time:** 28–36 hours<br>
 **Prerequisites:** [13 — Grafana and observability](../13-grafana-observability/README.md)
 
@@ -48,6 +48,13 @@ Flux 2.9.6, Cosign 3.0.5, Syft 1.54.1, Grype 0.120.1, Helm 4.3.1,
 kind 0.33.0, Kubernetes 1.36.4, Docker Engine 29.7.2, and CloudCart 0.1.0.
 All generated keys, credentials, scanner databases, SBOMs, and packages belong
 under ignored `tmp/module14`; none are committed.
+
+Runtime verification produced and checked a CycloneDX SBOM, vulnerability
+report, strict Helm lint/package, chart checksum, disposable Cosign signature,
+and provenance summary. Flux fetched the exact feature-branch revision into a
+disposable kind cluster; its source, Kustomization, and HelmRelease became
+Ready; Helm drift correction restored a changed ConfigMap; and two consecutive
+tests created distinct orders whose events increased the processed-event count.
 
 ## Completion
 

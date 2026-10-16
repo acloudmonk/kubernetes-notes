@@ -18,6 +18,10 @@ if ($LASTEXITCODE -ne 0) { throw 'HelmRelease drift reconciliation failed.' }
 $restored = kubectl get configmap cloudcart-config -n cloudcart -o jsonpath='{.data.RELAY_INTERVAL_SECONDS}'
 if ($restored -ne $original) { throw 'Flux did not correct ConfigMap drift.' }
 
+$processedBefore = kubectl exec -n cloudcart cloudcart-postgres-0 -- `
+    psql -U cloudcart -d cloudcart -tAc "SELECT count(*) FROM notification.processed_events;"
+if ($LASTEXITCODE -ne 0) { throw 'Could not read the initial processed-event count.' }
+
 $clientCode = @'
 import json, urllib.request, uuid
 payload=json.dumps({"lines":[{"product_id":"10000000-0000-0000-0000-000000000001","quantity":1}]}).encode()
@@ -35,7 +39,7 @@ $processed = $false
 foreach ($attempt in 1..30) {
     $count = kubectl exec -n cloudcart cloudcart-postgres-0 -- `
         psql -U cloudcart -d cloudcart -tAc "SELECT count(*) FROM notification.processed_events;"
-    if ($LASTEXITCODE -eq 0 -and [int]$count -ge 1) { $processed = $true; break }
+    if ($LASTEXITCODE -eq 0 -and [int]$count -gt [int]$processedBefore) { $processed = $true; break }
     Start-Sleep -Seconds 2
 }
 if (-not $processed) { throw 'The order event was not processed.' }
