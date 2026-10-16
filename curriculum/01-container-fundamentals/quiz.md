@@ -3,6 +3,8 @@
 > **Module navigation:** [Container fundamentals home](README.md) · Previous:
 > [Interview questions](interview-questions.md) · Next: [References](references.md)
 
+Answer every question before reading the answer section.
+
 1. Which part of a Linux container supplies the kernel?
 2. Name four namespace types and the views they isolate.
 3. What is the difference between CPU throttling and CPU reservation?
@@ -13,6 +15,8 @@
 8. What occurs after the container's main process exits?
 9. Why can a shell entrypoint interfere with graceful shutdown?
 10. Name three configurations that weaken container isolation.
+11. Which specification defines the low-level runtime bundle and lifecycle interface?
+12. Does a non-root process prove the container engine is rootless?
 
 ---
 
@@ -31,6 +35,8 @@
 9. The shell can remain PID 1 and fail to forward signals to its child.
 10. Examples: privileged mode, host namespaces, broad capabilities, sensitive
     host mounts, or mounting the engine socket.
+11. The OCI Runtime Specification.
+12. No. A rootful daemon can launch a non-root container process; daemon privilege is a separate boundary.
 
 ---
 

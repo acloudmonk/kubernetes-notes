@@ -4,6 +4,8 @@
 > [Interview questions](interview-questions.md) · Next:
 > [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. What does the final argument to `docker build` select?
 2. Why copy dependency metadata before application source?
 3. When should exec-form process configuration be preferred?
@@ -14,6 +16,8 @@
 8. What does health-based `depends_on` guarantee?
 9. Why is an environment variable not a complete secret solution?
 10. What evidence distinguishes unhealthy from exited?
+11. Does overriding a Compose `command` necessarily replace the image entrypoint?
+12. Why should an image be tested using its declared non-root user and read-only constraints?
 
 ---
 
@@ -29,6 +33,8 @@
 8. Startup waits for reported health, not future availability.
 9. It can leak through inspection, process state, logs, and tooling.
 10. State, exit code, OOM flag, health log, timestamps, and application logs.
+11. No. It normally replaces the image command/default arguments; entrypoint handling is separate.
+12. A build can succeed while runtime writes, permissions, or startup behavior fail under the intended security boundary.
 
 ---
 

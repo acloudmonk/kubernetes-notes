@@ -2,6 +2,8 @@
 
 > **Module:** [08 — Kubernetes Configuration and Secrets](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Is base64 encryption?
 2. Does changing a ConfigMap update existing environment variables?
 3. Do normal ConfigMap/Secret volume files update instantly?

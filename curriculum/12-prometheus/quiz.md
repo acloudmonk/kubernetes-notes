@@ -2,6 +2,8 @@
 
 > **Module:** [12 — Prometheus](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. What uniquely identifies a Prometheus time series?
 2. Which metric type should only increase until process restart?
 3. Why should route templates replace raw URLs in labels?
@@ -15,8 +17,9 @@
 11. Who groups and routes notifications: Prometheus or Alertmanager?
 12. Does remote write remove the need to monitor local WAL queues and disk?
 
-<details>
-<summary>Answer key</summary>
+---
+
+## Answers
 
 1. Metric name plus the full label set.
 2. Counter.
@@ -30,7 +33,5 @@
 10. The expression must remain true continuously for that duration before firing.
 11. Alertmanager.
 12. No. Remote-write backpressure and local durability remain operational concerns.
-
-</details>
 
 > **Module:** [12 — Prometheus](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)

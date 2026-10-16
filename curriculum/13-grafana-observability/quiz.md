@@ -2,6 +2,8 @@
 
 > **Module:** [13 — Grafana and observability](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Does installing Grafana make a system observable?
 2. Which component creates a CloudCart server span?
 3. Which component stores CloudCart traces in the lab?
@@ -19,8 +21,9 @@
 14. Which lab storage survives Pod replacement?
 15. What should you query before concluding an empty Grafana panel means no data?
 
-<details>
-<summary>Answer key</summary>
+---
+
+## Answers
 
 1. No. It visualizes/query data; instrumentation, pipelines, backends, context,
    and operational practice provide observability.
@@ -40,7 +43,5 @@
 13. No. It is a local, ClusterIP-only teaching shortcut.
 14. None of the Grafana/Loki/Tempo/Prometheus lab `emptyDir` data.
 15. The underlying backend API with the same query and time range.
-
-</details>
 
 > **Module:** [13 — Grafana and observability](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)

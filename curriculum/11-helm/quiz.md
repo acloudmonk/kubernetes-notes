@@ -1,7 +1,7 @@
 # Knowledge Check
 
 > **Module:** [11 — Helm](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
-Answer before expanding the key.
+Answer every question before reading the answer section.
 
 1. Does `helm template` contact the Kubernetes API server?
 2. Which value source wins: chart default, first `-f`, second `-f`, or `--set`?
@@ -16,8 +16,9 @@ Answer before expanding the key.
 11. Should a CLI user and GitOps controller manage the same release concurrently?
 12. Which evidence distinguishes a chart render from the manifest stored for a revision?
 
-<details>
-<summary>Answer key</summary>
+---
+
+## Answers
 
 1. No; it renders locally, although capability flags affect the simulated API context.
 2. `--set`; later files override earlier files for overlapping values.
@@ -31,7 +32,5 @@ Answer before expanding the key.
 10. A digest identifies the exact content that was tested and approved.
 11. No. Competing authoritative writers create drift and unpredictable ownership.
 12. Compare a reproducible `helm template` with `helm get manifest` for that release/revision and its effective values/chart.
-
-</details>
 
 > **Module:** [11 — Helm](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)

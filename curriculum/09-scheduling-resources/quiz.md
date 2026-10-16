@@ -2,6 +2,8 @@
 
 > **Module:** [09 — Kubernetes Scheduling and Resources](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Does the scheduler use current CPU usage to decide basic resource fit?
 2. Can preferred affinity make a node pass a failed required rule?
 3. Does a toleration select a tainted node?

@@ -1,66 +1,121 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module navigation:** [Docker module home](README.md) · Previous:
 > [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
-## 1. `CMD` versus `ENTRYPOINT`?
+### 1. What is the difference between `CMD` and `ENTRYPOINT`?
 
-**Tags:** `fundamental`, `implementation`  
-`ENTRYPOINT` defines the executable and `CMD` provides default arguments when
-both use exec form. Explain the effective command and signal implications.
+**Tags:** `fundamental`, `implementation`
 
-## 2. How do you optimize Docker build cache?
+**Answer:** With exec-form instructions, `ENTRYPOINT` defines the executable and
+`CMD` supplies default arguments that users can replace. If only `CMD` exists,
+the whole command can be replaced. Shell form introduces a shell that changes
+argument expansion and signal behavior; derive the effective command and test
+termination rather than memorizing a slogan.
 
-**Tags:** `build`, `production`  
-Use a narrow context, precise `.dockerignore`, stable instructions first,
-dependency metadata before source, cache mounts, and multi-stage outputs.
+### 2. How do you optimize Docker build cache safely?
 
-## 3. Why can deleting a secret in a later layer be unsafe?
+**Tags:** `build`, `production`
 
-**Tags:** `security`  
-An earlier immutable layer can retain it. Use BuildKit secret mounts and keep
-secrets out of context, arguments, environment, layers, and logs.
+**Answer:** Use a narrow context and precise `.dockerignore`, place stable
+instructions before frequently changing ones, copy dependency metadata before
+source, and use BuildKit cache mounts where suitable. Multi-stage builds copy
+only required runtime artifacts. Optimize after inspecting cache evidence;
+incorrect caching can preserve stale dependencies or leak build inputs.
 
-## 4. Bind mount versus named volume?
+### 3. Why can deleting a secret in a later layer be unsafe?
 
-**Tags:** `storage`  
-Bind mounts expose a host path and are host-coupled. Volumes are Docker-managed.
-Both require ownership, backup, restoration, and lifecycle decisions.
+**Tags:** `security`
 
-## 5. Why does `localhost` fail between containers?
+**Answer:** Image layers are immutable, so the earlier layer can still contain
+the bytes even if a later layer removes the visible path. Keep secrets out of the
+build context, arguments, environment, layers, and logs; use BuildKit secret or
+SSH mounts for temporary access. If a real secret entered an image, revoke it.
 
-**Tags:** `networking`, `troubleshooting`  
-Loopback reaches the same container. Use a shared network and service DNS name.
+### 4. How do bind mounts and named volumes differ?
 
-## 6. Does `depends_on` guarantee dependency availability?
+**Tags:** `storage`
 
-**Tags:** `compose`, `distributed-systems`  
-No. It controls ordering and can wait for health, but dependencies can fail
-later. Clients still need bounded timeouts and suitable retries.
+**Answer:** A bind mount exposes an explicit host path and inherits its coupling,
+permissions, and security risks. A named volume is managed through Docker's
+volume lifecycle and is more portable within that engine environment. Neither is
+a backup; define ownership, retention, backup, restore, and deletion separately.
 
-## 7. Why use multi-stage builds?
+### 5. Why does `localhost` fail between containers?
 
-**Tags:** `build`, `security`  
-They separate build tooling from runtime artifacts, reducing size and attack
-surface, but do not guarantee trusted dependencies or reproducibility.
+**Tags:** `networking`, `troubleshooting`
 
-## 8. Is a healthy container necessarily a healthy service?
+**Answer:** Loopback points to the calling container's own network namespace.
+Containers on a shared user-defined network should use the target's service or
+container DNS name and listening port. Also verify that the server binds a
+non-loopback address; published host ports solve a different ingress path.
 
-**Tags:** `operations`  
-No. A check covers only its signal and may miss downstream correctness,
-capacity, or partial failure.
+### 6. Does Compose `depends_on` guarantee dependency availability?
 
-## 9. Why is the Docker socket sensitive?
+**Tags:** `compose`, `distributed-systems`
 
-**Tags:** `security`, `senior`  
-API access can create privileged containers or mount host files, commonly
-providing host-level control.
+**Answer:** No. It controls creation ordering and can wait for a declared health
+condition, but the dependency may fail later and the health check may be shallow.
+Clients still require bounded timeouts, appropriate retries with backoff/jitter,
+idempotency where effects can repeat, and observable failure handling.
 
-## 10. Tags versus digests?
+### 7. Why use multi-stage builds?
 
-**Tags:** `registry`, `production`  
-Tags are mutable names; digests identify content. Digest pinning still requires
-an explicit discovery, test, and update process.
+**Tags:** `build`, `security`
+
+**Answer:** They separate build tooling and intermediate files from the final
+runtime filesystem, reducing image size and attack surface. Copy only explicit
+artifacts into a minimal, non-root runtime stage. Multi-stage structure does not
+by itself make dependencies trusted, builds reproducible, or vulnerabilities absent.
+
+### 8. Is a healthy container necessarily a healthy service?
+
+**Tags:** `operations`
+
+**Answer:** No. A health check proves only its specific signal at one moment and
+may miss downstream correctness, capacity, partial failure, or user workflows.
+Design checks around a clear decision, expose deeper telemetry separately, and
+verify the complete service path rather than making one probe call every dependency.
+
+### 9. Why is the Docker socket sensitive?
+
+**Tags:** `security`, `senior`
+
+**Answer:** Docker API access can normally create privileged containers, mount
+host paths, inspect workloads, and control the engine, which commonly provides
+host-level power. Do not expose or mount it casually. Use narrowly scoped
+brokers or rootless/isolated builders where a workflow needs container operations.
+
+### 10. How do image tags and digests differ?
+
+**Tags:** `registry`, `production`
+
+**Answer:** Tags are convenient mutable names; digests identify exact manifest
+content. Pinning a digest makes deployment input reproducible but requires an
+explicit process to discover, test, approve, and roll forward to patched content.
+Record multi-platform selection and provenance as separate supply-chain evidence.
+
+### 11. How do you diagnose a container that exits immediately?
+
+**Tags:** `troubleshooting`, `internals`
+
+**Answer:** Inspect state, exit code, OOM status, timestamps, configured
+entrypoint/arguments, and stdout/stderr before rerunning interactively. Compare
+the image's declared command with Compose or CLI overrides, mounts, environment,
+working directory, user, and platform. Keeping it alive with `sleep` can aid
+inspection but is not a correction for a failed main process.
+
+### 12. When is Docker Compose insufficient for production orchestration?
+
+**Tags:** `architecture`, `senior`
+
+**Answer:** Compose is effective for defining and reproducing a multi-container
+application on an engine, but it does not by itself provide multi-node scheduling,
+cluster reconciliation, disruption policy, autoscaling, admission, or platform
+tenancy. Choose an orchestrator when those requirements justify its complexity;
+do not adopt Kubernetes merely because an application has several containers.
 
 ---
 

@@ -2,6 +2,8 @@
 
 > **Module:** [07 — Kubernetes Storage and State](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Does a Bound PVC prove a Pod mounted it successfully?
 2. What does `WaitForFirstConsumer` delay, and why?
 3. Does RWO mean only one Pod can mount a volume?

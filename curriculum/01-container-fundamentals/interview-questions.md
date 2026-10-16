@@ -1,75 +1,120 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module navigation:** [Container fundamentals home](README.md) · Previous:
 > [Troubleshooting scenario](troubleshooting.md) · Next:
 > [Knowledge check](quiz.md)
 
-## 1. Is a container a lightweight VM?
+### 1. Is a container a lightweight VM?
 
-**Tags:** `fundamental`, `internals`  
-No. A Linux container is a constrained process sharing the host kernel; a VM
-runs a guest kernel on virtual hardware. Discuss startup, overhead, compatibility,
-and the different security boundary rather than only saying “containers are lighter.”
+**Tags:** `fundamental`, `internals`
 
-## 2. What do namespaces and cgroups do?
+**Answer:** No. A Linux container is a constrained process that shares the host
+kernel; a VM runs a guest kernel on virtual hardware. Containers usually start
+faster and use fewer resources, but kernel compatibility and isolation differ.
+Treating the two as equivalent hides their different security and failure boundaries.
 
-**Tags:** `internals`  
-Namespaces isolate views such as processes, networking, mounts, and identities.
-Cgroups organize processes for resource accounting and controls. Neither alone
-is a complete container or security boundary.
+### 2. What do namespaces and cgroups do?
 
-## 3. What is the difference between an image and a container?
+**Tags:** `internals`
 
-**Tags:** `fundamental`  
-An image is immutable configuration and filesystem content. A container is a
-runtime instance with process configuration and a writable layer. Many
-containers can use the same image content.
+**Answer:** Namespaces isolate views such as processes, networking, mounts, and
+identities. Cgroups organize processes for accounting and controls such as CPU,
+memory, and process counts. Neither alone is a complete container or security
+boundary; runtimes combine them with filesystems, capabilities, seccomp, and policy.
 
-## 4. Why pin an image digest?
+### 3. What is the difference between an image and a container?
 
-**Tags:** `security`, `production`  
-A tag can be moved to different content; a digest identifies content. Digest
-pinning improves reproducibility, but updates must still be deliberately
-discovered, tested, and deployed.
+**Tags:** `fundamental`
 
-## 5. Why is PID 1 important?
+**Answer:** An image is immutable configuration and filesystem content. A
+container is a runtime instance with a process configuration and writable layer.
+Many containers can share the same image layers while retaining separate runtime
+state, namespaces, and writable changes.
 
-**Tags:** `internals`, `production`  
-It is the container's main process, determines container lifetime, receives the
-stop signal, and must handle orphaned children appropriately. Shell wrappers can
-break signal forwarding unless designed correctly.
+### 4. Why pin an image digest?
 
-## 6. What survives a container restart?
+**Tags:** `security`, `production`
 
-**Tags:** `implementation`  
-The same container's writable layer and metadata normally survive stop/start.
-They do not survive removal. Volumes and external stores have separate lifetimes.
+**Answer:** A tag can be moved to different content; a digest identifies exact
+content. Pinning improves reproducibility and auditability, but does not prove the
+content is trusted or vulnerability-free. Updates still need discovery, review,
+testing, promotion, and a rollback process.
 
-## 7. Does a memory limit reserve memory?
+### 5. Why is PID 1 important in a container?
 
-**Tags:** `resources`  
-No. A hard limit constrains maximum use; reservation and scheduling semantics
-are separate. Inspect actual runtime configuration and OOM evidence.
+**Tags:** `internals`, `production`
 
-## 8. Why avoid privileged containers?
+**Answer:** PID 1 is the container's main process, determines container lifetime,
+receives the stop signal, and has special orphan-reaping and signal behavior.
+Shell wrappers can prevent signals reaching the application unless they use
+`exec` or forward and reap correctly. Verify graceful termination under load.
 
-**Tags:** `security`  
-Privilege can expose devices and capabilities and weaken isolation. Grant the
-smallest specific permission required and verify the effective configuration.
+### 6. What survives a container restart?
 
-## 9. Why might an image run on one machine but not another?
+**Tags:** `implementation`
 
-**Tags:** `architecture`, `troubleshooting`  
-Check OS and CPU platform, manifest selection, kernel features, runtime policy,
-entrypoint, mounts, permissions, and configuration. An image does not contain a
-replacement kernel.
+**Answer:** Stopping and starting the same container normally preserves its
+metadata and writable layer. Removing and recreating it loses that writable
+state. Named volumes, bind mounts, and external stores have separate lifecycles,
+so “restart” and “replacement” must be distinguished when reasoning about data.
 
-## 10. Does Kubernetes require Docker Engine?
+### 7. Does a memory limit reserve memory?
 
-**Tags:** `kubernetes`, `internals`  
-No. Kubelet uses the Container Runtime Interface with a compatible runtime.
-Docker images follow interoperable formats, but Docker Engine is not a required
-node runtime.
+**Tags:** `resources`
+
+**Answer:** No. A hard memory limit constrains maximum use and can cause an OOM
+kill; reservation, placement, and guarantees are separate mechanisms. Inspect
+the actual cgroup/runtime configuration, working set, pressure, and termination
+evidence instead of interpreting the limit as preallocated capacity.
+
+### 8. Why should privileged containers be avoided?
+
+**Tags:** `security`
+
+**Answer:** Privileged mode exposes broad capabilities and devices and can
+substantially weaken isolation from the host. Grant the smallest specific
+capability, device, or mount required and verify the effective configuration.
+Even an unprivileged container still needs patched code, runtime, and kernel.
+
+### 9. Why might an image run on one machine but not another?
+
+**Tags:** `architecture`, `troubleshooting`
+
+**Answer:** Check OS and CPU platform, manifest selection, required kernel
+features, runtime and security policy, entrypoint, mounts, permissions, and
+configuration. An image supplies userspace, not a replacement kernel. Compare
+the selected digest and observable runtime error before rebuilding it.
+
+### 10. Does Kubernetes require Docker Engine?
+
+**Tags:** `kubernetes`, `internals`
+
+**Answer:** No. Kubelet uses the Container Runtime Interface with a compatible
+runtime such as containerd or CRI-O. OCI-compatible images remain portable
+across runtimes, but Docker Engine is not the node contract and Docker-specific
+local behavior should not be assumed in Kubernetes.
+
+### 11. Trace an image from an engine to a running container process.
+
+**Tags:** `internals`, `implementation`
+
+**Answer:** The engine or higher-level runtime resolves and verifies the image,
+unpacks content-addressed layers into a snapshot, creates runtime configuration,
+and invokes an OCI runtime to establish namespaces, cgroups, mounts, capabilities,
+and the initial process. Networking and storage may involve separate plugins.
+Inspect the selected digest, runtime metadata, mounts, cgroups, and process tree.
+
+### 12. How do rootless containers differ from merely running as non-root?
+
+**Tags:** `security`, `production`
+
+**Answer:** A non-root process may still be managed by a rootful daemon with
+host-level privileges. Rootless operation runs the daemon/runtime without host
+root, commonly using user namespaces and constrained networking/storage features.
+It reduces daemon-compromise impact but has compatibility and performance
+tradeoffs; neither mode removes kernel or application risk.
 
 ---
 
