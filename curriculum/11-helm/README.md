@@ -4,7 +4,7 @@
 **Estimated time:** 24–30 hours<br>
 **Prerequisites:** [10 — Kubernetes Security and Policy](../10-security-policy/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Security and policy](../10-security-policy/README.md) · Next: Prometheus (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Security and policy](../10-security-policy/README.md) · Next: [Prometheus](../12-prometheus/README.md)
 
 ## Why this matters
 
@@ -62,5 +62,6 @@ not a production HA data platform.
 
 ## Continue
 
-After recording Gate 3 evidence, return to the [curriculum index](../README.md).
-Module 12 will be linked when the Prometheus material is available.
+After recording Gate 3 evidence, continue to
+[Module 12 — Prometheus](../12-prometheus/README.md), or return to the
+[curriculum index](../README.md).

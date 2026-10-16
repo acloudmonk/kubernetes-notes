@@ -38,6 +38,7 @@ sending email or handling personal data.
 - `src/cloudcart/service.py` — transaction, locking, idempotency, and ownership
 - `src/cloudcart/relay.py` — polling outbox relay with publisher confirms
 - `src/cloudcart/worker.py` — manual acknowledgement and idempotent consumer
+- `src/cloudcart/metrics.py` — bounded Prometheus HTTP and business metrics
 - `migrations/001_initial.sql` — schemas, constraints, indexes, and seed data
 - `tests` — pure-domain, API-contract, and opt-in PostgreSQL tests
 - `compose.yaml` — isolated API, migration, relay, worker, database, and broker
@@ -131,3 +132,12 @@ chart and Helm release state. They cover schema validation, server dry run,
 install, chart test, configuration rollout, failed upgrade, rollback, packaging,
 and the complete event path. The bundled database and broker remain learning
 dependencies rather than a production HA design.
+
+## Prometheus metrics
+
+The [Module 12 Prometheus labs](../../curriculum/12-prometheus/README.md) add
+bounded HTTP request, duration, in-progress, and order-outcome metrics. Route
+labels use templates rather than resource IDs. The lab discovers both API Pod
+endpoints, evaluates PromQL and rules, routes an intentional missing-target
+alert, measures series cardinality, and restores the application. Production
+access, HA, retention, and long-term storage remain explicit design work.

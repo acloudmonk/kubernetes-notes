@@ -20,3 +20,4 @@ Copy [`0000-template.md`](0000-template.md) to start a decision.
 - [ADR 0007: Treat workload placement and capacity as measured policy](0007-workload-placement-capacity.md) — Accepted
 - [ADR 0008: Use native security policy as the minimum baseline](0008-native-security-policy-baseline.md) — Accepted
 - [ADR 0009: Package CloudCart as a first-party Helm release](0009-first-party-helm-release.md) — Accepted
+- [ADR 0010: Use bounded Prometheus metrics as the first telemetry signal](0010-bounded-prometheus-metrics.md) — Accepted

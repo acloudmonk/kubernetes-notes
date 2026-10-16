@@ -1,0 +1,265 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: monitoring
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-lab-discovery
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "endpoints"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["discovery.k8s.io"]
+    resources: ["endpointslices"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus-lab-discovery
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-lab-discovery
+subjects:
+  - kind: ServiceAccount
+    name: prometheus
+    namespace: monitoring
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+      scrape_timeout: 3s
+      evaluation_interval: 5s
+      external_labels:
+        cluster: cloudcart-prometheus
+        environment: learning
+    rule_files:
+      - /etc/prometheus/rules/*.yml
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets: ["alertmanager.monitoring.svc:9093"]
+    scrape_configs:
+      - job_name: prometheus
+        static_configs:
+          - targets: ["127.0.0.1:9090"]
+      - job_name: cloudcart-api
+        kubernetes_sd_configs:
+          - role: endpointslice
+            namespaces:
+              names: ["cloudcart"]
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+            action: keep
+            regex: "true"
+          - source_labels: [__meta_kubernetes_endpointslice_port_name]
+            action: keep
+            regex: http
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+            target_label: __metrics_path__
+            regex: (.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+  cloudcart-rules.yml: |
+    groups:
+      - name: cloudcart.rules
+        interval: 5s
+        rules:
+          - record: cloudcart:http_requests:rate1m
+            expr: sum by (method, route, status_code) (rate(cloudcart_http_requests_total[1m]))
+          - record: cloudcart:http_errors:ratio1m
+            expr: sum(rate(cloudcart_http_requests_total{status_code=~"5.."}[1m])) / clamp_min(sum(rate(cloudcart_http_requests_total[1m])), 0.001)
+          - alert: CloudCartAPITargetsMissing
+            expr: absent(up{job="cloudcart-api"})
+            for: 20s
+            labels:
+              severity: critical
+              service: cloudcart-api
+            annotations:
+              summary: CloudCart API has no discovered scrape targets
+              runbook_url: https://example.invalid/runbooks/cloudcart-api-targets-missing
+          - alert: CloudCartAPITargetDown
+            expr: up{job="cloudcart-api"} == 0
+            for: 20s
+            labels:
+              severity: critical
+              service: cloudcart-api
+            annotations:
+              summary: A discovered CloudCart API target cannot be scraped
+          - alert: CloudCartHighHTTPErrorRatio
+            expr: cloudcart:http_errors:ratio1m > 0.2
+            for: 30s
+            labels:
+              severity: warning
+              service: cloudcart-api
+            annotations:
+              summary: CloudCart API 5xx ratio exceeds 20 percent
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-config
+  namespace: monitoring
+data:
+  alertmanager.yml: |
+    global:
+      resolve_timeout: 30s
+    route:
+      receiver: lab-null
+      group_by: [alertname, service]
+      group_wait: 5s
+      group_interval: 10s
+      repeat_interval: 1h
+    receivers:
+      - name: lab-null
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: monitoring
+  labels: {app.kubernetes.io/name: prometheus}
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app.kubernetes.io/name: prometheus}
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: prometheus}
+    spec:
+      serviceAccountName: prometheus
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v3.15.0@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e
+          imagePullPolicy: IfNotPresent
+          args:
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --storage.tsdb.path=/prometheus
+            - --storage.tsdb.retention.time=2h
+            - --web.enable-lifecycle
+          ports:
+            - {name: http, containerPort: 9090}
+          readinessProbe:
+            httpGet: {path: /-/ready, port: http}
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: {path: /-/healthy, port: http}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: "1", memory: 768Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - {name: config, mountPath: /etc/prometheus, readOnly: true}
+            - {name: data, mountPath: /prometheus}
+      volumes:
+        - name: config
+          configMap:
+            name: prometheus-config
+            items:
+              - {key: prometheus.yml, path: prometheus.yml}
+              - {key: cloudcart-rules.yml, path: rules/cloudcart-rules.yml}
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  selector: {app.kubernetes.io/name: prometheus}
+  ports:
+    - {name: http, port: 9090, targetPort: http}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager
+  namespace: monitoring
+  labels: {app.kubernetes.io/name: alertmanager}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app.kubernetes.io/name: alertmanager}
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: alertmanager}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: alertmanager
+          image: prom/alertmanager:v0.34.1@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a
+          imagePullPolicy: IfNotPresent
+          args:
+            - --config.file=/etc/alertmanager/alertmanager.yml
+            - --storage.path=/alertmanager
+          ports:
+            - {name: http, containerPort: 9093}
+          readinessProbe:
+            httpGet: {path: /-/ready, port: http}
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: {path: /-/healthy, port: http}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 25m, memory: 64Mi}
+            limits: {cpu: 250m, memory: 192Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - {name: config, mountPath: /etc/alertmanager, readOnly: true}
+            - {name: data, mountPath: /alertmanager}
+      volumes:
+        - name: config
+          configMap: {name: alertmanager-config}
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  selector: {app.kubernetes.io/name: alertmanager}
+  ports:
+    - {name: http, port: 9093, targetPort: http}
