@@ -17,6 +17,8 @@ Prometheus, Grafana, OpenTelemetry, GitOps, security controls, and runbooks.
 
 - **New learner:** read the [learning guide](LEARNING-GUIDE.md), then begin with
   [Module 00 — Prerequisites](curriculum/00-prerequisites/README.md).
+- **Track execution:** use the [learning execution kit](learning/README.md) for
+  the study plan, progress, evidence, gate scoring, and spaced review.
 - **See the full order:** use the [roadmap](ROADMAP.md) to move through modules
   sequentially. Available modules are linked directly from its learning path.
 - [Curriculum](curriculum/README.md) — module catalog and content contract
