@@ -26,7 +26,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 kind load docker-image $CloudCartImage --name $ClusterName
 
-flux install --version=2.9.6
+flux install --version=v2.9.6
 if ($LASTEXITCODE -ne 0) { throw 'Flux installation failed.' }
 flux check --pre
 if ($LASTEXITCODE -ne 0) { throw 'Flux prerequisite check failed.' }
