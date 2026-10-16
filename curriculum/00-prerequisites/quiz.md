@@ -3,6 +3,8 @@
 > **Module navigation:** [Prerequisites module home](README.md) · Previous:
 > [Interview questions](interview-questions.md) · Next: [References](references.md)
 
+Answer every question before reading the answer section.
+
 1. Why is `SIGTERM` preferable to `SIGKILL` for normal shutdown?
 2. What does binding a server to `127.0.0.1` imply?
 3. Which layer has failed when DNS resolves but TCP is refused?

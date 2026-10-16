@@ -4,6 +4,8 @@
 > [Interview questions](interview-questions.md) · Next:
 > [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. Which property distinguishes a microservice from a code module?
 2. Why can a timeout produce an unknown outcome?
 3. What four controls bound a retry policy?

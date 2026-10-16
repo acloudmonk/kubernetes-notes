@@ -3,6 +3,8 @@
 > **Module navigation:** [Container fundamentals home](README.md) · Previous:
 > [Interview questions](interview-questions.md) · Next: [References](references.md)
 
+Answer every question before reading the answer section.
+
 1. Which part of a Linux container supplies the kernel?
 2. Name four namespace types and the views they isolate.
 3. What is the difference between CPU throttling and CPU reservation?

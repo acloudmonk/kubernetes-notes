@@ -4,6 +4,8 @@
 > [Interview questions](interview-questions.md) · Next:
 > [References and videos](references.md)
 
+Answer every question before reading the answer section.
+
 1. What does the final argument to `docker build` select?
 2. Why copy dependency metadata before application source?
 3. When should exec-form process configuration be preferred?

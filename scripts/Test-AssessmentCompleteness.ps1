@@ -12,7 +12,7 @@ $failures = [System.Collections.Generic.List[string]]::new()
 $checkedModules = 0
 
 Get-ChildItem (Join-Path $repositoryRoot 'curriculum') -Directory |
-    Where-Object { $_.Name -match '^(?<number>\d{2})-' -and [int]$Matches.number -ge 4 } |
+    Where-Object { $_.Name -match '^\d{2}-' } |
     Sort-Object Name |
     ForEach-Object {
         $module = $_
