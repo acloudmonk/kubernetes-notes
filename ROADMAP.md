@@ -41,7 +41,7 @@ plain text identifies planned content that is not ready yet.
 | 09 | [Scheduling and resources](curriculum/09-scheduling-resources/README.md) | Verified | Requests, QoS, placement, disruption, autoscaling |
 | 10 | [Security and policy](curriculum/10-security-policy/README.md) | Verified | Identity, RBAC, workload security, admission, multi-tenancy |
 | 11 | [Helm](curriculum/11-helm/README.md) | Verified | Templates, values, dependencies, tests, OCI, lifecycle |
-| 12 | Prometheus | Planned | Collection, PromQL, rules, Alertmanager, cardinality |
+| 12 | [Prometheus](curriculum/12-prometheus/README.md) | Verified | Collection, PromQL, rules, Alertmanager, cardinality |
 | 13 | Grafana and observability | Planned | Dashboards, logs, traces, OpenTelemetry, SLOs |
 | 14 | CI/CD, supply chain, and GitOps | Planned | Tests, SBOMs, signing, policy, promotion, reconciliation |
 | 15 | Infrastructure and production operations | Planned | IaC, managed Kubernetes, HA, upgrades, recovery, cost |

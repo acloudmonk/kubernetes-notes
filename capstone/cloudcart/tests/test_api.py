@@ -1,6 +1,7 @@
 from uuid import UUID
 
 from cloudcart.main import create_app
+from cloudcart.metrics import HTTP_REQUESTS, ORDER_REQUESTS, metrics_response
 from cloudcart.service import ConflictError, NotFoundError
 
 
@@ -43,3 +44,22 @@ def test_create_order_contract_returns_created() -> None:
     operation = create_app(FakeService()).openapi()["paths"]["/api/orders"]["post"]
     assert "201" in operation["responses"]
     assert operation["requestBody"]["required"] is True
+
+
+def test_metrics_use_route_templates_instead_of_resource_ids() -> None:
+    HTTP_REQUESTS.labels(
+        method="GET",
+        route="/api/orders/{order_id}",
+        status_code="200",
+    ).inc()
+    metrics = metrics_response().body.decode()
+
+    assert "cloudcart_http_requests_total" in metrics
+    assert 'route="/api/orders/{order_id}"' in metrics
+    assert str(ORDER_ID) not in metrics
+
+
+def test_order_metric_uses_a_bounded_result_label() -> None:
+    ORDER_REQUESTS.labels(result="accepted").inc()
+    metrics = metrics_response().body.decode()
+    assert 'cloudcart_order_requests_total{result="accepted"}' in metrics

@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–11
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–12
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -30,17 +30,19 @@ Module 03 application verification is tracked against the same Docker environmen
 | Uvicorn | 0.53.0 | Pinned for CloudCart Module 03 | Phase 3 |
 | Psycopg | 3.3.6 | Pinned for CloudCart Module 03 | Phase 3 |
 | Pika | 1.4.4 | Pinned for CloudCart Module 03 | Phase 3 |
+| Prometheus Python client | 0.26.0 | Verified for CloudCart Module 12 | Phase 6 |
 | PostgreSQL | 17.11 | Pinned container for CloudCart Module 03 | Phase 3 |
 | RabbitMQ | 4.2.9 | Pinned container for CloudCart Module 03 | Phase 3 |
 | `kubectl` | 1.36.1 | Verified against Kubernetes 1.36.4 | Phase 3 |
-| kind | 0.33.0 | Verified for Modules 04–11 | Phase 3–5 |
-| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–11 | Phase 3–5 |
+| kind | 0.33.0 | Verified for Modules 04–12 | Phase 3–6 |
+| Local Kubernetes | 1.36.4 (`kindest/node`, digest pinned) | Verified for Modules 04–12 | Phase 3–6 |
 | Node container runtime | containerd 2.3.4 | Observed on both kind nodes | Phase 3 |
 | Envoy Gateway | 1.8.5 | Verified for Module 06 | Phase 3 |
 | kind local-path provisioner | `rancher.io/local-path` | Verified for Module 07 | Phase 4 |
 | Metrics Server | 0.9.0 | Verified for Module 09 | Phase 4 |
 | Helm | 4.3.1 | Verified for Module 11 | Phase 5 |
-| Prometheus stack | To be selected | Not selected | Phase 6 |
+| Prometheus | 3.15.0, image digest pinned | Verified for Module 12 | Phase 6 |
+| Alertmanager | 0.34.1, image digest pinned | Verified for Module 12 | Phase 6 |
 | GitOps controller | To be selected by ADR | Not selected | Phase 7 |
 
 Executable modules list only the versions they require.
@@ -127,3 +129,12 @@ validation, install/upgrade with Job waiting, a completed migration, checksum-
 driven configuration rollout, an intentionally failed image revision, rollback,
 chart tests, externally owned generated credentials, the persisted CloudCart
 event path, chart packaging, repeat execution, and precise cleanup.
+
+Module 12 was runtime-verified twice with Prometheus 3.15.0, Alertmanager 0.34.1,
+and `prometheus-client` 0.26.0 on the same two-node kind and Kubernetes baseline.
+Verification covered bounded route-template instrumentation, nine passing unit
+tests, digest-pinned images, EndpointSlice discovery and relabeling, two healthy
+API targets, `promtool` configuration/rule checks, recording rules, measured
+TSDB head cardinality, a controlled missing-target alert, Prometheus-to-
+Alertmanager delivery, restored targets, alert resolution, server-side manifest
+validation, idempotent deployment, and precise cleanup.

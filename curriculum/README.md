@@ -42,7 +42,7 @@ published learning material are linked.
 | 09 | [Scheduling and resources](09-scheduling-resources/README.md) | Verified |
 | 10 | [Security and policy](10-security-policy/README.md) | Verified |
 | 11 | [Helm](11-helm/README.md) | Verified |
-| 12 | Prometheus | Planned |
+| 12 | [Prometheus](12-prometheus/README.md) | Verified |
 | 13 | Grafana and observability | Planned |
 | 14 | CI/CD, supply chain, and GitOps | Planned |
 | 15 | Infrastructure and production operations | Planned |

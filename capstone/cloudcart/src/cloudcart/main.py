@@ -1,12 +1,13 @@
 from typing import Protocol
 from uuid import UUID
 
-from fastapi import FastAPI, Header, HTTPException, status
+from fastapi import FastAPI, Header, HTTPException, Response, status
 from pydantic import BaseModel, Field
 
 from cloudcart.config import Settings
 from cloudcart.domain import OrderLine
 from cloudcart.logging import configure_logging
+from cloudcart.metrics import ORDER_REQUESTS, metrics_response, observe_http
 from cloudcart.service import CloudCartService, ConflictError, NotFoundError
 
 
@@ -30,6 +31,11 @@ def create_app(service: Service | None = None) -> FastAPI:
     configure_logging()
     selected = service or CloudCartService(Settings.from_environment().database_dsn)
     application = FastAPI(title="CloudCart API", version="0.1.0")
+    application.middleware("http")(observe_http)
+
+    @application.get("/metrics", include_in_schema=False)
+    def metrics() -> Response:
+        return metrics_response()
 
     @application.get("/health/live")
     def live() -> dict[str, str]:
@@ -51,13 +57,17 @@ def create_app(service: Service | None = None) -> FastAPI:
         idempotency_key: str = Header(min_length=8, max_length=128),
     ) -> dict:
         try:
-            return selected.create_order(
+            order = selected.create_order(
                 idempotency_key,
                 [OrderLine(line.product_id, line.quantity) for line in request.lines],
             )
+            ORDER_REQUESTS.labels(result="accepted").inc()
+            return order
         except ConflictError as error:
+            ORDER_REQUESTS.labels(result="conflict").inc()
             raise HTTPException(status_code=409, detail=str(error)) from error
         except (NotFoundError, ValueError) as error:
+            ORDER_REQUESTS.labels(result="invalid").inc()
             raise HTTPException(status_code=422, detail=str(error)) from error
 
     @application.get("/api/orders/{order_id}")
