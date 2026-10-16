@@ -43,7 +43,7 @@ plain text identifies planned content that is not ready yet.
 | 11 | [Helm](curriculum/11-helm/README.md) | Verified | Templates, values, dependencies, tests, OCI, lifecycle |
 | 12 | [Prometheus](curriculum/12-prometheus/README.md) | Verified | Collection, PromQL, rules, Alertmanager, cardinality |
 | 13 | [Grafana and observability](curriculum/13-grafana-observability/README.md) | Verified | Dashboards, logs, traces, OpenTelemetry, SLOs |
-| 14 | CI/CD, supply chain, and GitOps | Planned | Tests, SBOMs, signing, policy, promotion, reconciliation |
+| 14 | [CI/CD, supply chain, and GitOps](curriculum/14-cicd-supply-chain-gitops/README.md) | Draft | Tests, SBOMs, signing, policy, promotion, reconciliation |
 | 15 | Infrastructure and production operations | Planned | IaC, managed Kubernetes, HA, upgrades, recovery, cost |
 | 16 | Advanced Kubernetes | Planned | Operators, service mesh, multi-cluster, ecosystem |
 

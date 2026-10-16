@@ -4,7 +4,7 @@
 **Estimated time:** 28–36 hours<br>
 **Prerequisites:** [12 — Prometheus](../12-prometheus/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Prometheus](../12-prometheus/README.md) · Next: GitOps and CI/CD (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Prometheus](../12-prometheus/README.md) · Next: [CI/CD, supply chain, and GitOps](../14-cicd-supply-chain-gitops/README.md)
 
 ## Why this matters
 
@@ -68,6 +68,6 @@ production security, availability, or durability design.
 
 ## Continue
 
-After completing the checklist and Gate 4, return to the
-[curriculum index](../README.md). Module 14 will be linked when the GitOps and
-CI/CD material is available.
+After completing the checklist and Gate 4, continue to
+[Module 14 — CI/CD, Supply Chain, and GitOps](../14-cicd-supply-chain-gitops/README.md),
+or return to the [curriculum index](../README.md).

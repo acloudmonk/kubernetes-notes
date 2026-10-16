@@ -48,7 +48,10 @@ Module 03 application verification is tracked against the same Docker environmen
 | Tempo | 3.1.0, image digest pinned | Verified for Module 13 | Phase 6 |
 | OpenTelemetry Collector Contrib | 0.160.0, image digest pinned | Verified for Module 13 | Phase 6 |
 | OpenTelemetry Python | 1.45.1 | Verified for CloudCart Module 13 | Phase 6 |
-| GitOps controller | To be selected by ADR | Not selected | Phase 7 |
+| Flux | 2.9.6 | Selected by ADR 0012; Module 14 runtime pending | Phase 7 |
+| Cosign | 3.0.5 | Module 14 runtime pending | Phase 7 |
+| Syft | 1.54.1 | Module 14 runtime pending | Phase 7 |
+| Grype | 0.120.1 | Module 14 runtime pending | Phase 7 |
 
 Executable modules list only the versions they require.
 
@@ -154,3 +157,8 @@ availability and burn-rate recording rules, an idempotent traffic fixture, two
 consecutive cross-signal test passes, and precise temporary-Pod cleanup. The
 single-replica `emptyDir`, anonymous Viewer, and unauthenticated in-cluster
 endpoints remain documented local-lab limitations.
+
+Module 14 content targets Flux 2.9.6, Cosign 3.0.5, Syft 1.54.1, and Grype
+0.120.1. Static assessment, navigation, manifest, and PowerShell validation are
+required before publication. Runtime verification remains pending until the
+disposable toolchain and kind lab complete; no verified status is claimed yet.
