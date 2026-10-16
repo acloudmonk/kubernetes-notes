@@ -15,6 +15,7 @@ the layered validation and release-lifecycle labs.
 - a revision-named, idempotent migration Job runs before workloads become useful;
 - dedicated ServiceAccounts have API token automount disabled;
 - the application image is loaded locally for kind and is never pulled;
+- optional per-component topology-spread constraints support failure-domain labs;
 - `helm test` checks the API readiness endpoint from inside the cluster.
 
 ## Validate and install

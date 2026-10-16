@@ -1,0 +1,19 @@
+api:
+  replicas: 2
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: DoNotSchedule
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: cloudcart
+          app.kubernetes.io/instance: cloudcart
+          app.kubernetes.io/component: api
+
+placement:
+  nodeSelector:
+    learning.cloudcart.io/role: application
+
+podDisruptionBudget:
+  enabled: true
+  apiMinAvailable: 1

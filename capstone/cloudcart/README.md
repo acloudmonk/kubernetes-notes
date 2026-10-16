@@ -159,3 +159,11 @@ build CloudCart evidence, package the Helm chart, and reconcile the application
 through Flux. The lab uses disposable signing material and generated in-cluster
 credentials; production key custody, workload identity, admission policy,
 registry controls, and promotion environments remain explicit design work.
+
+## Production operations
+
+The [Module 15 infrastructure and production operations labs](../../curriculum/15-infrastructure-production-operations/README.md)
+add a tested provider-free topology model, namespace capacity controls, API
+topology spread, bounded voluntary disruption, a live business transaction, and
+an isolated logical restore. The local proof does not replace provider-specific
+IAM/network/quota validation, multi-zone stateful design, or regional recovery.

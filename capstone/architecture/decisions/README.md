@@ -23,3 +23,4 @@ Copy [`0000-template.md`](0000-template.md) to start a decision.
 - [ADR 0010: Use bounded Prometheus metrics as the first telemetry signal](0010-bounded-prometheus-metrics.md) — Accepted
 - [ADR 0011: Use OpenTelemetry for correlated observability](0011-otel-correlated-observability.md) — Accepted
 - [ADR 0012: Use Flux with immutable supply-chain evidence](0012-flux-gitops-supply-chain.md) — Accepted
+- [ADR 0013: Use a managed platform with explicit production boundaries](0013-managed-platform-production-boundaries.md) — Accepted
