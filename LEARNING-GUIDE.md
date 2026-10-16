@@ -12,6 +12,8 @@
 8. Record unclear areas and revisit the evidence.
 
 A useful split is 30% theory, 60% hands-on work, and 10% written explanation.
+Use the [learning execution kit](learning/README.md) to turn this cycle into a
+study schedule, progress record, evidence summary, gate score, and revision log.
 
 ## Evidence of learning
 

@@ -4,24 +4,26 @@
 
 Develop practitioner-to-senior-level knowledge of containerized applications
 and Kubernetes platforms through theory, implementation, operations, and
-interview practice. The core path is approximately 26 weeks at 8–12 hours per
-week; progress is based on demonstrated outcomes, not elapsed time.
+interview practice. The published module estimates total approximately 382–492
+hours. At 8–12 hours per week, expect roughly 32–62 weeks; the execution kit
+uses a balanced 48-week plan. Progress is based on demonstrated outcomes, not
+elapsed time.
 
 ## Stages
 
-| Stage | Duration | Outcome |
+| Stage | Modules | Outcome |
 |---|---:|---|
-| Prerequisites | 2 weeks | Diagnose Linux, DNS, HTTP, TLS, and Git problems |
-| Containers and Docker | 3 weeks | Build and operate secure, efficient images |
-| Microservices and distributed data | 3 weeks | Design boundaries, contracts, consistency, and failure handling |
-| Kubernetes core | 5 weeks | Deploy and troubleshoot application workloads |
-| Networking and storage | 3 weeks | Operate routing, policy, TLS, and stateful workloads |
-| Security and resources | 2 weeks | Apply least privilege and workload constraints |
-| Helm | 2 weeks | Package, validate, upgrade, and roll back applications |
-| Observability | 3 weeks | Use metrics, logs, traces, alerts, and SLOs |
-| CI/CD, supply chain, and GitOps | 2 weeks | Produce evidence, promote safely, and reconcile delivery |
-| Infrastructure and production operations | 3 weeks | Provision, scale, upgrade, recover, and control cost |
-| Advanced Kubernetes and graduation | 2 weeks | Extend deliberately and defend production readiness |
+| Prerequisites | 00 | Diagnose Linux, DNS, HTTP, TLS, and Git problems |
+| Containers and Docker | 01–02 | Build and operate secure, efficient images |
+| Microservices and distributed data | 03 | Design boundaries, contracts, consistency, and failure handling |
+| Kubernetes core | 04–05 | Deploy and troubleshoot application workloads |
+| Networking and storage | 06–07 | Operate routing, policy, TLS, and stateful workloads |
+| Configuration, resources, and security | 08–10 | Apply safe configuration, placement, least privilege, and policy |
+| Helm | 11 | Package, validate, upgrade, and roll back applications |
+| Observability | 12–13 | Use metrics, logs, traces, alerts, and SLOs |
+| CI/CD, supply chain, and GitOps | 14 | Produce evidence, promote safely, and reconcile delivery |
+| Infrastructure and production operations | 15 | Provision, scale, upgrade, recover, and control cost |
+| Advanced Kubernetes and graduation | 16 | Extend deliberately and defend production readiness |
 
 ## Ordered modules
 
