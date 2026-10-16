@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: operator-lab
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloudcart-policy-controller
+  namespace: operator-lab
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cloudcart-policy-controller
+  namespace: operator-lab
+rules:
+  - apiGroups: ["learning.cloudcart.io"]
+    resources: ["cloudcartpolicies"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: ["learning.cloudcart.io"]
+    resources: ["cloudcartpolicies/status"]
+    verbs: ["get", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "create", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cloudcart-policy-controller
+  namespace: operator-lab
+subjects:
+  - kind: ServiceAccount
+    name: cloudcart-policy-controller
+    namespace: operator-lab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cloudcart-policy-controller
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcart-policy-controller
+  namespace: operator-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: cloudcart-policy-controller}
+  template:
+    metadata:
+      labels: {app: cloudcart-policy-controller}
+    spec:
+      serviceAccountName: cloudcart-policy-controller
+      containers:
+        - name: controller
+          image: cloudcart-app:0.1.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "/controller/controller.py"]
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
+          resources:
+            requests: {cpu: 10m, memory: 32Mi}
+            limits: {cpu: 100m, memory: 96Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            seccompProfile: {type: RuntimeDefault}
+          volumeMounts:
+            - name: controller-source
+              mountPath: /controller
+              readOnly: true
+      volumes:
+        - name: controller-source
+          configMap: {name: cloudcart-policy-controller-source}
+---
+apiVersion: learning.cloudcart.io/v1alpha1
+kind: CloudCartPolicy
+metadata:
+  name: sample
+  namespace: operator-lab
+spec:
+  message: initial-policy

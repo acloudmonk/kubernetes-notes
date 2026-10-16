@@ -46,7 +46,7 @@ published learning material are linked.
 | 13 | [Grafana and observability](13-grafana-observability/README.md) | Verified |
 | 14 | [CI/CD, supply chain, and GitOps](14-cicd-supply-chain-gitops/README.md) | Verified |
 | 15 | [Infrastructure and production operations](15-infrastructure-production-operations/README.md) | Verified |
-| 16 | Advanced Kubernetes | Planned |
+| 16 | [Advanced Kubernetes](16-advanced-kubernetes/README.md) | Verified |
 
 When a module is published, its change must link the module README from this
 table and from the matching `ROADMAP.md` row. The module must also include the

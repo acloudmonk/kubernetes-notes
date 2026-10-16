@@ -60,6 +60,9 @@ weakest dimension should be repeated before continuing.
 
 **After Module 16**
 
+Use the [Module 16 final assessment](16-advanced-kubernetes/production-readiness-assessment.md)
+to assemble, score, and safely handle the evidence packet.
+
 - Reproduce infrastructure and delivery from versioned sources.
 - Demonstrate supply-chain evidence and admission controls.
 - Test scaling, disruption, upgrade, rollback, backup, and restoration.
