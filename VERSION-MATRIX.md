@@ -14,7 +14,7 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–14
+Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–15
 Kubernetes labs are verified against the local baseline below.
 Module 03 application verification is tracked against the same Docker environment.
 
@@ -52,6 +52,7 @@ Module 03 application verification is tracked against the same Docker environmen
 | Cosign | 3.0.5 | Verified for Module 14 | Phase 7 |
 | Syft | 1.54.1 | Verified for Module 14 | Phase 7 |
 | Grype | 0.120.1 | Verified for Module 14 | Phase 7 |
+| Terraform | 1.14.8 | Verified for Module 15 | Phase 8 |
 
 Executable modules list only the versions they require.
 
@@ -169,3 +170,12 @@ tests created new orders whose events increased the processed-event count.
 Credentials were generated only in the cluster, and the disposable cluster,
 keys, reports, packages, scanner data, and downloaded tools were removed after
 verification.
+
+Module 15 was runtime-verified with Terraform 1.14.8, Helm 4.3.1, kind 0.33.0,
+Kubernetes 1.36.4, kubectl 1.36.1, Docker Engine 29.7.2, and CloudCart 0.1.0.
+Verification covered three provider-free Terraform tests, strict Helm lint,
+server-side manifest validation, initial installation, idempotent upgrade with
+credential reuse, API topology spread, PDB-aware drains on each worker, one
+available API during each drain, two distinct end-to-end order/event paths, and
+two isolated PostgreSQL restores with matching business-record counts. Restore
+artifacts, the disposable cluster, and ignored downloaded tools were removed.

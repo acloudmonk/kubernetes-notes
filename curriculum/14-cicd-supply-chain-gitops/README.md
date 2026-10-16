@@ -4,7 +4,7 @@
 **Estimated time:** 28–36 hours<br>
 **Prerequisites:** [13 — Grafana and observability](../13-grafana-observability/README.md)
 
-> **Learning path:** [Curriculum index](../README.md) · Previous: [Grafana and observability](../13-grafana-observability/README.md) · Next: Infrastructure and production operations (planned)
+> **Learning path:** [Curriculum index](../README.md) · Previous: [Grafana and observability](../13-grafana-observability/README.md) · Next: [Infrastructure and production operations](../15-infrastructure-production-operations/README.md)
 
 ## Why this matters
 
@@ -66,5 +66,5 @@ tests created distinct orders whose events increased the processed-event count.
 
 ## Continue
 
-After completion, return to the [curriculum index](../README.md). Module 15 will
-cover infrastructure and production operations.
+Continue to [15 — Infrastructure and production operations](../15-infrastructure-production-operations/README.md),
+or return to the [curriculum index](../README.md).

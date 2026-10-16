@@ -124,7 +124,7 @@
     "scalableComponent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["replicas", "resources"],
+      "required": ["replicas", "resources", "topologySpreadConstraints"],
       "properties": {
         "replicas": {"type": "integer", "minimum": 1},
         "service": {
@@ -133,7 +133,8 @@
           "required": ["port"],
           "properties": {"port": {"type": "integer", "minimum": 1, "maximum": 65535}}
         },
-        "resources": {"$ref": "#/$defs/resources"}
+        "resources": {"$ref": "#/$defs/resources"},
+        "topologySpreadConstraints": {"type": "array"}
       }
     }
   }

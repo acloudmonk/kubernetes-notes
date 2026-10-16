@@ -45,7 +45,7 @@ published learning material are linked.
 | 12 | [Prometheus](12-prometheus/README.md) | Verified |
 | 13 | [Grafana and observability](13-grafana-observability/README.md) | Verified |
 | 14 | [CI/CD, supply chain, and GitOps](14-cicd-supply-chain-gitops/README.md) | Verified |
-| 15 | Infrastructure and production operations | Planned |
+| 15 | [Infrastructure and production operations](15-infrastructure-production-operations/README.md) | Verified |
 | 16 | Advanced Kubernetes | Planned |
 
 When a module is published, its change must link the module README from this
