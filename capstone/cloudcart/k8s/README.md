@@ -24,7 +24,8 @@ Do not commit rendered Secrets, kubeconfigs, or exported cluster diagnostics.
 
 The API has startup, readiness, and liveness probes. The relay and worker do
 not expose a truthful health endpoint yet; process liveness alone would not
-prove message progress. Module 13 will add operational telemetry.
+prove message progress. [Module 13](../../../curriculum/13-grafana-observability/README.md)
+adds correlated metrics, logs, traces, dashboards, and SLO evidence.
 
 CloudCart-owned containers drop all capabilities and run as a fixed non-root
 UID. The upstream PostgreSQL and RabbitMQ images perform entrypoint ownership

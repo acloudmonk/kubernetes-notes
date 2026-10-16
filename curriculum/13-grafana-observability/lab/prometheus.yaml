@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+      scrape_timeout: 3s
+      evaluation_interval: 5s
+      external_labels:
+        cluster: cloudcart-observability
+        environment: learning
+    rule_files:
+      - /etc/prometheus/rules/*.yml
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets: ["alertmanager.monitoring.svc:9093"]
+    scrape_configs:
+      - job_name: prometheus
+        static_configs:
+          - targets: ["127.0.0.1:9090"]
+      - job_name: cloudcart-api
+        kubernetes_sd_configs:
+          - role: endpointslice
+            namespaces:
+              names: ["cloudcart"]
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+            action: keep
+            regex: "true"
+          - source_labels: [__meta_kubernetes_endpointslice_port_name]
+            action: keep
+            regex: http
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+            target_label: __metrics_path__
+            regex: (.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+  cloudcart-rules.yml: |
+    groups:
+      - name: cloudcart.rules
+        interval: 5s
+        rules:
+          - record: cloudcart:http_requests:rate1m
+            expr: sum by (method, route, status_code) (rate(cloudcart_http_requests_total[1m]))
+          - record: cloudcart:http_errors:ratio1m
+            expr: sum(rate(cloudcart_http_requests_total{status_code=~"5.."}[1m])) / clamp_min(sum(rate(cloudcart_http_requests_total[1m])), 0.001)
+          - alert: CloudCartAPITargetsMissing
+            expr: absent(up{job="cloudcart-api"})
+            for: 20s
+            labels: {severity: critical, service: cloudcart-api}
+            annotations:
+              summary: CloudCart API has no discovered scrape targets
+              runbook_url: https://example.invalid/runbooks/cloudcart-api-targets-missing
+          - alert: CloudCartAPITargetDown
+            expr: up{job="cloudcart-api"} == 0
+            for: 20s
+            labels: {severity: critical, service: cloudcart-api}
+            annotations:
+              summary: A discovered CloudCart API target cannot be scraped
+      - name: cloudcart.slo
+        interval: 5s
+        rules:
+          - record: cloudcart:slo_availability:ratio5m
+            expr: 1 - ((sum(rate(cloudcart_http_requests_total{status_code=~"5.."}[5m])) or vector(0)) / clamp_min(sum(rate(cloudcart_http_requests_total[5m])), 0.001))
+          - record: cloudcart:slo_latency_250ms:ratio5m
+            expr: sum(rate(cloudcart_http_request_duration_seconds_bucket{le="0.25"}[5m])) / clamp_min(sum(rate(cloudcart_http_request_duration_seconds_count[5m])), 0.001)
+          - record: cloudcart:slo_error_budget:burn_rate5m
+            expr: (1 - cloudcart:slo_availability:ratio5m) / 0.005
+          - record: cloudcart:slo_error_budget:burn_rate1h
+            expr: ((sum(rate(cloudcart_http_requests_total{status_code=~"5.."}[1h])) or vector(0)) / clamp_min(sum(rate(cloudcart_http_requests_total[1h])), 0.001)) / 0.005
+          - alert: CloudCartAvailabilityBudgetFastBurn
+            expr: cloudcart:slo_error_budget:burn_rate5m > 14.4 and cloudcart:slo_error_budget:burn_rate1h > 14.4
+            for: 2m
+            labels: {severity: critical, service: cloudcart-api, slo: availability}
+            annotations:
+              summary: CloudCart is rapidly consuming its 99.5% availability error budget
+              runbook_url: https://example.invalid/runbooks/cloudcart-availability

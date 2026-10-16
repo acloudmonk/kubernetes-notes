@@ -39,6 +39,7 @@ sending email or handling personal data.
 - `src/cloudcart/relay.py` — polling outbox relay with publisher confirms
 - `src/cloudcart/worker.py` — manual acknowledgement and idempotent consumer
 - `src/cloudcart/metrics.py` — bounded Prometheus HTTP and business metrics
+- `src/cloudcart/telemetry.py` — optional OTLP HTTP tracing and context propagation
 - `migrations/001_initial.sql` — schemas, constraints, indexes, and seed data
 - `tests` — pure-domain, API-contract, and opt-in PostgreSQL tests
 - `compose.yaml` — isolated API, migration, relay, worker, database, and broker
@@ -141,3 +142,12 @@ labels use templates rather than resource IDs. The lab discovers both API Pod
 endpoints, evaluates PromQL and rules, routes an intentional missing-target
 alert, measures series cardinality, and restores the application. Production
 access, HA, retention, and long-term storage remain explicit design work.
+
+## Correlated observability
+
+The [Module 13 Grafana and observability labs](../../curriculum/13-grafana-observability/README.md)
+add OTLP traces, trace-correlated JSON logs, Prometheus exemplars, Loki, Tempo,
+an OpenTelemetry Collector, provisioned Grafana data sources/dashboard, and SLO
+recording rules. Export is disabled unless `OTEL_EXPORTER_OTLP_ENDPOINT` is set,
+so local tests and earlier modules do not require a telemetry backend. The lab's
+anonymous access and ephemeral storage are not production defaults.

@@ -2,6 +2,8 @@ import json
 import logging
 from datetime import datetime, timezone
 
+from opentelemetry import trace
+
 
 class JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
@@ -11,9 +13,18 @@ class JsonFormatter(logging.Formatter):
             "logger": record.name,
             "message": record.getMessage(),
         }
+        span_context = trace.get_current_span().get_span_context()
+        if span_context.is_valid:
+            document["trace_id"] = trace.format_trace_id(span_context.trace_id)
+            document["span_id"] = trace.format_span_id(span_context.span_id)
         for field in ("event_id", "order_id"):
             if hasattr(record, field):
-                document[field] = getattr(record, field)
+                value = getattr(record, field)
+                document[field] = (
+                    value
+                    if value is None or isinstance(value, (bool, int, float, str))
+                    else str(value)
+                )
         return json.dumps(document, separators=(",", ":"))
 
 
