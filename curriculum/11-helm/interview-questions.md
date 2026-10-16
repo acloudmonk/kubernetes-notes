@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [11 — Helm](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
 Use claim → mechanism → tradeoff → evidence. Prefer an incident or chart example

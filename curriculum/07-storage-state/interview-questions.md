@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [07 — Kubernetes Storage and State](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
 ## Fundamentals and internals

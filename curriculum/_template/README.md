@@ -60,13 +60,16 @@ Tag questions as fundamental, implementation, internals, architecture,
 security, troubleshooting, production, or senior. Answers include a direct
 response, mechanism, example, tradeoffs, verification, common mistake, and
 follow-ups. Number every question as a level-three heading and put an explicit
-`**Answer:**` directly below it.
+`**Answer:**` directly below it. Include at least 12 questions and declare
+`**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production`
+near the top of the page; each area must be represented substantively.
 
 ## Knowledge check
 
 Include mechanism, prediction, implementation, and diagnosis questions. Keep
 answers in a visible `## Answers` section below a separator for self-testing.
-Keep question and answer numbering identical and answer every prompt.
+Include at least 12 questions, keep question and answer numbering identical,
+and answer every prompt.
 
 ## References
 

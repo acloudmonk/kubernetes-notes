@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [13 — Grafana and observability](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
 Strong answers state assumptions, measurement points, failure modes, privacy and

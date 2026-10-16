@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [03 — Microservices and Distributed Data](README.md) · Previous:
 > [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
@@ -76,6 +78,38 @@ and tolerant readers, test old/new producer-consumer combinations, observe actua
 consumer usage, and use parallel versions or upcasters for breaking changes.
 Preserve semantic meaning and replayability; schema validation alone cannot prove
 that old events retain the same business interpretation.
+
+### 9. How do timeout, retry, and circuit-breaker policies interact?
+
+**Answer:** A timeout bounds one attempt, retries consume a larger caller deadline,
+and a circuit breaker temporarily rejects calls when recent outcomes indicate a
+dependency is unlikely to succeed. Put retries at one controlled layer, retry
+only suitable failures with jitter and a budget, and preserve enough deadline for
+useful work. Breakers protect capacity but can also delay recovery if tuned poorly.
+
+### 10. Why should each service own its data?
+
+**Answer:** Ownership lets a service enforce invariants and evolve storage behind
+an explicit contract. Shared-table writes couple schemas, deployments, security,
+and failure recovery and allow other services to bypass domain rules. Ownership
+does not require one database server per service, but write authority, migration,
+backup, and access boundaries must remain explicit.
+
+### 11. What happens when a Saga compensation fails?
+
+**Answer:** Compensation is a new distributed business action, not a database
+rollback, and it can time out or fail like any other call. Persist workflow state,
+retry idempotently where safe, expose stuck states, alert an owner, and provide
+reconciliation or manual resolution with audit. Never assume compensations can
+perfectly erase irreversible external effects.
+
+### 12. What should a service contract test prove?
+
+**Answer:** It should prove that a provider and consumer agree on request, response,
+event, error, and compatibility semantics for supported versions. Run consumer-
+driven or schema/example tests in delivery pipelines, but retain integration and
+end-to-end tests for transport, deployment, authentication, timing, and behavior
+that a contract fixture cannot establish.
 
 > **Module:** [03 — Microservices and Distributed Data](README.md) · Previous:
 > [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)

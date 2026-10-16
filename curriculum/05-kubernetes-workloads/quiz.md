@@ -14,6 +14,8 @@ Answer every question before reading the answer section.
 8. Does `progressDeadlineSeconds` automatically roll back?
 9. What evidence distinguishes CrashLoop from image-pull failure?
 10. Why does a ConfigMap environment update not alter a running process?
+11. Does a `preStop` hook receive time in addition to `terminationGracePeriodSeconds`?
+12. Why should a database migration not run independently in every application replica?
 
 ---
 
@@ -29,5 +31,7 @@ Answer every question before reading the answer section.
 8. No; it marks the rollout failed/stalled for an operator or automation to act.
 9. Container waiting reason and Events show pull failure; CrashLoop has terminated exit state, restart count, and previous logs.
 10. Environment is captured at process start; trigger a controlled rollout after configuration change.
+11. No. The hook consumes the same termination grace-period budget.
+12. Replicas can race, repeat partial work, block startup, and couple rollout safety to schema mutation.
 
 > **Module:** [05 — Kubernetes Workloads](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)

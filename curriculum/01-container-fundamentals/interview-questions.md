@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module navigation:** [Container fundamentals home](README.md) · Previous:
 > [Troubleshooting scenario](troubleshooting.md) · Next:
 > [Knowledge check](quiz.md)
@@ -93,6 +95,26 @@ the selected digest and observable runtime error before rebuilding it.
 runtime such as containerd or CRI-O. OCI-compatible images remain portable
 across runtimes, but Docker Engine is not the node contract and Docker-specific
 local behavior should not be assumed in Kubernetes.
+
+### 11. Trace an image from an engine to a running container process.
+
+**Tags:** `internals`, `implementation`
+
+**Answer:** The engine or higher-level runtime resolves and verifies the image,
+unpacks content-addressed layers into a snapshot, creates runtime configuration,
+and invokes an OCI runtime to establish namespaces, cgroups, mounts, capabilities,
+and the initial process. Networking and storage may involve separate plugins.
+Inspect the selected digest, runtime metadata, mounts, cgroups, and process tree.
+
+### 12. How do rootless containers differ from merely running as non-root?
+
+**Tags:** `security`, `production`
+
+**Answer:** A non-root process may still be managed by a rootful daemon with
+host-level privileges. Rootless operation runs the daemon/runtime without host
+root, commonly using user namespaces and constrained networking/storage features.
+It reduces daemon-compromise impact but has compatibility and performance
+tradeoffs; neither mode removes kernel or application risk.
 
 ---
 

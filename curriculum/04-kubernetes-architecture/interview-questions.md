@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [04 — Kubernetes Architecture](README.md) · Previous:
 > [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 

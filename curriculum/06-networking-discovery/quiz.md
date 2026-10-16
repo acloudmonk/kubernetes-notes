@@ -14,6 +14,8 @@ Answer every question before reading the answer section.
 8. Why can a route be Accepted while requests return 503?
 9. Does `containerPort` open a firewall?
 10. Why test from a representative source Pod?
+11. What availability tradeoff accompanies `externalTrafficPolicy: Local`?
+12. Why can a small HTTP request succeed while a larger one times out across an overlay?
 
 ---
 
@@ -29,5 +31,7 @@ Answer every question before reading the answer section.
 8. Attachment can be valid while backend endpoints are absent/unready/unreachable.
 9. No; it documents a port and supports named references.
 10. Namespace, labels, policies, DNS search, node, and address family can change the path.
+11. Nodes without local ready endpoints cannot serve the traffic, and load may be uneven.
+12. Encapsulation can exceed the effective path MTU while blocked fragmentation discovery hides the required size.
 
 > **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Interview questions](interview-questions.md) · Next: [References and videos](references.md)

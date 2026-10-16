@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module navigation:** [Docker module home](README.md) · Previous:
 > [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
@@ -94,6 +96,26 @@ brokers or rootless/isolated builders where a workflow needs container operation
 content. Pinning a digest makes deployment input reproducible but requires an
 explicit process to discover, test, approve, and roll forward to patched content.
 Record multi-platform selection and provenance as separate supply-chain evidence.
+
+### 11. How do you diagnose a container that exits immediately?
+
+**Tags:** `troubleshooting`, `internals`
+
+**Answer:** Inspect state, exit code, OOM status, timestamps, configured
+entrypoint/arguments, and stdout/stderr before rerunning interactively. Compare
+the image's declared command with Compose or CLI overrides, mounts, environment,
+working directory, user, and platform. Keeping it alive with `sleep` can aid
+inspection but is not a correction for a failed main process.
+
+### 12. When is Docker Compose insufficient for production orchestration?
+
+**Tags:** `architecture`, `senior`
+
+**Answer:** Compose is effective for defining and reproducing a multi-container
+application on an engine, but it does not by itself provide multi-node scheduling,
+cluster reconciliation, disruption policy, autoscaling, admission, or platform
+tenancy. Choose an orchestrator when those requirements justify its complexity;
+do not adopt Kubernetes merely because an application has several containers.
 
 ---
 

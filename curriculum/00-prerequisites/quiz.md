@@ -13,6 +13,10 @@ Answer every question before reading the answer section.
 6. Why might an unquoted YAML value be interpreted unexpectedly?
 7. Why can unlimited retries worsen an outage?
 8. What state is required for reliable idempotency?
+9. Why should automation preserve the first failing exit status?
+10. Does a client timeout prove the server stopped processing?
+11. Which Git operation safely reverses an already shared commit?
+12. What must be validated beyond configuration syntax?
 
 ---
 
@@ -26,6 +30,10 @@ Answer every question before reading the answer section.
 6. YAML parsers assign scalar types and special syntax has structural meaning.
 7. They add load and resource consumption to an already failing dependency.
 8. A stable key stored atomically with the original operation result.
+9. Otherwise a later successful command can hide the real failure and produce a false pass.
+10. No; the outcome may be unknown and the server may still commit an effect.
+11. `git revert`, because it adds an inverse commit without rewriting shared history.
+12. Schema, target-version compatibility, policy, sensitive-data handling, and actual consumer behavior.
 
 ---
 

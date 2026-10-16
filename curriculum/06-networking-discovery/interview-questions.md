@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
 ## Fundamentals and internals
@@ -100,5 +102,21 @@ protocol, and controller logs/status. A 503 commonly means the proxy has no
 usable upstream even though route attachment succeeded.
 
 **Follow-up:** How would the investigation change for 404, TLS failure, or 502?
+
+### 11. What are the tradeoffs of preserving client source IP?
+
+**Answer:** Policies such as `externalTrafficPolicy: Local` can preserve the
+external source address and avoid an extra cross-node hop, but a node without a
+local ready endpoint cannot serve that traffic and load can become uneven.
+Provider health checks and load-balancer behavior matter. Verify the address seen
+by the application and availability during rollout and node loss.
+
+### 12. How do MTU and address-family mismatches present in production?
+
+**Answer:** Small connections or DNS may work while larger packets stall when
+encapsulation exceeds path MTU and fragmentation discovery is blocked. IPv4/IPv6
+selection can send clients toward an unsupported path or endpoint family. Compare
+interface/overlay MTUs, packet sizes, ICMP behavior, DNS records, EndpointSlice
+address types, and captures at adjacent hops before changing global settings.
 
 > **Module:** [06 — Kubernetes Networking and Discovery](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)

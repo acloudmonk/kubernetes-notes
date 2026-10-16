@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module navigation:** [Prerequisites module home](README.md) · Previous:
 > [Troubleshooting scenario](troubleshooting.md) · Next:
 > [Knowledge check](quiz.md)
@@ -60,6 +62,43 @@ the permanent fix.
 **Answer:** Repeating it produces no additional business effect. An idempotency key must be
 associated atomically with the operation result so retries can return the prior
 outcome instead of repeating the effect.
+
+### 9. Why must shell automation check exit codes?
+
+**Tags:** `shell`, `implementation`
+
+**Answer:** A command can print plausible output and still fail, while a later
+command may hide the original nonzero status. Automation should stop or branch
+deliberately on failure, preserve diagnostic context, and avoid pipelines whose
+exit semantics are misunderstood. Test both success and expected failure paths.
+
+### 10. How do timeout, deadline, and cancellation differ?
+
+**Tags:** `distributed-systems`, `internals`
+
+**Answer:** A timeout bounds how long one operation waits; a deadline is an
+absolute budget that can propagate across calls; cancellation communicates that
+work is no longer wanted. Stopping the wait does not prove remote work stopped,
+so effects need idempotency, reconciliation, and server-side cancellation where
+supported.
+
+### 11. How do you recover a Git change without rewriting shared history?
+
+**Tags:** `git`, `production`
+
+**Answer:** Inspect the graph and working state first. Restore or unstage local
+paths deliberately, and use `git revert` to create an inverse commit for a change
+already shared. Resetting or force-pushing rewrites reachability and can discard
+collaborators' work, so it requires explicit coordination and recovery planning.
+
+### 12. What makes a configuration change safe to promote?
+
+**Tags:** `configuration`, `senior`
+
+**Answer:** Define schema and ownership, validate syntax and semantics, review the
+diff, test against the target version, protect sensitive values, and specify
+verification and rollback. A parser accepting YAML proves only syntax; the
+consumer, dependencies, and business behavior must accept the resulting state.
 
 ---
 

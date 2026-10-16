@@ -10,6 +10,16 @@ if ($LASTEXITCODE -ne 0) {
 
 $failures = [System.Collections.Generic.List[string]]::new()
 $checkedModules = 0
+$minimumInterviewQuestions = 12
+$minimumQuizQuestions = 12
+$requiredCoverage = @(
+    'fundamentals',
+    'internals',
+    'implementation',
+    'troubleshooting',
+    'security',
+    'production'
+)
 
 Get-ChildItem (Join-Path $repositoryRoot 'curriculum') -Directory |
     Where-Object { $_.Name -match '^\d{2}-' } |
@@ -32,6 +42,31 @@ Get-ChildItem (Join-Path $repositoryRoot 'curriculum') -Directory |
             $failures.Add("$($module.Name): interview questions=$questions, explicit answers=$answers")
         }
 
+        if ($questions -lt $minimumInterviewQuestions) {
+            $failures.Add(
+                "$($module.Name): interview questions=$questions; minimum=$minimumInterviewQuestions"
+            )
+        }
+
+        $coverageMatch = [regex]::Match(
+            $interview,
+            '(?m)^\*\*Coverage:\*\*\s+(?<items>.+)$'
+        )
+        if (-not $coverageMatch.Success) {
+            $failures.Add("$($module.Name): missing explicit interview coverage metadata")
+        }
+        else {
+            $declaredCoverage = @(
+                $coverageMatch.Groups['items'].Value -split '·' |
+                    ForEach-Object { $_.Trim().ToLowerInvariant() }
+            )
+            foreach ($area in $requiredCoverage) {
+                if ($area -notin $declaredCoverage) {
+                    $failures.Add("$($module.Name): missing interview coverage area '$area'")
+                }
+            }
+        }
+
         $quiz = Get-Content -Raw $quizPath
         $answerHeading = [regex]::Match($quiz, '(?m)^## Answers\s*$')
         if (-not $answerHeading.Success) {
@@ -45,6 +80,12 @@ Get-ChildItem (Join-Path $repositoryRoot 'curriculum') -Directory |
 
             if ($quizQuestions -eq 0 -or $quizQuestions -ne $quizAnswers) {
                 $failures.Add("$($module.Name): quiz questions=$quizQuestions, answers=$quizAnswers")
+            }
+
+            if ($quizQuestions -lt $minimumQuizQuestions) {
+                $failures.Add(
+                    "$($module.Name): quiz questions=$quizQuestions; minimum=$minimumQuizQuestions"
+                )
             }
         }
 

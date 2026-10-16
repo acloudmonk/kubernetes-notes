@@ -1,5 +1,7 @@
 # Interview Questions
 
+**Coverage:** fundamentals · internals · implementation · troubleshooting · security · production
+
 > **Module:** [05 — Kubernetes Workloads](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
 
 Use each answer as a model, then add an example from the CloudCart lab and the
@@ -118,5 +120,21 @@ messages already published, and destructive migrations.
 
 **Common mistake:** Treating `kubectl rollout undo` success as proof that the
 service and its data have recovered.
+
+### 11. How do you design graceful Pod termination for traffic and background work?
+
+**Answer:** Readiness must stop new traffic, the process must handle SIGTERM,
+drain bounded in-flight requests or messages, and exit inside a measured grace
+period. A `preStop` hook uses that same budget and cannot replace signal handling.
+Account for endpoint propagation, client keep-alive, broker redelivery, and a
+forced kill; verify with live traffic and duplicate-safe work processing.
+
+### 12. When should work run as a Job instead of inside application startup?
+
+**Answer:** Use a Job for finite work that needs explicit completion, retries,
+deadline, status, and separate operational ownership. Startup initialization
+should be local, bounded, and safe for every replica. Cluster-wide migrations in
+each Pod race and delay scaling; run one idempotent migration workflow compatible
+with concurrently running application versions.
 
 > **Module:** [05 — Kubernetes Workloads](README.md) · Previous: [Troubleshooting](troubleshooting.md) · Next: [Knowledge check](quiz.md)
