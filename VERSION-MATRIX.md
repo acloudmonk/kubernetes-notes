@@ -14,9 +14,9 @@ compatibility with every older or future release.
 
 ## Current baseline
 
-Phase 2A prerequisite labs, the Module 01–02 container labs, and the Module 04–16
-Kubernetes labs are verified against the local baseline below.
-Module 03 application verification is tracked against the same Docker environment.
+Modules 00–16 are verified against the local baseline below. Verification is
+scoped to the evidence recorded here; it does not promise every host, cloud,
+architecture, or future version behaves identically.
 
 | Component | Baseline | Local discovery | Planned phase |
 |---|---|---|---|
@@ -60,6 +60,13 @@ Executable modules list only the versions they require.
 The WSL status command was inaccessible from the validation process, so no WSL
 distribution or version is claimed as tested in Phase 2A.
 
+Module 00 was runtime-verified with PowerShell, Git 2.46.0.windows.1, and Python
+3.12.0. Verification covered process/socket ownership, local HTTP, a controlled
+bind conflict, two simultaneous listeners, configuration and connection failure
+classification, valid and invalid DNS/TLS paths, exit codes, and precise process
+and port cleanup. The Bash/WSL path remains documented but is not claimed as
+runtime-verified on this host.
+
 Module 01 was runtime-verified using `alpine:3.22.2`. Verification covered image
 identity, process and cgroup evidence, CPU and memory limits, writable-layer
 persistence, graceful signal handling, finite-process exit behavior, and scoped
@@ -72,10 +79,14 @@ initialization and backup restoration, non-root execution, read-only root
 filesystem, writable `tmpfs`, graceful shutdown, dropped capabilities,
 resource limits, and scoped cleanup.
 
-Module 03 uses Python 3.12, a PostgreSQL-backed FastAPI API, a transactional
-outbox relay, RabbitMQ, and an idempotent notification worker. Its status remains
-Draft until unit, integration, container, broker-failure, duplicate-delivery,
-dead-letter, and cleanup checks have all been executed on this baseline.
+Module 03 was runtime-verified with Python 3.12, the pinned FastAPI application,
+PostgreSQL 17.11, RabbitMQ 4.2.9, and Docker Compose 5.4.0. All 14 unit, API,
+observability, and PostgreSQL integration tests passed. Runtime evidence covered
+one business effect for a repeated command, an accepted order and durable
+unpublished outbox row during broker outage, delivery after recovery, poison
+message dead lettering, one effect for duplicate event delivery, generated
+in-memory credentials, and removal of containers, networks, volumes, and the
+temporary test image.
 
 Module 04 was runtime-verified with a two-node kind cluster. Verification
 covered API discovery, client/server compatibility, Ready nodes, system Pods,

@@ -1,7 +1,7 @@
 # Troubleshooting Scenario — Container Exits Immediately
 
 > **Module navigation:** [Container fundamentals home](README.md) · Previous:
-> [Guided lab](lab/README.md) · Next: [Interview questions](interview-questions.md)
+> [Independent challenge](independent-challenge.md) · Next: [Interview questions](interview-questions.md)
 
 A service container appears briefly and then disappears from `docker ps`.
 Repeated `docker start` attempts produce the same result.
@@ -39,5 +39,5 @@ fixes a service whose main process cannot remain healthy.
 
 ---
 
-[Previous: Guided lab](lab/README.md) · [Container fundamentals home](README.md) ·
+[Previous: Independent challenge](independent-challenge.md) · [Container fundamentals home](README.md) ·
 [Next: Interview questions](interview-questions.md)

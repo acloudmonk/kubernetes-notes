@@ -23,17 +23,17 @@ week; progress is based on demonstrated outcomes, not elapsed time.
 | Infrastructure and production operations | 3 weeks | Provision, scale, upgrade, recover, and control cost |
 | Advanced Kubernetes and graduation | 2 weeks | Extend deliberately and defend production readiness |
 
-## Planned modules
+## Ordered modules
 
-Follow this table from top to bottom. A linked module is available to study;
-plain text identifies planned content that is not ready yet.
+Follow this fully published path from top to bottom. A module is complete only
+after its practical evidence and the applicable cumulative gate pass.
 
 | Order | Module | Status | Scope |
 |---:|---|---|---|
-| 00 | [Prerequisites](curriculum/00-prerequisites/README.md) | Draft | Linux, networking, Git, YAML, shell, distributed systems |
-| 01 | [Container fundamentals](curriculum/01-container-fundamentals/README.md) | Draft | Processes, namespaces, cgroups, filesystems, runtimes |
+| 00 | [Prerequisites](curriculum/00-prerequisites/README.md) | Verified | Linux, networking, Git, YAML, shell, distributed systems |
+| 01 | [Container fundamentals](curriculum/01-container-fundamentals/README.md) | Verified | Processes, namespaces, cgroups, filesystems, runtimes |
 | 02 | [Docker](curriculum/02-docker/README.md) | Verified | Images, Dockerfiles, BuildKit, Compose, registries, security |
-| 03 | [Microservices and distributed data](curriculum/03-microservices-distributed-data/README.md) | Draft | Boundaries, APIs, transactions, messaging, consistency, resilience |
+| 03 | [Microservices and distributed data](curriculum/03-microservices-distributed-data/README.md) | Verified | Boundaries, APIs, transactions, messaging, consistency, resilience |
 | 04 | [Kubernetes architecture](curriculum/04-kubernetes-architecture/README.md) | Verified | API, control plane, nodes, reconciliation, extensibility |
 | 05 | [Kubernetes workloads](curriculum/05-kubernetes-workloads/README.md) | Verified | Pods, controllers, probes, configuration, rollouts |
 | 06 | [Networking and discovery](curriculum/06-networking-discovery/README.md) | Verified | CNI, Services, DNS, Gateway API, policy, TLS |
@@ -60,6 +60,7 @@ plain text identifies planned content that is not ready yet.
 8. Add telemetry, dashboards, alerts, and runbooks.
 9. Deliver it through CI and GitOps.
 10. Exercise load, disruption, rollback, backup, and recovery.
+11. Evaluate advanced extensions and defend the production-readiness evidence.
 
 ## Delivery phases
 
@@ -69,8 +70,9 @@ plain text identifies planned content that is not ready yet.
 - **Phase 4:** networking, storage, resources, security, and policy.
 - **Phase 5:** Helm curriculum and a tested capstone chart.
 - **Phase 6:** observability, SLOs, dashboards, alerts, and runbooks.
-- **Phase 7:** CI/CD, supply chain, GitOps, IaC, managed Kubernetes,
-  resilience, recovery, and advanced subjects.
+- **Phase 7:** CI/CD, supply chain, and GitOps.
+- **Phase 8:** IaC, managed Kubernetes, resilience, recovery, advanced
+  Kubernetes, and graduation.
 
 Completion means the learner can design the capstone, justify tradeoffs, deploy
 it reproducibly, operate it under failure, and reason from evidence.

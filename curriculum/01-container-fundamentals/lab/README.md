@@ -2,11 +2,17 @@
 
 > **Module navigation:** [Container fundamentals home](../README.md) · Previous:
 > [Quick exercises](../quick-exercises.md) · Next:
-> [Troubleshooting scenario](../troubleshooting.md)
+> [Independent challenge](../independent-challenge.md)
 
 **Time:** 45–75 minutes  
 **Cost:** None  
 **Requires:** Running Linux container engine and internet for the first pull
+
+The complete guided path can also be verified from the repository root:
+
+```powershell
+./curriculum/01-container-fundamentals/scripts/Test-ContainerLab.ps1
+```
 
 ## Safety and scope
 
@@ -109,4 +115,4 @@ image is harmless; optionally remove it with `docker image rm alpine:3.22.2`.
 
 [Previous: Quick exercises](../quick-exercises.md) ·
 [Container fundamentals home](../README.md) ·
-[Next: Troubleshooting scenario](../troubleshooting.md)
+[Next: Independent challenge](../independent-challenge.md)

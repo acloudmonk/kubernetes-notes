@@ -1,6 +1,6 @@
 # 00 — Prerequisites
 
-**Status:** Draft  
+**Status:** Verified<br>
 **Estimated time:** 8–12 hours  
 **Prerequisites:** None
 
@@ -35,10 +35,11 @@ home and direct links to the previous and next learning step where applicable.
 4. [Distributed-system foundations](04-distributed-systems.md)
 5. [Quick exercises](quick-exercises.md)
 6. [Labs](labs/README.md)
-7. [Troubleshooting scenario](troubleshooting.md)
-8. [Interview questions](interview-questions.md)
-9. [Knowledge check](quiz.md)
-10. [References](references.md)
+7. [Independent challenge](independent-challenge.md)
+8. [Troubleshooting scenario](troubleshooting.md)
+9. [Interview questions](interview-questions.md)
+10. [Knowledge check](quiz.md)
+11. [References](references.md)
 
 ## Environment check
 
@@ -56,13 +57,29 @@ bash ./scripts/check-prerequisites.sh
 
 These scripts inspect only; they install and modify nothing.
 
+## Recorded verification
+
+From PowerShell on Windows, run the repeatable local lab verification:
+
+```powershell
+./curriculum/00-prerequisites/scripts/Test-Labs.ps1 -IncludeNetwork
+```
+
+The script refuses occupied ports, creates two local-only Python listeners,
+checks process/socket/HTTP evidence, detects a bind conflict, distinguishes
+configuration and connection failures, and optionally verifies valid and
+invalid DNS/TLS paths. It stops only the processes it created and proves both
+listeners are gone. The recorded baseline is in the
+[version matrix](../../VERSION-MATRIX.md); WSL remains a learner-run path because
+it is inaccessible from this validation process.
+
 ## Completion
 
-- [ ] Complete the quick exercises and three core labs.
-- [ ] Diagnose the scenario before reading its answer.
+- [ ] **Explain:** trace process, socket, DNS, TCP, TLS, HTTP, configuration, and Git boundaries.
+- [ ] **Build:** complete and clean up the quick exercises and three core labs.
+- [ ] **Diagnose:** classify the independent challenge and troubleshooting scenario from evidence.
 - [ ] Explain five interview answers aloud.
 - [ ] Score at least 80% on the knowledge check.
-- [ ] Clean up every process and temporary resource created by the labs.
 
 ## Continue
 

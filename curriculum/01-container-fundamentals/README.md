@@ -1,6 +1,6 @@
 # 01 — Container Fundamentals
 
-**Status:** Draft  
+**Status:** Verified<br>
 **Estimated time:** 8–12 hours  
 **Prerequisites:** [00 — Prerequisites](../00-prerequisites/README.md)
 
@@ -37,10 +37,11 @@ home and direct links to the previous and next learning step where applicable.
 4. [Lifecycle, PID 1, and security](04-lifecycle-pid1-security.md)
 5. [Quick exercises](quick-exercises.md)
 6. [Guided lab](lab/README.md)
-7. [Troubleshooting](troubleshooting.md)
-8. [Interview questions](interview-questions.md)
-9. [Knowledge check](quiz.md)
-10. [References](references.md)
+7. [Independent challenge](independent-challenge.md)
+8. [Troubleshooting](troubleshooting.md)
+9. [Interview questions](interview-questions.md)
+10. [Knowledge check](quiz.md)
+11. [References](references.md)
 
 ## Requirements
 
@@ -51,13 +52,26 @@ home and direct links to the previous and next learning step where applicable.
 Run `docker info` before the lab. A working client with an unreachable daemon is
 not a working container environment.
 
+## Recorded verification
+
+From the repository root in PowerShell:
+
+```powershell
+./curriculum/01-container-fundamentals/scripts/Test-ContainerLab.ps1
+```
+
+The script refuses conflicting container names and verifies the Linux engine,
+image identity, process/cgroup evidence, CPU and memory limits, writable-layer
+lifetime, graceful termination, finite-process exit, and scoped cleanup. See
+the [version matrix](../../VERSION-MATRIX.md) for the executed baseline.
+
 ## Completion
 
-- [ ] Complete the quick exercises and guided lab.
-- [ ] Complete the controlled failure before reading its diagnosis.
+- [ ] **Explain:** trace runtime, isolation, image, filesystem, and lifecycle mechanisms.
+- [ ] **Build:** complete, verify, and clean up the guided lab.
+- [ ] **Diagnose:** complete the controlled failure and independent challenge from evidence.
 - [ ] Explain the runtime flow and isolation limits without using “mini-VM.”
 - [ ] Score at least 80% on the knowledge check.
-- [ ] Run the exact cleanup and verify no lab container remains.
 
 ## Continue
 

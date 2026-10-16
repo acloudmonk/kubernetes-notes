@@ -40,6 +40,7 @@ flowchart LR
     G --> H[Metrics, logs, and traces]
     H --> I[CI/CD and GitOps]
     I --> J[Production operations]
+    J --> K[Advanced Kubernetes and graduation]
 ```
 
 ## Principles
@@ -54,14 +55,15 @@ flowchart LR
 
 ## Status
 
-The repository contains the curriculum framework, initial capstone design, and
-the first executable learning modules. Additional modules are added in reviewed
-phases. Examples should work on Linux and, where practical, Windows through
-WSL2 and Docker Desktop. Cloud exercises must identify billable resources
-explicitly.
+All 17 ordered modules are published and runtime-verified against the baselines
+in the [version matrix](VERSION-MATRIX.md). The CloudCart capstone evolves from
+a local Python application through containers, Kubernetes, Helm, observability,
+GitOps, production operations, and advanced-platform evaluation. Examples
+target Linux and, where practical, Windows through WSL2 and Docker Desktop.
+Cloud exercises identify billable resources explicitly.
 
 ## Continue learning
 
-Every available module ends with navigation back to the curriculum index and
-to the next available module. Planned modules are shown in the roadmap without
-links until their learning material exists and has been reviewed.
+Every module ends with navigation back to the curriculum index and to the next
+step. Use the cumulative [competency gates](curriculum/ASSESSMENT-GATES.md) to
+verify transfer instead of treating page completion as demonstrated skill.

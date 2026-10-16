@@ -1,7 +1,7 @@
 # Troubleshooting Scenario
 
 > **Module navigation:** [Prerequisites module home](README.md) · Previous:
-> [Lab 3 — Configuration failure](labs/03-configuration-failure.md) · Next:
+> [Independent challenge](independent-challenge.md) · Next:
 > [Interview questions](interview-questions.md)
 
 An application reports: `dependency unavailable`. Its configuration uses
@@ -32,6 +32,6 @@ documenting environment-specific endpoints and testing effective configuration.
 
 ---
 
-[Previous: Lab 3 — Configuration failure](labs/03-configuration-failure.md) ·
+[Previous: Independent challenge](independent-challenge.md) ·
 [Prerequisites module home](README.md) ·
 [Next: Interview questions](interview-questions.md)
