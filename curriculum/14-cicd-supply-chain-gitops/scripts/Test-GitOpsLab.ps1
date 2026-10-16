@@ -13,7 +13,8 @@ kubectl wait helmrelease/cloudcart -n cloudcart --for=condition=Ready --timeout=
 
 $original = kubectl get configmap cloudcart-config -n cloudcart -o jsonpath='{.data.RELAY_INTERVAL_SECONDS}'
 kubectl patch configmap cloudcart-config -n cloudcart --type merge -p '{"data":{"RELAY_INTERVAL_SECONDS":"99"}}' | Out-Null
-flux reconcile kustomization cloudcart --with-source --timeout=3m | Out-Null
+flux reconcile helmrelease cloudcart --namespace cloudcart --force --timeout=3m | Out-Null
+if ($LASTEXITCODE -ne 0) { throw 'HelmRelease drift reconciliation failed.' }
 $restored = kubectl get configmap cloudcart-config -n cloudcart -o jsonpath='{.data.RELAY_INTERVAL_SECONDS}'
 if ($restored -ne $original) { throw 'Flux did not correct ConfigMap drift.' }
 

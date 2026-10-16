@@ -21,6 +21,8 @@ spec:
     remediation:
       retries: 2
       strategy: rollback
+  driftDetection:
+    mode: enabled
   values:
     image:
       repository: cloudcart-app
